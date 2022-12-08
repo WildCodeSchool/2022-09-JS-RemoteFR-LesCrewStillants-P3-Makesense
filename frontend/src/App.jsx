@@ -1,12 +1,14 @@
-import Home from "./pages/Home";
-
+import Footer from "@components/Footer/Footer";
+import LoginSignupContainer from "@components/LoginSignupContainer/LoginSignupContainer";
+import NavBar from "@components/NavBar/NavBar";
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <Home />
-      <p>coucou</p>
+      <NavBar />
+      <LoginSignupContainer />
+      <Footer />
     </div>
   );
 }
