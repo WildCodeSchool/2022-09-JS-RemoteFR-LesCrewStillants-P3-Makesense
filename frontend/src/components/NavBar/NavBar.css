@@ -1,0 +1,16 @@
+nav {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 40px;
+  width: 100%;
+  background-color: white;
+  padding: 12px;
+}
+
+nav a {
+  color: rgb(0, 0, 0);
+  text-decoration-line: none;
+  font-size: 1.5rem;
+  color: #0c3944;
+}
