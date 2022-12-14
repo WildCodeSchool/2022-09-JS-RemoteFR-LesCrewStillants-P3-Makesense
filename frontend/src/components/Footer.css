@@ -1,0 +1,208 @@
+.App {
+  text-align: center;
+}
+
+body {
+  margin: 0;
+  font-size: x-large;
+  font-family: "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.social-links-size-large {
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 2.5rem;
+} 
+
+@media screen and (max-width: 1024px) {
+  .social-links-size-large {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 25%;
+  }
+  
+}
+
+svg {
+  fill: #fff;
+} 
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+  background-color: transparent;
+}
+
+h2 {
+  display: block;
+  font-size: 1.5rem;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+
+ul {
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+
+footer {
+  padding: 2.5rem 1.25rem;
+  background-color: #9b084f;
+  color: #fff;
+}
+
+@media screen and (min-width: 1024px) {
+  .footer {
+    padding: 3.75rem 3rem;
+  }
+}
+
+.footer-has-menus {
+  background-color: #196c85;
+}
+
+.footer__inner {
+  display: flex;
+  flex-direction: column-reverse;
+  margin-right: auto;
+  margin-left: auto;
+  width: 68.75rem;
+  max-width: 100%;
+}
+
+@media screen and (min-width: 1024px) {
+  .footer__inner {
+    flex-direction: column;
+  }
+}
+
+.footer__section {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.footer__menus {
+  display: none;
+  justify-content: center;
+}
+
+@media screen and (min-width: 1024px) {
+  .footer__menus {
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 1;
+    margin-right: -1.5rem;
+    margin-left: -1.5rem;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .footer__menus {
+    margin-left: -3rem;
+    margin-right: -3rem;
+  }
+}
+
+.footer__side {
+  color: #fff;
+  width: 6.5rem;
+  margin-right: 3rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .footer__side {
+    flex-shrink: 0;
+    width: 14.375rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .footer__menu {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  .footer__menu {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu-footer {
+  padding: auto;
+  padding-top: 0.5rem;
+  gap: 50%;
+}
+
+#menu-item-7627 {
+  padding-bottom: 1rem;
+}
+
+#menu-item-6664 {
+  padding-bottom: 1rem;
+}
+
+#menu-item-13319 {
+  padding-bottom: 1rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .footer.-has-menus .footer__side {
+    margin-left: 3rem;
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  .footer.-has-menus .footer__side {
+    margin-left: 6rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .footer__section + .footer__section {
+    padding-bottom: 0;
+    padding-top: 3rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .footer__menu__title {
+    font-weight: 900;
+    font-size: 1.875rem;
+    line-height: 1.2;
+    padding-bottom: 0.5rem;
+  }
+}
