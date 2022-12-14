@@ -7,20 +7,29 @@ function Form() {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+  const titles = [
+    "Les détails",
+    "Impact",
+    "Bénéfices",
+    "Risques",
+    "1ere Décisions",
+  ];
 
   return (
     <form onSubmit={handleSubmit}>
       <label className="Label">
-        <p className="labelF">Insérez un titre:</p>
+        <p className="labelF">Insérez un titre pour votre décision :</p>
         <input
           className="TitleD"
           type="text"
-          placeholder="titre"
+          placeholder="Titre décision "
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
       </label>
-      <Editor />
+      {titles.map((titleH2) => (
+        <Editor title={titleH2} />
+      ))}
       <br />
       <input className="Submit" type="submit" value="Soumettre" />
     </form>
@@ -28,36 +37,3 @@ function Form() {
 }
 
 export default Form;
-
-// const [contactInfo, setContactInfo] = useState({
-//   title: "",
-//   editor: "",
-// });
-// return (
-//   <div className="form-container">
-//     <form>
-//       <div>
-//         <h3>Contact Form</h3>
-//       </div>
-//       <div>
-//         <input
-//           type="text"
-//           name="title"
-//           placeholder="Name"
-//           value={contactInfo.name}
-//         />
-//       </div>
-//       <div>
-//         <Editor
-//           type="editor"
-//           name="editor"
-//           value={contactInfo.editor}
-//         />
-//       </div>
-//       <div>
-//         <button>Submit Contact</button>
-//       </div>
-//     </form>
-//   </div>
-// );
-// }
