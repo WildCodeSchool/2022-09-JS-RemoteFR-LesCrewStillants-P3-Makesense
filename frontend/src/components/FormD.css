@@ -29,8 +29,8 @@ form {
   padding-top: 0.5rem;
   /* display: flex;
     justify-content: center; */
-  width: 14rem;
-  height: 40px;
+  width: 17rem;
+  height: 20%px;
   border-radius: 25px;
   font-size: 25px;
   color: #196c84;
@@ -40,4 +40,14 @@ form {
 .TitleD {
   height: 1.3rem;
   margin: 10%;
+}
+
+.Timeline {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: end;
+}
+
+.date {
+  margin-bottom: 3%;
 }

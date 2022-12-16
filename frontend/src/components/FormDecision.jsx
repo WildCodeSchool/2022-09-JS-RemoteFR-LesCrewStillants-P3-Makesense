@@ -1,63 +1,47 @@
 import { useState } from "react";
 import "./FormD.css";
 import Editor from "./RTE";
+import Timeline from "./Timeline";
 
 function Form() {
   const [title, setTitle] = useState("");
+  const [date, setDate] = useState();
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+  const titles = [
+    "Les détails de la décision",
+    "Impact sur l'organisation",
+    "Bénéfices",
+    "Risques",
+    "Première Décision",
+  ];
+  console.warn(date);
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label className="Label">
-        <p className="labelF">Insérez un titre:</p>
-        <input
-          className="TitleD"
-          type="text"
-          placeholder="titre"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-      </label>
-      <Editor />
-      <br />
-      <input className="Submit" type="submit" value="Soumettre" />
-    </form>
+    <>
+      <div className="Timeline">
+        <Timeline />
+      </div>
+      <form onSubmit={handleSubmit}>
+        <label className="Label">
+          <p className="labelF">Insérez un titre pour votre décision :</p>
+          <input
+            className="TitleD"
+            type="text"
+            placeholder="Titre décision "
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+        </label>
+        {titles.map((titleH2) => (
+          <Editor setDate={setDate} title={titleH2} />
+        ))}
+        <br />
+        <input className="Submit" type="submit" value="Soumettre" />
+      </form>
+    </>
   );
 }
 
 export default Form;
-
-// const [contactInfo, setContactInfo] = useState({
-//   title: "",
-//   editor: "",
-// });
-// return (
-//   <div className="form-container">
-//     <form>
-//       <div>
-//         <h3>Contact Form</h3>
-//       </div>
-//       <div>
-//         <input
-//           type="text"
-//           name="title"
-//           placeholder="Name"
-//           value={contactInfo.name}
-//         />
-//       </div>
-//       <div>
-//         <Editor
-//           type="editor"
-//           name="editor"
-//           value={contactInfo.editor}
-//         />
-//       </div>
-//       <div>
-//         <button>Submit Contact</button>
-//       </div>
-//     </form>
-//   </div>
-// );
-// }
