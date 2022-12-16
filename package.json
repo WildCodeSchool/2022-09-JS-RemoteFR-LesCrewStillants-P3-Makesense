@@ -20,6 +20,7 @@
     "husky": "^7.0.0"
   },
   "dependencies": {
-    "@mailtop/horizontal-timeline": "^2.1.4"
+    "react-chrono": "^1.20.0",
+    "vertical-timeline-component-react": "^4.2.1"
   }
 }

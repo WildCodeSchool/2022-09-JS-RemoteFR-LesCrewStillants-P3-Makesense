@@ -41,3 +41,13 @@ form {
   height: 1.3rem;
   margin: 10%;
 }
+
+.Timeline {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: end;
+}
+
+.date {
+  margin-bottom: 3%;
+}
