@@ -1,0 +1,43 @@
+.decoration {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+  background-color: #0c3944;
+  color: white;
+  font-size: 2rem;
+  margin-top: -5.9rem;
+  padding: 4rem;
+  border-radius: 15px;
+  margin-left: 2rem;
+}
+
+.decoimg {
+  width: 39rem;
+  border-radius: 95px;
+  justify-content: center;
+  display: flex;
+  margin-left: 2rem;
+  margin-top: -33rem;
+}
+
+.decologo {
+  display: flex;
+  width: 25rem;
+  margin-left: 9rem;
+  margin-top: 2.5rem;
+}
+
+.decovoiderose {
+  display: flex;
+  width: 10vh;
+  margin-left: 2.2rem;
+  margin-top: 2.2rem;
+}
+
+.decovoidebleu {
+  display: flex;
+  margin-left: 35rem;
+  width: 15vh;
+  margin-top: -15rem;
+}

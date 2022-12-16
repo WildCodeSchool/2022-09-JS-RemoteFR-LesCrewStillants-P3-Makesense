@@ -1,11 +1,10 @@
 import Signup from "@components/Signup/Signup";
-import Login from "@components/Login/Login";
+import Login from "@components/LoginSignupContainer/Login/Login";
 import { useRef, useState } from "react";
 import "./LoginSignupContainer.css";
 
 function LoginSignupContainer() {
   const [login, setLogin] = useState(true);
-  // const [signup, setSignup] = useState(false);
 
   const loginSignupContainerRef = useRef(null);
 

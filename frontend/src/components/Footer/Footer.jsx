@@ -3,7 +3,7 @@ import "./Footer.css";
 function Footer() {
   return (
     <div className="footer">
-      <h2>Made By MakeSense</h2>
+      <h2>Made By ProTato's</h2>
     </div>
   );
 }
