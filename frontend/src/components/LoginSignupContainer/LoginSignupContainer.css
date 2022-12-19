@@ -1,13 +1,13 @@
 .login-signup-container {
   display: grid;
   grid-template-columns: 70% 30% 70%;
-  width: 52%;
-  height: 400px;
-  margin-left: 45%;
+  width: 40rem;
+  height: 25rem;
+  margin-left: 50%;
   border-radius: 20px;
   background-color: white;
-  margin-top: 120px;
-  margin-right: 150px;
+  margin-top: 7.5rem;
+  margin-right: 7.5rem;
   overflow: hidden;
   transition: 0.3s linear;
 }
