@@ -8,7 +8,7 @@ CREATE TABLE user (
   user_role VARCHAR(50) NOT NULL,
   email VARCHAR(255) NOT NULL,
   pw VARCHAR(255) NOT NULL,
-  matricule INT NOT NULL
+  matricule VARCHAR(255) UNIQUE NOT NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb3;
 
 DROP TABLE IF EXISTS timeline;
