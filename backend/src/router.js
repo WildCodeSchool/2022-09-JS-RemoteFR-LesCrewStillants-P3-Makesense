@@ -14,11 +14,9 @@ const userControllers = require("./controllers/userControllers");
 
 router.get("/users", userControllers.browseUser);
 router.get("/users/:id", userControllers.browseUser);
+router.put("/users/:id", userControllers.editUser);
 router.post("/users", userControllers.addUser);
-
-/* router.put("/users/:id", userControllers.editUser);
-
-
+/* 
 const decisionControllers = require("./controllers/decisionControllers");
 
 const commentControllers = require("./controllers/commentControllers"); */
