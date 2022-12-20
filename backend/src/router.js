@@ -16,6 +16,7 @@ router.get("/users", userControllers.browseUser);
 router.get("/users/:id", userControllers.readUser);
 router.put("/users/:id", userControllers.editUser);
 router.post("/users", userControllers.addUser);
+router.delete("/users/:id", userControllers.destroyUser);
 /* 
 const decisionControllers = require("./controllers/decisionControllers");
 
