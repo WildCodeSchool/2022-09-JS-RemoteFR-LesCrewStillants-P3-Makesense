@@ -1,12 +1,15 @@
 import Form from "./components/FormDecision";
+import { DateContextProvider } from "./Context/DateContext";
 
 import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <Form />
-    </div>
+    <DateContextProvider>
+      <div className="App">
+        <Form />
+      </div>
+    </DateContextProvider>
   );
 }
 
