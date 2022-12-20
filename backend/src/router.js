@@ -13,7 +13,7 @@ router.delete("/items/:id", itemControllers.destroy);
 const userControllers = require("./controllers/userControllers");
 
 router.get("/users", userControllers.browseUser);
-router.get("/users/:id", userControllers.browseUser);
+router.get("/users/:id", userControllers.readUser);
 router.put("/users/:id", userControllers.editUser);
 router.post("/users", userControllers.addUser);
 /* 
