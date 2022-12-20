@@ -1,4 +1,5 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
+import AcceuilDecision from "@pages/AcceuilDecision";
 import Home from "./pages/Home";
 import Decision from "./pages/PriseDecision";
 import "./App.css";
@@ -9,6 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/decision" element={<Decision />} />
+        <Route path="/acceuilsalarie" element={<AcceuilDecision />} />
       </Routes>
     </BrowserRouter>
   );
