@@ -5,7 +5,9 @@
 body {
   margin: 0;
   font-size: x-large;
-  font-family: "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -15,7 +17,7 @@ body {
   align-items: center;
   margin-top: 2rem;
   gap: 2.5rem;
-} 
+}
 
 @media screen and (max-width: 1024px) {
   .social-links-size-large {
@@ -24,12 +26,11 @@ body {
     align-items: center;
     margin-left: 25%;
   }
-  
 }
 
 svg {
   fill: #fff;
-} 
+}
 
 a {
   color: inherit;
