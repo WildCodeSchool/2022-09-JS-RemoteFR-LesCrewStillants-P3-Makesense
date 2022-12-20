@@ -14,6 +14,9 @@ export default function Home() {
       <Link to="/decision">
         <p className="home"> Poster une décision</p>
       </Link>
+      <Link to="/acceuilsalarie">
+        <p className="home">Decision en cours</p>
+      </Link>
       <Footer />
     </div>
   );

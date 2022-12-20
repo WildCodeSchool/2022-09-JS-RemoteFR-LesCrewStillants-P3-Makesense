@@ -15,7 +15,7 @@ body {
   align-items: center;
   margin-top: 2rem;
   gap: 2.5rem;
-} 
+}
 
 @media screen and (max-width: 1024px) {
   .social-links-size-large {
@@ -24,12 +24,11 @@ body {
     align-items: center;
     margin-left: 25%;
   }
-  
 }
 
 svg {
   fill: #fff;
-} 
+}
 
 a {
   color: inherit;
