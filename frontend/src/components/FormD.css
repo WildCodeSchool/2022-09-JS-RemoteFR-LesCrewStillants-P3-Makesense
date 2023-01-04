@@ -13,6 +13,10 @@
   font-size: 155%;
   color: #196c84;
   background-color: #c1e94e;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
 }
 
 form {
@@ -34,6 +38,11 @@ form {
   font-size: 155%;
   color: #196c84;
   background-color: #c1e94e;
+
+  -webkit-border-radius: 1.5rem;
+  -moz-border-radius: 1.5rem;
+  -ms-border-radius: 1.5rem;
+  -o-border-radius: 1.5rem;
 }
 
 .TitleD {

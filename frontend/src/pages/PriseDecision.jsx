@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Header from "@components/Header";
 import Form from "../components/FormDecision";
 import { DateContextProvider } from "../Context/DateContext";
 

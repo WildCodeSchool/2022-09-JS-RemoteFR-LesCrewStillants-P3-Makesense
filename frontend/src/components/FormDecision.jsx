@@ -25,7 +25,7 @@ function Form() {
       </div>
       <form onSubmit={handleSubmit}>
         <label className="Label">
-          <p className="labelF">Insérez un titre pour votre décision :</p>
+          <p className="labelF"> Insérez un titre pour votre décision </p>
           <input
             className="TitleD"
             type="text"
