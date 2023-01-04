@@ -34,8 +34,8 @@ function Form() {
             onChange={(e) => setTitle(e.target.value)}
           />
         </label>
-        {titles.map((titleH2) => (
-          <Editor setDate={setDate} title={titleH2} />
+        {titles.map((titleH2, id) => (
+          <Editor key={titleH2} setDate={setDate} id={id} title={titleH2} />
         ))}
         <br />
         <input className="Submit" type="submit" value="Soumettre" />

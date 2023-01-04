@@ -1,15 +1,19 @@
 import { Link } from "react-router-dom";
 import Header from "@components/Header";
 import Form from "../components/FormDecision";
+import { DateContextProvider } from "../Context/DateContext";
 
-export default function Decision() {
+function PriseDecision() {
   return (
-    <div>
-      <Header />
-      <Link to="/">
-        <p className="home"> Home </p>
-      </Link>
-      <Form />
-    </div>
+    <DateContextProvider>
+      <div className="PriseDecision">
+        <Link to="/">
+          <p className="home">Home</p>
+        </Link>
+        <Form />
+      </div>
+    </DateContextProvider>
   );
 }
+
+export default PriseDecision;
