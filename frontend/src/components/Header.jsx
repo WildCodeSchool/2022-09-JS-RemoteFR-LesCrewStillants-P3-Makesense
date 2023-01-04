@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Header.css";
 
 function Header() {
@@ -23,19 +24,19 @@ function Header() {
                   id="menu-item-1560"
                   className="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1560 menu-item-depth-0"
                 >
-                  <a href="https://www.google.fr/">
+                  <Link to="/decision">
                     Parcourir les décisons
                     <span className="menu-item-bean" aria-hidden="true" />
-                  </a>
+                  </Link>
                 </li>
                 <li
                   id="menu-item-2736"
                   className="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2736 menu-item-depth-0"
                 >
-                  <a href="https://www.google.fr/">
+                  <Link to="/acceuilsalarie">
                     Mes décisions
                     <span className="menu-item-bean" aria-hidden="true" />
-                  </a>
+                  </Link>
                 </li>
                 <li
                   id="menu-item-5574"

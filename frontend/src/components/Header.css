@@ -1,83 +1,82 @@
 div {
-    display: block;
-  }
-  
-  header {
-    display: block;
-  }
-  
-  .header {
-    position: sticky;
-    top: 0;
-    background-color: #fff;
-    z-index: 40;
-  }
-  
-  .menu-header {
-    display: flex;
-  }
-  
-  .header__main-content__inner {
-    margin-right: auto;
-    margin-left: auto;
-    width: 68.75rem;
-    max-width: 100%;
-    display: flex;
-    align-items: center;
-    height: 100%;
-  }
-  
-  .header__home-link {
-    display: block;
-    flex-shrink: 0;
-    width: 8.75rem;
-  }
-  
-  .header__main-content__nav {
-    display: flex;
-    flex-grow: 1;
-    justify-content: flex-end;
-  }
-  
-  .header__main-content__nav__btn-open {
-    font-size: 1.125rem;
-    color: #121213;
-    margin-right: -0.78125rem;
-    width: 2.6875rem;
-    height: 2.6875rem;
-  }
-  
-  a {
-    color: inherit;
-    text-decoration: inherit;
-    background-color: transparent;
-  }
-  
-  img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    border-style: none;
-    overflow: clip;
-  }
-  
-  ol,
-  ul {
-    list-style: none;
-    color: #196c84;
-    margin: 0;
-    padding: 0;
-  }
-  
-  li {
-    padding-right: 2rem;
-  }
-  
-  ul {
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    padding-inline-start: 40px;
-  }
-  
+  display: block;
+}
+
+header {
+  display: block;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 40;
+}
+
+.menu-header {
+  display: flex;
+}
+
+.header__main-content__inner {
+  margin-right: auto;
+  margin-left: auto;
+  width: 68.75rem;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.header__home-link {
+  display: block;
+  flex-shrink: 0;
+  width: 8.75rem;
+}
+
+.header__main-content__nav {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+}
+
+.header__main-content__nav__btn-open {
+  font-size: 1.125rem;
+  color: #121213;
+  margin-right: -0.78125rem;
+  width: 2.6875rem;
+  height: 2.6875rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+  background-color: transparent;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-style: none;
+  overflow: clip;
+}
+
+ol,
+ul {
+  list-style: none;
+  color: #196c84;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  padding-right: 2rem;
+}
+
+ul {
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
