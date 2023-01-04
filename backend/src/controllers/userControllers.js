@@ -1,79 +1,72 @@
+const { verify, hash, argon2id } = require("argon2");
+const { generateToken } = require("../services/jwt");
 const models = require("../models");
 
-const browseUser = (req, res) => {
-  models.user
-    .findAll()
-    .then(([rows]) => {
-      res.send(rows);
+const register = (req, res) => {
+  const { pw } = req.body;
+
+  const hashingOptions = {
+    type: argon2id,
+    memoryCost: 2 ** 16,
+    timeCost: 5,
+    parallelism: 1,
+  };
+
+  hash(pw, hashingOptions)
+    .then((hashedPassword) => {
+      const user = {
+        ...req.body,
+        hashedPassword,
+      };
+      models.user
+        .insert(user)
+        .then(([rows]) => {
+          if (rows.affectedRows === 1) {
+            return res.status(201).json({ success: "User save" });
+          }
+          return res.status(403).json({ error: "une erreur s'est produite" });
+        })
+        .catch((err) => res.sendStatus(500));
     })
     .catch((err) => {
       console.error(err);
-      res.sendStatus(500);
+      return res.sendStatus(500);
     });
 };
-const readUser = (req, res) => {
+
+const login = async (req, res) => {
+  // Ici, je récupère les infos transmisent par le frontend.
+  const { email, pw } = req.body;
+
+  // console.warn({ email, pw });
+  // Je vais récupère dans ma DB l'utilisateur dont l'email est celui transmis
+
+  // findByEmail(email) -> model findByEmail(email) requête sql pour select l'utilisateur selon son email
   models.user
-    .find(req.params.id)
-    .then(([rows]) => {
-      if (rows[0] == null) {
-        res.sendStatus(404);
-      } else {
-        res.send(rows[0]);
+    .findByEmail(email)
+    .then(([[user]]) => {
+      // [[user]] => correspond au résulat de ma requête SQL
+      // si personne
+      if (!user) {
+        return res.status(403).json({ error: "User not found" });
       }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-};
-
-const editUser = (req, res) => {
-  const user = req.body;
-
-  // TODO validations (length, format...)
-
-  user.id = parseInt(req.params.id, 10);
-
-  models.user
-    .update(user)
-    .then(([result]) => {
-      if (result.affectedRows === 0) {
-        res.sendStatus(404);
-      } else {
-        res.sendStatus(204);
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-};
-
-const addUser = (req, res) => {
-  const user = req.body;
-
-  // TODO validations (length, format...)
-
-  models.user
-    .insert(user)
-    .then(([result]) => {
-      res.location(`/users/${result.insertId}`).sendStatus(201);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-};
-
-const destroyUser = (req, res) => {
-  models.user
-    .delete(req.params.id)
-    .then(([result]) => {
-      if (result.affectedRows === 0) {
-        res.sendStatus(404);
-      } else {
-        res.sendStatus(204);
-      }
+      // vérifier le MDP
+      verify(user.pw, pw)
+        .then((match) => {
+          if (match) {
+            // 3 je retourne mon token//
+            const token = generateToken({ id: user.id, email: user.email });
+            return res
+              .cookie("user_auth", token, { httpOnly: true, secure: false })
+              .status(200)
+              .json({ success: "User logged" });
+          }
+          return res.status(403).json({ error: "password incorrect" });
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+      return false;
     })
     .catch((err) => {
       console.error(err);
@@ -82,9 +75,6 @@ const destroyUser = (req, res) => {
 };
 
 module.exports = {
-  browseUser,
-  addUser,
-  editUser,
-  readUser,
-  destroyUser,
+  register,
+  login,
 };
