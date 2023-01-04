@@ -1,6 +1,7 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Home from "./pages/Home";
 import Decision from "./pages/PriseDecision";
+
 import "./App.css";
 
 function App() {
