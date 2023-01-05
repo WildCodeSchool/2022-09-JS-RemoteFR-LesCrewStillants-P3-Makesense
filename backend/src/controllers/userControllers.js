@@ -26,7 +26,7 @@ const register = (req, res) => {
           }
           return res.status(403).json({ error: "une erreur s'est produite" });
         })
-        .catch((err) => res.sendStatus(500));
+        .catch(() => res.sendStatus(500));
     })
     .catch((err) => {
       console.error(err);
