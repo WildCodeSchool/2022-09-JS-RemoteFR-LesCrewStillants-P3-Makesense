@@ -17,9 +17,9 @@ function Timeline() {
   }, [reload]);
 
   return (
-    <div style={{ width: "35%", height: "100%" }}>
+    <div style={{ width: "55%", height: "100%" }}>
       {!reload ? (
-        <Chrono items={timeline} mode="VERTICAL" cardHeight={35} />
+        <Chrono items={timeline} mode="HORIZONTAL" cardHeight={35} />
       ) : (
         "attend"
       )}

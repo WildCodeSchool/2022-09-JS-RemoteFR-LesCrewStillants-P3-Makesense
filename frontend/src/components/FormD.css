@@ -3,22 +3,6 @@
   src: url(https://fonts.cdnfonts.com/css/helvetica-neue-9);
 }
 
-.Submit {
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bolder;
-  margin: 1%;
-  width: 9%;
-  border: none;
-  border-radius: 1rem;
-  font-size: 155%;
-  color: #196c84;
-  background-color: #c1e94e;
-  -webkit-border-radius: 25px;
-  -moz-border-radius: 25px;
-  -ms-border-radius: 25px;
-  -o-border-radius: 25px;
-}
-
 form {
   display: flex;
   flex-direction: column;
@@ -26,19 +10,26 @@ form {
   align-items: center;
 }
 
+.Label {
+  display: flex;
+  flex-direction: column;
+  padding-top: 2%;
+  margin-bottom: -3%;
+}
+
 .labelF {
+  display: flex;
+  justify-content: center;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bolder;
   padding-top: 0.5rem;
-  /* display: flex;
-    justify-content: center; */
-  width: 17rem;
-  height: 20%;
-  border-radius: 2rem;
+  width: 32rem;
+  height: 3rem;
   font-size: 155%;
-  color: #196c84;
-  background-color: #c1e94e;
+  color: #fff30d;
+  background-color: #196c84;
 
+  border-radius: 2rem;
   -webkit-border-radius: 1.5rem;
   -moz-border-radius: 1.5rem;
   -ms-border-radius: 1.5rem;
@@ -46,16 +37,50 @@ form {
 }
 
 .TitleD {
-  height: 1.3rem;
+  height: 2rem;
   margin: 10%;
 }
 
-.Timeline {
+.date {
+  margin-bottom: 2%;
   display: flex;
-  flex-direction: column-reverse;
-  justify-content: end;
 }
 
-.date {
+h2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: 22%;
+  margin-top: 15%;
   margin-bottom: 3%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+  font-size: 140%;
+  color: #196c84;
+  background-color: #c1e94e;
+  width: 23rem;
+
+  border-radius: 2rem;
+  -webkit-border-radius: 1.5rem;
+  -moz-border-radius: 1.5rem;
+  -ms-border-radius: 1.5rem;
+  -o-border-radius: 1.5rem;
+}
+
+.Submit {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+  margin: 2%;
+  margin-bottom: -5%;
+  width: 20rem;
+  border: none;
+  font-size: 155%;
+  color: #fff30d;
+  background-color: #196c84;
+  border-radius: 1rem;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
 }

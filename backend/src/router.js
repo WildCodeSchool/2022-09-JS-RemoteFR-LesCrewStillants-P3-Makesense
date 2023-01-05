@@ -19,6 +19,9 @@ router.put("/users/:id", userControllers.editUser);
 router.post("/users", hashPassword, userControllers.addUser);
 router.delete("/users/:id", userControllers.destroyUser);
 
+// on veut récupérer nos prise de décisions
+// router.post("/form/add", formDecisionControllers.addform);
+
 /* 
 const decisionControllers = require("./controllers/decisionControllers");
 
