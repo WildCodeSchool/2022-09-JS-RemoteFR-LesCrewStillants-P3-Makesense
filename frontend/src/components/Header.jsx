@@ -33,7 +33,7 @@ function Header() {
                   id="menu-item-2736"
                   className="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2736 menu-item-depth-0"
                 >
-                  <Link to="/acceuilsalarie">
+                  <Link to="/accueilsalarie">
                     Mes décisions
                     <span className="menu-item-bean" aria-hidden="true" />
                   </Link>
