@@ -56,7 +56,6 @@ const login = async (req, res) => {
           if (match) {
             // 3 je retourne mon token//
             const token = generateToken({ id: user.id, email: user.email });
-            // res.cookie("token", token);
             return res
               .cookie("user_auth", token, { httpOnly: true, secure: false })
               .status(200)

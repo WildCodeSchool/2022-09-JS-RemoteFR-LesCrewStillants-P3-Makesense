@@ -18,7 +18,7 @@ function Signup() {
     e.preventDefault();
     instance
       .post("/register", registerUser)
-      .then((res) => console.log(res.data))
+      .then((res) => console.warn(res.data))
       .catch((err) => console.error(err));
   };
 
@@ -26,28 +26,24 @@ function Signup() {
     <div className="signup">
       <form htmlFor="signup" onSubmit={handleRegister}>
         <input
-          id="signup"
           type="password"
           placeholder="Matricule"
           onChange={handleChangeRegister}
           required
         />
         <input
-          id="signup"
           type="email"
           placeholder="Email"
           onChange={handleChangeRegister}
           required
         />
         <input
-          id="signup"
           type="password"
           placeholder="Mot de passe"
           onChange={handleChangeRegister}
           required
         />
         <input
-          id="signup"
           type="password"
           placeholder="Confirmer mot de passe"
           onChange={handleChangeRegister}

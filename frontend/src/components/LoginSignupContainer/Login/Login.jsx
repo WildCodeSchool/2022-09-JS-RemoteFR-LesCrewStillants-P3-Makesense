@@ -3,10 +3,7 @@ import instance from "../../../helpers/axios";
 import "./Login.css";
 
 function Login() {
-  const [loginUser, setLoginUser] = useState({
-    email: "jane@doe.com",
-    password: "azerty",
-  });
+  const [loginUser, setLoginUser] = useState("");
   const handleChangeLogin = (e) => {
     const { name, value } = e.target;
     setLoginUser({ ...loginUser, [name]: value });
@@ -15,21 +12,23 @@ function Login() {
     e.preventDefault();
     instance
       .post("/login", loginUser)
-      .then((res) => console.log(res.data))
-      .catch((err) => console.error(err.response.data));
+      .then((res) => console.warn(res.data))
+      .catch((err) => console.error(err));
   };
 
   return (
     <div className="login">
       <form htmlFor="login" onSubmit={handleLogin}>
+        <input type="password" placeholder="Matricule" />
         <input
-          type="password"
-          placeholder="Matricule"
+          type="email"
+          name="email"
+          placeholder="Email"
           onChange={handleChangeLogin}
         />
-        <input type="email" placeholder="Email" onChange={handleChangeLogin} />
         <input
           type="password"
+          name="pw"
           placeholder="Mot de passe"
           onChange={handleChangeLogin}
         />
