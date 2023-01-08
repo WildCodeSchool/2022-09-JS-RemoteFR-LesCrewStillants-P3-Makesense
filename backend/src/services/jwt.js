@@ -9,8 +9,7 @@ function generateToken(user) {
 
 // TODO: créer la fonction decodeToken
 function decodeToken(token) {
-  const decoded = jwt.verify(token, process.env.JWT_SECRET);
-  return decoded;
+  return jwt.verify(token, process.env.JWT_SECRET);
 }
 
 module.exports = {

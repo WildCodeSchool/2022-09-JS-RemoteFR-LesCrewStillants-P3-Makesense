@@ -10,9 +10,10 @@ router.put("/items/:id", itemControllers.edit);
 router.post("/items", itemControllers.add);
 router.delete("/items/:id", itemControllers.destroy);
 
+const { validateUser } = require("./services/validateUser");
 const userControllers = require("./controllers/userControllers");
 
-router.post("/register", userControllers.register);
+router.post("/register", validateUser, userControllers.register);
 router.post("/login", userControllers.login);
 /* 
 const decisionControllers = require("./controllers/decisionControllers");
