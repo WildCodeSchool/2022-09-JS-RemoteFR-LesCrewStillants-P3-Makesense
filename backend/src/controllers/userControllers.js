@@ -22,7 +22,7 @@ const register = (req, res) => {
         .insert(user)
         .then(([rows]) => {
           if (rows.affectedRows === 1) {
-            return res.status(201).json({ success: "User save" });
+            return res.status(201).json({ success: "User saved" });
           }
           return res.status(403).json({ error: "une erreur s'est produite" });
         })
@@ -59,7 +59,7 @@ const login = async (req, res) => {
             return res
               .cookie("user_auth", token, { httpOnly: true, secure: false })
               .status(200)
-              .json({ token });
+              .json({ token, sucess: "User logged" });
           }
           return res.status(403).json({ error: "password incorrect" });
         })

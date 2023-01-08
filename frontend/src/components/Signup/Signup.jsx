@@ -21,7 +21,7 @@ function Signup() {
   return (
     <div className="signup">
       <form htmlFor="signup" onSubmit={handleRegister}>
-      <input
+        <input
           type="text"
           name="firstname"
           placeholder="Prénom"
@@ -35,7 +35,7 @@ function Signup() {
           onChange={handleChangeRegister}
           required
         />
-         <input
+        <input
           type="date"
           data-date-format="YYY MM JJ"
           name="birthday"

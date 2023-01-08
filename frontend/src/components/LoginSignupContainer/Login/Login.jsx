@@ -19,18 +19,20 @@ function Login() {
   return (
     <div className="login">
       <form htmlFor="login" onSubmit={handleLogin}>
-        <input type="password" placeholder="Matricule" />
+        <input type="password" placeholder="Matricule" required />
         <input
           type="email"
           name="email"
           placeholder="Email"
           onChange={handleChangeLogin}
+          required
         />
         <input
           type="password"
           name="pw"
           placeholder="Mot de passe"
           onChange={handleChangeLogin}
+          required
         />
         <button type="submit">Connexion</button>
       </form>
