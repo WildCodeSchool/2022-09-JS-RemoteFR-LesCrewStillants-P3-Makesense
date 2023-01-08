@@ -12,9 +12,12 @@ router.delete("/items/:id", itemControllers.destroy);
 
 const { validateUser } = require("./services/validateUser");
 const userControllers = require("./controllers/userControllers");
-
-router.post("/register", validateUser, userControllers.register);
+// PUBLIQUES
+router.post("/signup", userControllers.signUpUser);
 router.post("/login", userControllers.login);
+
+// PRIVEES
+router.post("/register", validateUser, userControllers.register);
 /* 
 const decisionControllers = require("./controllers/decisionControllers");
 
