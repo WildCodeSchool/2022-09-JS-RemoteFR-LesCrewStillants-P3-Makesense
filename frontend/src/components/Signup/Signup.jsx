@@ -3,11 +3,7 @@ import instance from "../../helpers/axios";
 import "./Signup.css";
 
 function Signup() {
-  const [registerUser, setRegisterUser] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
+  const [registerUser, setRegisterUser] = useState("");
 
   const handleChangeRegister = (e) => {
     const { name, value } = e.target;
@@ -25,27 +21,54 @@ function Signup() {
   return (
     <div className="signup">
       <form htmlFor="signup" onSubmit={handleRegister}>
+      <input
+          type="text"
+          name="firstname"
+          placeholder="Prénom"
+          onChange={handleChangeRegister}
+          required
+        />
         <input
-          type="password"
-          placeholder="Matricule"
+          type="text"
+          name="lastname"
+          placeholder="Nom"
+          onChange={handleChangeRegister}
+          required
+        />
+         <input
+          type="date"
+          data-date-format="YYY MM JJ"
+          name="birthday"
+          placeholder="AAAA/MM/JJ"
+          onChange={handleChangeRegister}
+          required
+        />
+        <input
+          type="text"
+          name="user_role"
+          placeholder="role"
           onChange={handleChangeRegister}
           required
         />
         <input
           type="email"
+          name="email"
           placeholder="Email"
           onChange={handleChangeRegister}
           required
         />
         <input
           type="password"
+          name="pw"
           placeholder="Mot de passe"
           onChange={handleChangeRegister}
           required
         />
+        <input type="password" placeholder="Confirmer mot de passe" required />
         <input
           type="password"
-          placeholder="Confirmer mot de passe"
+          name="matricule"
+          placeholder="Matricule"
           onChange={handleChangeRegister}
           required
         />
