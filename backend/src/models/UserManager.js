@@ -14,8 +14,8 @@ class UserManager extends AbstractManager {
 
   findByMatricule(user) {
     return this.connection.query(
-      `update ${this.table} set email = ?, password =? where matricule=?`,
-      [user.email, user.hashedPassword, user.matricule]
+      `update ${this.table} set email = ?, pw =? where matricule=?`,
+      [user.email, user.pw, user.matricule]
     );
   }
 
