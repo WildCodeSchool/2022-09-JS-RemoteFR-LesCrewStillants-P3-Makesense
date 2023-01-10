@@ -3,6 +3,10 @@
   src: url(https://fonts.cdnfonts.com/css/helvetica-neue-9);
 }
 
+/*
+*Formulaire décision
+*le h2 s'applique également sur les dates */
+
 form {
   display: flex;
   flex-direction: column;
@@ -39,11 +43,6 @@ form {
 .TitleD {
   height: 2rem;
   margin: 10%;
-}
-
-.date {
-  margin-bottom: 2%;
-  display: flex;
 }
 
 h2 {
@@ -83,4 +82,29 @@ h2 {
   -moz-border-radius: 25px;
   -ms-border-radius: 25px;
   -o-border-radius: 25px;
+}
+
+/*Bouton Onglet*/
+
+.contBtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.onglets {
+  width: 250px;
+  height: 50px;
+  background: rgb(248, 248, 248);
+  color: #196c84;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 1rem;
+}
+
+.active {
+  background: #c1e94e;
+  color: #196c84;
 }
