@@ -70,7 +70,6 @@ const signUpUser = (req, res) => {
       ...req.body,
       hashedPassword,
     };
-    console.log(hashedPassword);
     models.user.findByMatricule(user).then(([rows]) => {
       if (rows.affectedRows === 1) {
         return res.status(201).json({ success: "User saved" });
