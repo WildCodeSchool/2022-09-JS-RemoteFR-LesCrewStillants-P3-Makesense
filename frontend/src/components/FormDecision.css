@@ -42,7 +42,7 @@ form {
 
 .TitleD {
   height: 2rem;
-  margin: 10%;
+  margin-top: 8%;
 }
 
 h2 {
@@ -73,7 +73,7 @@ h2 {
   justify-content: center;
   align-items: center;
 }
-.SubmitDecision {
+.ButtonDecision {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bolder;
   margin: 2%;

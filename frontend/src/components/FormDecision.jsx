@@ -14,6 +14,7 @@ function Form() {
   // const [titleDeadline, setTitleDeadLine] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.warn("ok");
   };
   const [stateOnglets, setStateOnglets] = useState(1);
 
@@ -97,7 +98,15 @@ function Form() {
               ))}
             </p>
           )}
-          <input className="SubmitDecision" type="submit" value="Soumettre" />
+          
+          <button
+          className="ButtonDecision" 
+          type="submit" 
+          value="Soumettre" 
+          onClick={handleSubmit} 
+          >
+            Soumettre
+          </button>
         </div>
       </div>
       <Footer />
