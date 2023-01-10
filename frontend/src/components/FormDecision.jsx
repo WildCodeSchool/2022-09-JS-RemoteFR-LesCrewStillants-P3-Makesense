@@ -83,7 +83,6 @@ function Form() {
                   <Editor key={titleH2} id={id} title={titleH2} />
                 ))}
                 <br />
-                <input className="Submit" type="submit" value="Soumettre" />
               </form>
             </p>
           ) : (
@@ -98,6 +97,7 @@ function Form() {
               ))}
             </p>
           )}
+          <input className="SubmitDecision" type="submit" value="Soumettre" />
         </div>
       </div>
       <Footer />

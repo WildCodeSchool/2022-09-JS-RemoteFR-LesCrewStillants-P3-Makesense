@@ -21,6 +21,7 @@ function DateStep({ id, title }) {
         value={nativeDate.stepDeadLine}
         onChange={handleDateChange}
       />
+      <hr className="ligne" />
     </div>
   );
 }

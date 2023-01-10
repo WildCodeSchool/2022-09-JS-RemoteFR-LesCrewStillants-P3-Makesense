@@ -67,7 +67,13 @@ h2 {
   -o-border-radius: 1.5rem;
 }
 
-.Submit {
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.SubmitDecision {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bolder;
   margin: 2%;
@@ -91,7 +97,9 @@ h2 {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-bottom: 2%;
 }
+
 .onglets {
   width: 250px;
   height: 50px;
@@ -101,7 +109,7 @@ h2 {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  border-radius: 1rem;
+  border-radius: 1rem ;
 }
 
 .active {

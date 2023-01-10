@@ -34,4 +34,15 @@
   height: 2rem;
   border: 1px solid #aeaeae;
   border-radius: 5px;
+  margin-bottom: 3%;
+}
+
+.ligne{
+  border:solid 1% #196c84 ;
+  width: 25%;
+}
+
+button{
+  font-weight:bolder;
+  font-size: 100%;
 }
