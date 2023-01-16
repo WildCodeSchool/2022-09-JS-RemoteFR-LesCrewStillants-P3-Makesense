@@ -5,28 +5,14 @@ import { DataContextProvider } from "../Context/DataContext";
 
 function PriseDecision() {
   return (
-
     <DateContextProvider>
       <DataContextProvider>
         <Header />
         <div className="PriseDecision">
-          <Link to="/">
-            <p className="home">Home</p>
-          </Link>
           <Form />
         </div>
       </DataContextProvider>
     </DateContextProvider>
-
-    <>
-      <Header />
-      <DateContextProvider>
-        <div className="PriseDecision">
-          <Form />
-        </div>
-      </DateContextProvider>
-    </>
-
   );
 }
 
