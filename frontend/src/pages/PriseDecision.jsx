@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
-import Header from "@components/Header";
+import Header from "../components/Header";
 import Form from "../components/FormDecision";
 import { DateContextProvider } from "../Context/DateContext";
 import { DataContextProvider } from "../Context/DataContext";
 
 function PriseDecision() {
   return (
+
     <DateContextProvider>
       <DataContextProvider>
         <Header />
@@ -17,6 +17,16 @@ function PriseDecision() {
         </div>
       </DataContextProvider>
     </DateContextProvider>
+
+    <>
+      <Header />
+      <DateContextProvider>
+        <div className="PriseDecision">
+          <Form />
+        </div>
+      </DateContextProvider>
+    </>
+
   );
 }
 
