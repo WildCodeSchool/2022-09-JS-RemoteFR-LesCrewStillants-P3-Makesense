@@ -67,7 +67,7 @@ h2 {
   -o-border-radius: 1.5rem;
 }
 
-.container{
+.container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -109,7 +109,7 @@ h2 {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  border-radius: 1rem ;
+  border-radius: 1rem;
 }
 
 .active {

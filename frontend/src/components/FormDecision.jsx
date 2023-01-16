@@ -98,12 +98,12 @@ function Form() {
               ))}
             </p>
           )}
-          
+
           <button
-          className="ButtonDecision" 
-          type="submit" 
-          value="Soumettre" 
-          onClick={handleSubmit} 
+            className="ButtonDecision"
+            type="submit"
+            value="Soumettre"
+            onClick={handleSubmit}
           >
             Soumettre
           </button>
