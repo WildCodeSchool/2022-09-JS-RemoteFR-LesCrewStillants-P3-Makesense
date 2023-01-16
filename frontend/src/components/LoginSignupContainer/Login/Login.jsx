@@ -32,7 +32,6 @@ function Login() {
           name="pw"
           placeholder="Mot de passe"
           onChange={handleChangeLogin}
-          required
         />
         <button type="submit">Connexion</button>
       </form>

@@ -3,34 +3,15 @@ const { generateToken } = require("../services/jwt");
 const models = require("../models");
 
 const register = (req, res) => {
-  const { pw } = req.body;
-
-  const hashingOptions = {
-    type: argon2id,
-    memoryCost: 2 ** 16,
-    timeCost: 5,
-    parallelism: 1,
-  };
-
-  hash(pw, hashingOptions)
-    .then((hashedPassword) => {
-      const user = {
-        ...req.body,
-        hashedPassword,
-      };
-      models.user
-        .insert(user)
-        .then(([rows]) => {
-          if (rows.affectedRows === 1) {
-            return res.status(201).json({ success: "User saved" });
-          }
-          return res.status(403).json({ error: "une erreur s'est produite" });
-        })
-        .catch(() => res.sendStatus(500));
+  const user = req.body;
+  models.user
+    .insert(user)
+    .then(() => {
+      res.status(201).json({ success: "User saved" });
     })
     .catch((err) => {
       console.error(err);
-      return res.sendStatus(500);
+      res.sendStatus(500);
     });
 };
 
@@ -74,7 +55,32 @@ const login = async (req, res) => {
     });
 };
 
+const signUpUser = (req, res) => {
+  const { pw } = req.body;
+
+  const hashingOptions = {
+    type: argon2id,
+    memoryCost: 2 ** 16,
+    timeCost: 5,
+    parallelism: 1,
+  };
+
+  hash(pw, hashingOptions).then((hashedPassword) => {
+    const user = {
+      ...req.body,
+      hashedPassword,
+    };
+    models.user.findByMatricule(user).then(([rows]) => {
+      if (rows.affectedRows === 1) {
+        return res.status(201).json({ success: "User saved" });
+      }
+      return res.status(403).json({ error: "une erreur s'est produite" });
+    });
+  });
+};
+
 module.exports = {
   register,
   login,
+  signUpUser,
 };
