@@ -12,16 +12,21 @@ class UserManager extends AbstractManager {
     );
   }
 
+  findByMatricule(user) {
+    return this.connection.query(
+      `update ${this.table} set email = ?, pw =? where matricule=?`,
+      [user.email, user.hashedPassword, user.matricule]
+    );
+  }
+
   insert(user) {
     return this.connection.query(
-      `insert into ${this.table} (firstname, lastname, birthday, user_role, email, pw, matricule) values (?, ?, ?, ?, ?, ?, ?)`,
+      `insert into ${this.table} (firstname, lastname, birthday, user_role, matricule) values (?, ?, ?, ?, ?)`,
       [
         user.firstname,
         user.lastname,
         user.birthday,
         user.user_role,
-        user.email,
-        user.hashedPassword,
         user.matricule,
       ]
     );

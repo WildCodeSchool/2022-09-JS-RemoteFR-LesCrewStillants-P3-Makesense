@@ -21,6 +21,7 @@
     "express": "^4.17.2",
     "joi": "^17.7.0",
     "jsonwebtoken": "^9.0.0",
+    "morgan": "^1.10.0",
     "mysql2": "^2.3.3",
     "react-cookie": "^4.1.1",
     "template-fullstack": "file:.."

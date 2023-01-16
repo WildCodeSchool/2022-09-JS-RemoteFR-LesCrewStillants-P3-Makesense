@@ -1,8 +1,7 @@
 import { useState } from "react";
-import instance from "../../helpers/axios";
-import "./Signup.css";
+import instance from "../helpers/axios";
 
-function Signup() {
+export default function AccueilAdmin() {
   const [registerUser, setRegisterUser] = useState("");
 
   const handleChangeRegister = (e) => {
@@ -13,31 +12,44 @@ function Signup() {
   const handleRegister = (e) => {
     e.preventDefault();
     instance
-      .post("/signup", registerUser)
+      .post("/register", registerUser)
       .then((res) => console.warn(res.data))
       .catch((err) => console.error(err));
   };
-
   return (
     <div className="signup">
       <form htmlFor="signup" onSubmit={handleRegister}>
         <input
-          type="email"
-          name="email"
-          placeholder="Email"
+          type="text"
+          name="firstname"
+          placeholder="Prénom"
           onChange={handleChangeRegister}
           required
         />
         <input
-          type="password"
-          name="pw"
-          placeholder="Mot de passe"
+          type="text"
+          name="lastname"
+          placeholder="Nom"
           onChange={handleChangeRegister}
           required
         />
-        <input type="password" placeholder="Confirmer mot de passe" required />
         <input
-          type="password"
+          type="date"
+          data-date-format="YYY MM JJ"
+          name="birthday"
+          placeholder="AAAA/MM/JJ"
+          onChange={handleChangeRegister}
+          required
+        />
+        <input
+          type="text"
+          name="user_role"
+          placeholder="role"
+          onChange={handleChangeRegister}
+          required
+        />
+        <input
+          type="text"
           name="matricule"
           placeholder="Matricule"
           onChange={handleChangeRegister}
@@ -48,5 +60,3 @@ function Signup() {
     </div>
   );
 }
-
-export default Signup;
