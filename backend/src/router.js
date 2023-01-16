@@ -17,17 +17,16 @@ const { auth } = require("./middleware/auth");
 router.post("/signup", userControllers.signUpUser);
 router.post("/login", userControllers.login, auth);
 
-
 // PRIVEES
 // add verify token + verif role sur cette route
 router.post("/register", validateUser, userControllers.register);
 router.post("/login", userControllers.login);
 
-const decisionControllers = require("./controllers/decisionControllers");
+// const decisionControllers = require("./controllers/decisionControllers");
 
 // on veut récupérer nos prise de décisions
 // router.post("/form/add", formDecisionControllers.addform);
 
-const commentControllers = require("./controllers/commentControllers"); */
+// const commentControllers = require("./controllers/commentControllers");
 
 module.exports = router;
