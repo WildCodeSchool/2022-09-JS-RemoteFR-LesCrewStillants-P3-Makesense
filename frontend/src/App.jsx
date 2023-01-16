@@ -1,4 +1,5 @@
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+// eslint-disable-next-line import/no-unresolved
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Home from "./pages/Home";
 import Decision from "./pages/PriseDecision";
 import AccueilSalarie from "./pages/AccueilSalarie";
