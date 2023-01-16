@@ -1,4 +1,4 @@
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 import AccueilAdmin from "./pages/AccueilAdmin";
 import Home from "./pages/Home";
 import Decision from "./pages/PriseDecision";
