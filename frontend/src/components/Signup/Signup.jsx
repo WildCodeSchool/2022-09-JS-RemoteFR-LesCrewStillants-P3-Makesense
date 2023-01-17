@@ -37,7 +37,7 @@ function Signup() {
         />
         <input type="password" placeholder="Confirmer mot de passe" required />
         <input
-          type="password"
+          type="text"
           name="matricule"
           placeholder="Matricule"
           onChange={handleChangeRegister}
