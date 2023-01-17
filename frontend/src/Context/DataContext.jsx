@@ -19,7 +19,7 @@ function DataContextProvider({ children }) {
 
     console.warn(data);
   };
-
+  console.log(data);
   return (
     // eslint-disable-next-line react/jsx-no-constructed-context-values
     <DataContext.Provider value={{ handleDataChange }}>

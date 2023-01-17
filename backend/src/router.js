@@ -10,21 +10,23 @@ router.put("/items/:id", itemControllers.edit);
 router.post("/items", itemControllers.add);
 router.delete("/items/:id", itemControllers.destroy);
 
+const { validateUser } = require("./services/validateUser");
 const userControllers = require("./controllers/userControllers");
-const { hashPassword } = require("./controllers/pwControllers");
+const { auth } = require("./middleware/auth");
+// PUBLIQUES
+router.post("/signup", userControllers.signUpUser);
+router.post("/login", userControllers.login, auth);
 
-router.get("/users", userControllers.browseUser);
-router.get("/users/:id", userControllers.readUser);
-router.put("/users/:id", userControllers.editUser);
-router.post("/users", hashPassword, userControllers.addUser);
-router.delete("/users/:id", userControllers.destroyUser);
+// PRIVEES
+// add verify token + verif role sur cette route
+router.post("/register", validateUser, userControllers.register);
+router.post("/login", userControllers.login);
+
+// const decisionControllers = require("./controllers/decisionControllers");
 
 // on veut récupérer nos prise de décisions
 // router.post("/form/add", formDecisionControllers.addform);
 
-/* 
-const decisionControllers = require("./controllers/decisionControllers");
-
-const commentControllers = require("./controllers/commentControllers"); */
+// const commentControllers = require("./controllers/commentControllers");
 
 module.exports = router;

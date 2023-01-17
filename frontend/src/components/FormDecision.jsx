@@ -4,7 +4,20 @@ import "./FormDecision.css";
 import Editor from "./RTE";
 import Timeline from "./Timeline";
 import DateStep from "./DateDecision";
-// import { DataContextProvider } from "../Context/DataContext";
+import { DataContextProvider } from "../Context/DataContext";
+
+/**
+ * import data du context
+ * {
+    "0": {
+        "data": "<p>coucou coucou2</p>"
+    },
+    "1": {
+        "data": "<p>coucoucoucou2</p>"
+    }
+}
+  * filtrer les datas pour récupérer la data de l'id ci dessus 
+ */
 
 /* Créer usestate pour afficher/masquer onglet rte */
 
@@ -16,11 +29,14 @@ function Form() {
     e.preventDefault();
     console.warn("ok");
   };
-  const [stateOnglets, setStateOnglets] = useState(1);
 
+  // création d'un state pour l'affichage des onglets
+  const [stateOnglets, setStateOnglets] = useState(1);
+  // Affiche l'onglet décision
   const goDecision = () => {
     setStateOnglets(1);
   };
+  // Affiche l'onglet date
   const goDate = () => {
     setStateOnglets(2);
   };
@@ -39,7 +55,6 @@ function Form() {
     "#4 Deadline pour entrer en conflit",
     "#5 Décision définitive",
   ];
-  console.warn(date);
 
   return (
     <>
@@ -81,8 +96,14 @@ function Form() {
                   />
                 </label>
                 {titles.map((titleH2, id) => (
-                  <Editor key={titleH2} id={id} title={titleH2} />
-                ))}
+                  <Editor
+                  key={titleH2}
+                  id={id}
+                  title={titleH2}
+                  data={"fake data"}
+                  />
+                  ))}
+                  {/* {data.filter((data) => (Editor.data.id = { handleDataChange }))} */}
                 <br />
               </form>
             </p>
@@ -90,21 +111,20 @@ function Form() {
             <p className="contenu Date">
               {stepDeadlines.map((stepDeadlineH2, id) => (
                 <DateStep
-                  key={stepDeadlineH2}
-                  setDate={setDate}
-                  id={id}
-                  title={stepDeadlineH2}
+                key={stepDeadlineH2}
+                setDate={setDate}
+                id={id}
+                title={stepDeadlineH2}
                 />
-              ))}
+                ))}
             </p>
           )}
-
           <button
             className="ButtonDecision"
             type="submit"
             value="Soumettre"
             onClick={handleSubmit}
-          >
+            >
             Soumettre
           </button>
         </div>

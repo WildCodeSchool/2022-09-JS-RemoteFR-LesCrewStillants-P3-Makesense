@@ -4,7 +4,7 @@ import React, { useContext } from "react";
 import { DataContext } from "../Context/DataContext";
 
 // eslint-disable-next-line react/prop-types
-function Editor({ id, title }) {
+function Editor({ id, title, data }) {
   const { handleDataChange } = useContext(DataContext);
 
   return (
@@ -13,6 +13,7 @@ function Editor({ id, title }) {
       <h2>{title}</h2>
       <CKEditor
         editor={ClassicEditor}
+        data={data}
         onChange={(event, editor) => {
           const data = editor.getData();
           const edit = {
