@@ -12,15 +12,14 @@ router.delete("/items/:id", itemControllers.destroy);
 
 const { validateUser } = require("./services/validateUser");
 const userControllers = require("./controllers/userControllers");
-const { auth } = require("./middleware/auth");
 // PUBLIQUES
 router.post("/signup", userControllers.signUpUser);
-router.post("/login", userControllers.login, auth);
+router.post("/login", userControllers.login);
 
 // PRIVEES
-// add verify token + verif role sur cette route
-router.post("/register", validateUser, userControllers.register);
-router.post("/login", userControllers.login);
+const { auth } = require("./middleware/auth");
+
+router.post("/register", auth, validateUser, userControllers.register);
 
 // const decisionControllers = require("./controllers/decisionControllers");
 

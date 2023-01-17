@@ -39,6 +39,7 @@ const login = async (req, res) => {
             const token = generateToken({
               id: user.id,
               email: user.email,
+              user_role: user.user_role,
             });
             return res
               .cookie("user_auth", token, { httpOnly: true, secure: false })

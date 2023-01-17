@@ -46,6 +46,12 @@ function Header() {
                     Notifications
                     <span className="menu-item-bean" aria-hidden="true" />
                   </a>
+                  {/* 
+                  user.role === "admin" ? (
+                  <a href="!#">
+                    Administrateur
+                    <span className="menu-item-bean" aria-hidden="true" />
+                  </a>) : null */}
                 </li>
               </ul>
             </div>
