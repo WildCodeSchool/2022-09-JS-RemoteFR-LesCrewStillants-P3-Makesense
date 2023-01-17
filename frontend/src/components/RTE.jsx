@@ -4,9 +4,8 @@ import React, { useContext } from "react";
 import { DataContext } from "../Context/DataContext";
 
 // eslint-disable-next-line react/prop-types
-function Editor({ id, title, data }) {
+function Editor({ id, title, data = "" }) {
   const { handleDataChange } = useContext(DataContext);
-
   return (
     <div>
       {/* faire un component input date */}
@@ -15,6 +14,7 @@ function Editor({ id, title, data }) {
         editor={ClassicEditor}
         data={data}
         onChange={(event, editor) => {
+          // eslint-disable-next-line no-shadow
           const data = editor.getData();
           const edit = {
             id,

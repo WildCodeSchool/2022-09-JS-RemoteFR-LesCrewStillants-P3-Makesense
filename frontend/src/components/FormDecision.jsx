@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Footer from "./Footer";
 import "./FormDecision.css";
 import Editor from "./RTE";
 import Timeline from "./Timeline";
 import DateStep from "./DateDecision";
-import { DataContextProvider } from "../Context/DataContext";
+import { DataContext } from "../Context/DataContext";
 
 /**
  * import data du context
@@ -15,15 +15,19 @@ import { DataContextProvider } from "../Context/DataContext";
     "1": {
         "data": "<p>coucoucoucou2</p>"
     }
-}
-  * filtrer les datas pour récupérer la data de l'id ci dessus 
+  }
+  * afficher les datas pour récupérer la data selon l'id ci dessus 
  */
 
 /* Créer usestate pour afficher/masquer onglet rte */
 
 function Form() {
+  const { data } = useContext(DataContext);
+
   const [title, setTitle] = useState("");
+  // eslint-disable-next-line no-unused-vars
   const [date, setDate] = useState();
+
   // const [titleDeadline, setTitleDeadLine] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -95,15 +99,16 @@ function Form() {
                     onChange={(e) => setTitle(e.target.value)}
                   />
                 </label>
-                {titles.map((titleH2, id) => (
-                  <Editor
-                  key={titleH2}
-                  id={id}
-                  title={titleH2}
-                  data={"fake data"}
-                  />
-                  ))}
-                  {/* {data.filter((data) => (Editor.data.id = { handleDataChange }))} */}
+                {titles.map((titleH2, id) => {
+                  return (
+                    <Editor
+                      key={titleH2}
+                      id={id}
+                      title={titleH2}
+                      data={data[id]?.data}
+                    />
+                  );
+                })}
                 <br />
               </form>
             </p>
@@ -111,12 +116,12 @@ function Form() {
             <p className="contenu Date">
               {stepDeadlines.map((stepDeadlineH2, id) => (
                 <DateStep
-                key={stepDeadlineH2}
-                setDate={setDate}
-                id={id}
-                title={stepDeadlineH2}
+                  key={stepDeadlineH2}
+                  setDate={setDate}
+                  id={id}
+                  title={stepDeadlineH2}
                 />
-                ))}
+              ))}
             </p>
           )}
           <button
@@ -124,7 +129,7 @@ function Form() {
             type="submit"
             value="Soumettre"
             onClick={handleSubmit}
-            >
+          >
             Soumettre
           </button>
         </div>
