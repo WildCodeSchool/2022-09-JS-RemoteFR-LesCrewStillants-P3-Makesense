@@ -1,0 +1,49 @@
+.ContainerDate {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+.deadline {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 2.5rem;
+  width: 28rem;
+  margin-top: 2%;
+  margin-bottom: 5%;
+  margin-left: -1%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+  font-size: 140%;
+  color: #196c84;
+  background-color: #c1e94e;
+
+  border-radius: 2rem;
+  -webkit-border-radius: 1.5rem;
+  -moz-border-radius: 1.5rem;
+  -ms-border-radius: 1.5rem;
+  -o-border-radius: 1.5rem;
+}
+
+.date {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 2rem;
+  border: 1px solid #aeaeae;
+  border-radius: 5px;
+  margin-bottom: 7%;
+}
+
+.ligne {
+  border: solid 1% #196c84;
+  width: 70%;
+  margin-bottom: 5%;
+}
+
+button {
+  font-weight: bolder;
+  font-size: 100%;
+}

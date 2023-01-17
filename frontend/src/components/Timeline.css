@@ -1,0 +1,9 @@
+.Timeline {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 5%;
+  margin-bottom: 3%;
+  width: 150%;
+  margin-left: -25%;
+}
