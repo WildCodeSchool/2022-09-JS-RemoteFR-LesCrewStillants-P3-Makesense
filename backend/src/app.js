@@ -1,11 +1,13 @@
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
+const cookies = require("cookie-parser");
 const cors = require("cors");
 const router = require("./router");
 
 const app = express();
 
+app.use(cookies());
 app.use(
   cors({
     origin: process.env.FRONTEND_URL ?? "http://localhost:3000",

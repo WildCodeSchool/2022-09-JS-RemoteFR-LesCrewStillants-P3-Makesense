@@ -35,9 +35,9 @@ CREATE TABLE decision(
   impact LONGTEXT,
   benefits LONGTEXT,
   risk LONGTEXT,
-  date DATETIME NOT NULL,
+  date DATETIME DEFAULT NULL,
   statut TINYINT(1),
-  user_id INT NOT NULL,
+  user_id INT DEFAULT NULL,
   timeline_id INT,
   CONSTRAINT fk_decision_user FOREIGN KEY (user_id) REFERENCES user(id),
   CONSTRAINT fk_timeline_decision FOREIGN KEY(timeline_id) REFERENCES timeline(id)

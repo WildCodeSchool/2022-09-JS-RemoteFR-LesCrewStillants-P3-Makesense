@@ -10,19 +10,23 @@ router.put("/items/:id", itemControllers.edit);
 router.post("/items", itemControllers.add);
 router.delete("/items/:id", itemControllers.destroy);
 
+// DECISIONS
+const formDecisionControllers = require("./controllers/formDecisionControllers");
+
+router.post("/decision", formDecisionControllers.decisionPost);
+
+// USERS
 const { validateUser } = require("./services/validateUser");
 const userControllers = require("./controllers/userControllers");
-const { auth } = require("./middleware/auth");
-// PUBLIQUES
-router.post("/signup", userControllers.signUpUser);
-router.post("/login", userControllers.login, auth);
 
-// PRIVEES
-// add verify token + verif role sur cette route
-router.post("/register", validateUser, userControllers.register);
+// USERS PUBLIQUES
+router.post("/signup", userControllers.signUpUser);
 router.post("/login", userControllers.login);
 
-// const decisionControllers = require("./controllers/decisionControllers");
+// USERS PRIVEES
+const { auth } = require("./middleware/auth");
+
+router.post("/register", auth, validateUser, userControllers.register);
 
 // const decisionControllers = require("./controllers/FormDecisionControllers");
 

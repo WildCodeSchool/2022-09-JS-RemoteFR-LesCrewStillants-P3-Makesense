@@ -2,49 +2,50 @@
   background-color: white;
 }
 
-.DecisionContainer {
-  display: flex;
-  float: right;
+.DecisionsCard {
+  display: inline-block;
   grid-template-columns: repeat(3, 20%);
   grid-template-rows: repeat(2, 60%);
   grid-gap: 1rem;
-  margin: 5rem;
-  justify-content: center;
-  margin-top: 3rem;
-}
-
-.DecisionPrise {
-  display: flex;
-  grid-template-columns: repeat(3, 20%);
-  grid-template-rows: repeat(2, 60%);
-  grid-gap: 1rem;
-  margin: 5rem;
-  justify-content: center;
-  margin-top: 3rem;
+  margin: 1rem;
+  margin-top: 1rem;
 }
 
 .ligne {
   background-color: #cfcfcf;
   border: 1px solid #cfcfcf;
-  padding: 0.01rem;
+  padding: 0.02rem;
   width: 95%;
-  margin: 2rem auto;
+  margin: 3rem auto;
   border-radius: 1rem;
 }
 
 .card {
   width: auto;
   height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border-radius: 10px;
   background-color: white;
   box-shadow: 0px 0px 10px rgb(140, 136, 136);
   color: #0c3944;
+  margin-bottom: 3rem;
+  margin: 1rem;
 }
 
 h1 {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
   margin: 1rem;
-  width: 50%;
+  width: 70%;
+  color: #0c3944;
+}
+
+p {
+  display: flex;
+  margin-bottom: 1rem;
+  margin: 1rem;
   color: #0c3944;
 }
