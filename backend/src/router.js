@@ -24,8 +24,10 @@ router.post("/login", userControllers.login);
 
 // const decisionControllers = require("./controllers/decisionControllers");
 
+// const decisionControllers = require("./controllers/FormDecisionControllers");
+
 // on veut récupérer nos prise de décisions
-// router.post("/form/add", formDecisionControllers.addform);
+// router.post("/form/add", decisionControllers.addform);
 
 // const commentControllers = require("./controllers/commentControllers");
 
