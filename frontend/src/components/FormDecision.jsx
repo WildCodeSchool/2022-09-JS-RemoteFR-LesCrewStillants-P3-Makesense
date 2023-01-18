@@ -5,6 +5,7 @@ import Editor from "./RTE";
 import Timeline from "./Timeline";
 import DateStep from "./DateDecision";
 import { DataContext } from "../Context/DataContext";
+import { DateContext } from "../Context/DateContext";
 
 /**
  * import data du context
@@ -23,6 +24,8 @@ import { DataContext } from "../Context/DataContext";
 
 function Form() {
   const { data } = useContext(DataContext);
+  // const { date } = useContext(DateContext);
+  const { nativeDate } = useContext(DateContext);
 
   const [title, setTitle] = useState("");
   // eslint-disable-next-line no-unused-vars
@@ -33,7 +36,7 @@ function Form() {
     e.preventDefault();
     console.warn("ok");
   };
-
+  console.warn(date);
   // création d'un state pour l'affichage des onglets
   const [stateOnglets, setStateOnglets] = useState(1);
   // Affiche l'onglet décision
@@ -117,9 +120,10 @@ function Form() {
               {stepDeadlines.map((stepDeadlineH2, id) => (
                 <DateStep
                   key={stepDeadlineH2}
-                  setDate={setDate}
                   id={id}
                   title={stepDeadlineH2}
+                  value={nativeDate[id]?.date}
+                  // date={date[id]?.setDate}
                 />
               ))}
             </p>
