@@ -22,6 +22,8 @@ router.post("/login", userControllers.login, auth);
 router.post("/register", validateUser, userControllers.register);
 router.post("/login", userControllers.login);
 
+// const decisionControllers = require("./controllers/decisionControllers");
+
 // const decisionControllers = require("./controllers/FormDecisionControllers");
 
 // on veut récupérer nos prise de décisions

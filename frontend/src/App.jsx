@@ -3,6 +3,7 @@ import AccueilAdmin from "./pages/AccueilAdmin";
 import Home from "./pages/Home";
 import Decision from "./pages/PriseDecision";
 import AccueilSalarie from "./pages/AccueilSalarie";
+
 import "./App.css";
 
 function App() {
