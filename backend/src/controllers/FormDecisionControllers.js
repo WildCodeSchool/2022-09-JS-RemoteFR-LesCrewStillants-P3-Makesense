@@ -1,7 +1,16 @@
-// const models = require("../models");
+const models = require("../models");
 
-// const createPost = (req, res, next) => {
-//   const { date } = req.body;
-//   const { message } = req.body;
-//   const post = `INSERT INTO decision`;
-// };
+const decisionPost = (req, res) => {
+  const decision = req.body;
+  models.decision
+    .insert(decision)
+    .then(() => {
+      res.status(201).json({ success: "Decision saved" });
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
+module.exports = { decisionPost };

@@ -1,0 +1,56 @@
+.ContainerAdmin {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-right: 1rem;
+}
+
+.ContainerAdmin input {
+  margin-top: 2rem;
+  height: 2rem;
+  width: 30%;
+  border-radius: 0.2rem;
+}
+
+.ContainerAdmin .Users {
+  color: #0c3944;
+  border: 1px solid black;
+  width: 30%;
+  margin-top: 1rem;
+  border-radius: 0.2rem;
+}
+
+.ModifButton {
+  background-color: #0c3944;
+  border-radius: 0.2rem;
+  color: white;
+  border: none;
+  font-weight: normal;
+  font-size: smaller;
+}
+
+.DeleteButton {
+  background-color: rgb(255, 64, 0);
+  border-radius: 0.2rem;
+  color: white;
+  border: none;
+  font-weight: normal;
+  font-size: smaller;
+}
+
+.Pagination {
+  margin-top: 2rem;
+  color: #0c3944;
+}
+
+.ArrowLeft {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.ArrowRight {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}

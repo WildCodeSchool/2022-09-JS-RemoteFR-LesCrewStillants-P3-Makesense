@@ -10,18 +10,23 @@ router.put("/items/:id", itemControllers.edit);
 router.post("/items", itemControllers.add);
 router.delete("/items/:id", itemControllers.destroy);
 
+// DECISIONS
+const formDecisionControllers = require("./controllers/formDecisionControllers");
+
+router.post("/decision", formDecisionControllers.decisionPost);
+
+// USERS
 const { validateUser } = require("./services/validateUser");
 const userControllers = require("./controllers/userControllers");
-// PUBLIQUES
+
+// USERS PUBLIQUES
 router.post("/signup", userControllers.signUpUser);
 router.post("/login", userControllers.login);
 
-// PRIVEES
+// USERS PRIVEES
 const { auth } = require("./middleware/auth");
 
 router.post("/register", auth, validateUser, userControllers.register);
-
-// const decisionControllers = require("./controllers/decisionControllers");
 
 // on veut récupérer nos prise de décisions
 // router.post("/form/add", formDecisionControllers.addform);
