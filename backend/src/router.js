@@ -28,8 +28,10 @@ const { auth } = require("./middleware/auth");
 
 router.post("/register", auth, validateUser, userControllers.register);
 
+// const decisionControllers = require("./controllers/FormDecisionControllers");
+
 // on veut récupérer nos prise de décisions
-// router.post("/form/add", formDecisionControllers.addform);
+// router.post("/form/add", decisionControllers.addform);
 
 // const commentControllers = require("./controllers/commentControllers");
 
