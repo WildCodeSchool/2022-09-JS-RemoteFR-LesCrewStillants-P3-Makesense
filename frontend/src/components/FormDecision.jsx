@@ -1,26 +1,49 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Footer from "./Footer";
 import "./FormDecision.css";
 import Editor from "./RTE";
 import Timeline from "./Timeline";
 import DateStep from "./DateDecision";
-// import { DataContextProvider } from "../Context/DataContext";
+import { DataContext } from "../Context/DataContext";
+import { DateContext } from "../Context/DateContext";
+
+/**
+ * import data du context
+ * {
+    "0": {
+        "data": "<p>coucou coucou2</p>"
+    },
+    "1": {
+        "data": "<p>coucoucoucou2</p>"
+    }
+  }
+  * afficher les datas pour récupérer la data selon l'id ci dessus 
+ */
 
 /* Créer usestate pour afficher/masquer onglet rte */
 
 function Form() {
+  const { data } = useContext(DataContext);
+  // const { date } = useContext(DateContext);
+  const { nativeDate } = useContext(DateContext);
+
   const [title, setTitle] = useState("");
+  // eslint-disable-next-line no-unused-vars
   const [date, setDate] = useState();
+
   // const [titleDeadline, setTitleDeadLine] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
     console.warn("ok");
   };
+  console.warn(date);
+  // création d'un state pour l'affichage des onglets
   const [stateOnglets, setStateOnglets] = useState(1);
-
+  // Affiche l'onglet décision
   const goDecision = () => {
     setStateOnglets(1);
   };
+  // Affiche l'onglet date
   const goDate = () => {
     setStateOnglets(2);
   };
@@ -39,7 +62,6 @@ function Form() {
     "#4 Deadline pour entrer en conflit",
     "#5 Décision définitive",
   ];
-  console.warn(date);
 
   return (
     <>
@@ -80,9 +102,16 @@ function Form() {
                     onChange={(e) => setTitle(e.target.value)}
                   />
                 </label>
-                {titles.map((titleH2, id) => (
-                  <Editor key={titleH2} id={id} title={titleH2} />
-                ))}
+                {titles.map((titleH2, id) => {
+                  return (
+                    <Editor
+                      key={titleH2}
+                      id={id}
+                      title={titleH2}
+                      data={data[id]?.data}
+                    />
+                  );
+                })}
                 <br />
               </form>
             </p>
@@ -91,14 +120,14 @@ function Form() {
               {stepDeadlines.map((stepDeadlineH2, id) => (
                 <DateStep
                   key={stepDeadlineH2}
-                  setDate={setDate}
                   id={id}
                   title={stepDeadlineH2}
+                  value={nativeDate[id]?.date}
+                  // date={date[id]?.setDate}
                 />
               ))}
             </p>
           )}
-
           <button
             className="ButtonDecision"
             type="submit"

@@ -36,7 +36,11 @@ const login = async (req, res) => {
         .then((match) => {
           if (match) {
             // 3 je retourne mon token//
-            const token = generateToken({ id: user.id, email: user.email });
+            const token = generateToken({
+              id: user.id,
+              email: user.email,
+              user_role: user.user_role,
+            });
             return res
               .cookie("user_auth", token, { httpOnly: true, secure: false })
               .status(200)
