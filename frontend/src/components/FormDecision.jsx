@@ -6,6 +6,7 @@ import Timeline from "./Timeline";
 import DateStep from "./DateDecision";
 import { DataContext } from "../Context/DataContext";
 import { DateContext } from "../Context/DateContext";
+//importer axios
 
 /**
  * import data du context
@@ -48,6 +49,8 @@ function Form() {
     setStateOnglets(2);
   };
 
+//faire une instance post
+
   const titles = [
     "#1 Les détails de la décision",
     "#2 Impact sur l'organisation",
@@ -85,7 +88,7 @@ function Form() {
             Date
           </button>
         </div>
-        <div className="container">
+        <div className="containerForm">
           {stateOnglets === 1 ? (
             <p className="contenu Decision">
               <form onSubmit={handleSubmit}>
@@ -116,7 +119,7 @@ function Form() {
               </form>
             </p>
           ) : (
-            <p className="contenu Date">
+            <p className="containerDate">
               {stepDeadlines.map((stepDeadlineH2, id) => (
                 <DateStep
                   key={stepDeadlineH2}

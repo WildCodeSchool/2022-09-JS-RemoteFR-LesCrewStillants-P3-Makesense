@@ -7,16 +7,14 @@ class DecisionManager extends AbstractManager {
 
   insert(decision) {
     return this.connection.query(
-      `insert into ${this.table} (title, details, impact, benefits, risk, desc_start) values (?, ?, ?, ?, ?, ?)`,
+      `insert into ${this.table} (title, desc_start, details, impact, benefits, risk) values (?, ?, ?, ?, ?, ?)`,
       [
         decision.title,
-        decision.title,
-        decision.title,
+        decision.desc_start,
         decision.details,
         decision.impact,
         decision.benefits,
         decision.risk,
-        decision.desc_start,
       ]
     );
   }

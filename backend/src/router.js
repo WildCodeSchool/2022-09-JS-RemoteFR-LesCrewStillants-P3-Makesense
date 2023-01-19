@@ -15,6 +15,11 @@ const formDecisionControllers = require("./controllers/formDecisionControllers")
 
 router.post("/decision", formDecisionControllers.decisionPost);
 
+// Date Timeline
+const formDateDecisionControllers = require("./controllers/formDecisionControllers");
+
+router.post("/date", formDateDecisionControllers.timelinePost);
+
 // USERS
 const { validateUser } = require("./services/validateUser");
 const userControllers = require("./controllers/userControllers");
@@ -29,9 +34,6 @@ const { auth } = require("./middleware/auth");
 router.post("/register", auth, validateUser, userControllers.register);
 
 // const decisionControllers = require("./controllers/FormDecisionControllers");
-
-// on veut récupérer nos prise de décisions
-// router.post("/form/add", decisionControllers.addform);
 
 // const commentControllers = require("./controllers/commentControllers");
 
