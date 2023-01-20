@@ -1,7 +1,15 @@
 const models = require("../models");
 
 const decisionPost = (req, res) => {
-  const decision = req.body;
+  const decision = {
+    title: req.body.title,
+    desc_start: req.body[0].data,
+    details: req.body[1].data,
+    impact: req.body[2].data,
+    benefits: req.body[3].data,
+    risk: req.body[4].data,
+  };
+
   models.decision
     .insert(decision)
     .then(() => {
