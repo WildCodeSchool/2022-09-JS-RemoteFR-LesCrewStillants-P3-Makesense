@@ -6,19 +6,18 @@ import AccueilSalarie from "./pages/AccueilSalarie";
 import { AuthContextProvider } from "./Context/AuthContext";
 import "./App.css";
 
-
 function App() {
   return (
     <AuthContextProvider>
-    <BrowserRouter>
-      <Routes>
+      <BrowserRouter>
+        <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/decision" element={<Decision />} />
-        <Route path="/accueil-salarie" element={<AccueilSalarie />} />
-        <Route path="/accueil-admin" element={<AccueilAdmin />} />
-      </Routes>
-    </BrowserRouter>
-      </AuthContextProvider>
+          <Route path="/accueil-salarie" element={<AccueilSalarie />} />
+          <Route path="/accueil-admin" element={<AccueilAdmin />} />
+        </Routes>
+      </BrowserRouter>
+    </AuthContextProvider>
   );
 }
 

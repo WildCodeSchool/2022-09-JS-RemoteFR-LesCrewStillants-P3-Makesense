@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
-import Header from "../components/Header";
 import AdminRegister from "@components/AdminRegister";
+import Header from "../components/Header";
 import Footer from "../components/Footer";
 // import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import "../components/Admin.css";
@@ -70,11 +69,11 @@ function AccueilAdmin() {
     <div>
       <Header />
       <div className="ContainerAdmin">
-      <h1>Décisions Prises</h1>
-      <p>Le mois dernier</p>
+        <h1>Décisions Prises</h1>
+        <p>Le mois dernier</p>
         <p>Ce mois-ci</p>
-      <p>12</p>
-      <p>5</p>
+        <p>12</p>
+        <p>5</p>
         <button type="button" onClick={handleOpenModal}>
           Ajouter un utilisateur
         </button>

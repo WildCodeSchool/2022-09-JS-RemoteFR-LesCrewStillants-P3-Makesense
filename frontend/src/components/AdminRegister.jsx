@@ -2,7 +2,8 @@ import { useState } from "react";
 import instance from "../helpers/axios";
 import "./AdminRegister.css";
 
-export default function AdminRegister({ showModal, setShowModal }) {
+// eslint-disable-next-line react/prop-types
+export default function AdminRegister({ setShowModal }) {
   const [registerUser, setRegisterUser] = useState("");
 
   const handleChangeRegister = (e) => {
