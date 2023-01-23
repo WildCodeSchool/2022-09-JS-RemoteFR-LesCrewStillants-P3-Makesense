@@ -7,13 +7,13 @@
   transition: 0.3s linear;
   box-shadow: 0px 0px 10px rgb(140, 136, 136);
   align-self: flex-end;
-margin: 1rem;
+  margin: 1rem;
 }
 
 .login-signup-container.active {
   grid-template-columns: 0% 30% 70%;
   transition: 0.3s linear;
-  background-color:var( --background-color-base);
+  background-color: var(--background-color-base);
 }
 
 .login-signup-container .side-div {
@@ -28,9 +28,8 @@ margin: 1rem;
   justify-content: center;
 }
 
-
 .decoimg {
-  width:45%;
+  width: 45%;
   border-radius: 95px;
   justify-content: center;
   display: flex;
@@ -39,8 +38,7 @@ margin: 1rem;
 }
 
 .decologo {
-max-width: 40%;
-
+  max-width: 40%;
 }
 
 .decovoiderose {
@@ -63,11 +61,15 @@ max-width: 40%;
   margin-left: 2%;
   margin-top: 45%;
   width: 15vh;
-
+ 
 }
 .decovoidebleu2 {
   position: absolute;
   display: flex;
-  margin-left: 35rem;
-  width: 15vh;
+  margin-left: 32rem;
+  width: 5vh;
+}
+
+.DecoSignIn{
+  margin-left: 1rem;
 }

@@ -2,10 +2,7 @@ import "./Footer.css";
 
 function Footer() {
   return (
-    <footer
-      className="footer has-menus"
-      style={{ backgroundColor: "#196c85" }}
-    >
+    <footer className="footer has-menus" style={{ backgroundColor: "#196c85" }}>
       <div className="footer__inner">
         <div className="footer__section">
           <div className="footer__menus">
@@ -25,8 +22,7 @@ function Footer() {
             <div className="footer__menu">
               <h2>Rejoindre l'équipe</h2>
               <ul className="menu-footer">
-                <li
-                >
+                <li>
                   <a href="https://france.makesense.org/notre-projet/notre-tribu/">
                     En savoir plus sur nous
                   </a>
@@ -36,8 +32,7 @@ function Footer() {
             <div className="footer__menu">
               <h2 className="footer__menu__title">Liens utiles</h2>
               <ul className="menu-footer">
-                <li
-                >
+                <li>
                   <a
                     target="_blank"
                     rel="noopener noreferrer"
@@ -46,8 +41,7 @@ function Footer() {
                     Mesure d’impact 2021
                   </a>
                 </li>
-                <li
-                >
+                <li>
                   <a
                     target="_blank"
                     rel="noopener noreferrer"
@@ -56,14 +50,12 @@ function Footer() {
                     Rapport d’activité 2021
                   </a>
                 </li>
-                <li
-                >
+                <li>
                   <a href="https://bit.ly/etude-transition-juste">
                     Rapport transition juste
                   </a>
                 </li>
-                <li
-                >
+                <li>
                   <a
                     target="_blank"
                     rel="noopener noreferrer"

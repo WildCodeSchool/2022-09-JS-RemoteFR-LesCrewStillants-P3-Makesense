@@ -1,13 +1,9 @@
-
-
 body {
- 
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.footer h2{
-  color:var( --background-color-base);
+.footer h2 {
+  color: var(--background-color-base);
   text-align: center;
 }
 .social-links-size-large {
@@ -20,7 +16,7 @@ body {
 @media screen and (max-width: 1024px) {
   .social-links-size-large {
     display: flex;
-    align-items:flex-start;
+    align-items: flex-start;
     margin-left: 25%;
     font-size: large;
     margin: 0;
@@ -39,8 +35,6 @@ a {
   background-color: transparent;
 }
 
-
-
 @media screen and (min-width: 1024px) {
   .footer {
     padding: 3.75rem 3rem;
@@ -50,7 +44,6 @@ a {
 
 .footer-has-menus {
   background-color: #196c85;
-
 }
 
 .footer__inner {
@@ -58,7 +51,6 @@ a {
   flex-direction: column-reverse;
   margin-right: auto;
   margin-left: auto;
-
 }
 
 @media screen and (min-width: 1024px) {
@@ -121,7 +113,6 @@ a {
     padding-right: 3rem;
   }
 }
-
 
 .menu-footer {
   padding: auto;

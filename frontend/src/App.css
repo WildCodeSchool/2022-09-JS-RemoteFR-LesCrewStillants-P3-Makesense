@@ -8,8 +8,8 @@
 body {
   line-height: 1;
   color: var(--color-text);
-  background-color:var( --background-color-base);
-  font:var(--font-code);
+  background-color: var(--background-color-base);
+  font: var(--font-code);
   margin: 0;
   padding: 0;
 }
@@ -137,7 +137,7 @@ body {
   --font-size-xxl: 1.5rem;
   --font-size-xl: 1.4rem;
   --font-size-l: 1.2rem;
-  --font-size-m: 1.0rem;
+  --font-size-m: 1rem;
   --font-size-s: 0.875rem;
   --font-size-xs: 0.75rem;
   --font-space-xxxxl: 2em;
@@ -188,18 +188,19 @@ body {
   --size-height-footer: 64px;
   --container-size: 1100px;
   --container-size-l: 1760px;
-  --box-shadow-s: 0 0 0 1px rgba(92,106,196,.1);
+  --box-shadow-s: 0 0 0 1px rgba(92, 106, 196, 0.1);
   --box-shadow-m: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
   --box-shadow-l: 2px 4px 10px 0 rgba(0, 0, 0, 0.1);
-  --box-shadow-elevated: 0 0 0 1px rgba(31, 45, 61, 0.08), 0 2px 2px 0 rgba(31, 45, 61, 0.03);
+  --box-shadow-elevated: 0 0 0 1px rgba(31, 45, 61, 0.08),
+    0 2px 2px 0 rgba(31, 45, 61, 0.03);
   --box-shadow-elevated-l: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
-  --box-shadow-large: 0 20px 60px 0 rgba(0, 0, 0, .15);
-  --box-shadow-base: 0px 12px 26px -4px rgba(0, 0, 0, .1);
-  --box-shadow-small: 0px 8px 18px -2px rgba(0, 0, 0, .1);
-  --box-shadow-x-small: 0px 0px 3px 0px rgba(0, 0, 0, .1);
+  --box-shadow-large: 0 20px 60px 0 rgba(0, 0, 0, 0.15);
+  --box-shadow-base: 0px 12px 26px -4px rgba(0, 0, 0, 0.1);
+  --box-shadow-small: 0px 8px 18px -2px rgba(0, 0, 0, 0.1);
+  --box-shadow-x-small: 0px 0px 3px 0px rgba(0, 0, 0, 0.1);
   --box-shadow-active: 0 0 6px 1px rgba(20, 100, 160, 0.5);
-  --box-shadow-inset: inset 0 0 20px 1px rgba(0,0,0,.15);
-  --box-shadow-small-inset: inset 0 0 0 1px rgba(0,0,0,.05);
+  --box-shadow-inset: inset 0 0 20px 1px rgba(0, 0, 0, 0.15);
+  --box-shadow-small-inset: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
   --duration-short: 0.08s;
   --duration-base: 0.5s;
   --duration-long: 0.75s;
@@ -207,7 +208,7 @@ body {
   --duration-xx-long: 2s;
   --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --ease-out-sharp: cubic-bezier(0.165, 0.84, 0.44, 1);
-  --ease-out-bounce: cubic-bezier(.87,-.41,.19,1.44);
+  --ease-out-bounce: cubic-bezier(0.87, -0.41, 0.19, 1.44);
   --ease-in: cubic-bezier(0.55, 0.085, 0.68, 0.53);
   --ease-in-sharp: cubic-bezier(0.895, 0.03, 0.685, 0.22);
   --z-index-modal: 9999;
@@ -216,7 +217,7 @@ body {
   --z-index-page-submenu: 2000;
   --z-index-page-header: 1500;
   --z-index-sticky: 100;
-  --breakpoints: ('small': 767px, 'medium': 992px, 'large': 1200px);
+  --breakpoints: ("small": 767px, "medium": 992px, "large": 1200px);
   --media-query-s: (min-width: 767px);
   --media-query-m: (min-width: 992px);
   --media-query-l: (min-width: 1200px);

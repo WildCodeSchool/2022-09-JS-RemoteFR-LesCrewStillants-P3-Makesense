@@ -2,10 +2,6 @@
   height: 100%;
   width: 100%;
   overflow: hidden;
-  background-color:var( --background-color-base);
+  background-color: var(--background-color-base);
   padding-left: 1rem;
 }
-
-
-
-
