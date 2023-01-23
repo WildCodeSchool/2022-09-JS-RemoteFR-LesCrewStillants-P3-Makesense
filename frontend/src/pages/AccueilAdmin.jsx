@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 import Header from "../components/Header";
+import AdminRegister from "@components/AdminRegister";
 import Footer from "../components/Footer";
 // import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import "../components/Admin.css";
 
-function Admin() {
+function AccueilAdmin() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -58,13 +60,27 @@ function Admin() {
       ? Math.ceil(searchResults.length / itemsPerPage)
       : Math.ceil(users.length / itemsPerPage);
 
+  const [showModal, setShowModal] = useState(false);
+
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
+
   return (
     <div>
       <Header />
+      <div className="ContainerAdmin">
       <h1>Décisions Prises</h1>
       <p>Le mois dernier</p>
-      <p>Ce mois-ci</p>
-      <div className="ContainerAdmin">
+        <p>Ce mois-ci</p>
+      <p>12</p>
+      <p>5</p>
+        <button type="button" onClick={handleOpenModal}>
+          Ajouter un utilisateur
+        </button>
+        {showModal && (
+          <AdminRegister showModal={showModal} setShowModal={setShowModal} />
+        )}
         <input
           type="text"
           placeholder="Rechercher un utilisateur"
@@ -159,4 +175,4 @@ function Admin() {
   );
 }
 
-export default Admin;
+export default AccueilAdmin;

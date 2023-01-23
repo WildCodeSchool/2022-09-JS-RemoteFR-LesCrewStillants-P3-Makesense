@@ -6,6 +6,7 @@ import Timeline from "./Timeline";
 import DateStep from "./DateDecision";
 import { DataContext } from "../Context/DataContext";
 import { DateContext } from "../Context/DateContext";
+import instance from "../helpers/axios";
 
 /**
  * import data du context
@@ -34,7 +35,11 @@ function Form() {
   // const [titleDeadline, setTitleDeadLine] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.warn("ok");
+    instance
+      .post("/decision", title, data)
+      .then((res) => console.warn(res.data))
+      .catch((err) => console.warn(err));
+    console.warn(data);
   };
   console.warn(date);
   // création d'un state pour l'affichage des onglets

@@ -20,7 +20,7 @@ function LoginSignupContainer() {
       <div className="side-div">
         <button type="button" onClick={handleClick}>
           {" "}
-          {login ? "Inscription" : "Connexion"}{" "}
+          {login ? "S'inscire" : "Se connecter"}{" "}
         </button>
       </div>
       <Signup />

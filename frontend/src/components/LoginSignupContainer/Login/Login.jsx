@@ -7,7 +7,6 @@ import "./Login.css";
 function Login() {
   const [loginUser, setLoginUser] = useState("");
   const navigate = useNavigate();
-
   const handleChangeLogin = (e) => {
     const { name, value } = e.target;
     setLoginUser({ ...loginUser, [name]: value });
@@ -20,6 +19,10 @@ function Login() {
       .then((res) => {
         const { token } = res.data;
         const user = jwtDecode(token);
+        localStorage.setItem("token", token);
+        localStorage.setItem("user", JSON.stringify(user));
+        console.log("user");
+
         if (user.user_role === "admin") {
           navigate("/accueil-admin");
         } else {
@@ -28,6 +31,7 @@ function Login() {
       })
       .catch((err) => console.error(err));
   };
+
   // save user dans le context pour que tout le monde (app)
   // puisse y accéder.
 
@@ -44,6 +48,7 @@ function Login() {
    */
   return (
     <div className="login">
+      <h1>Se connecter</h1>
       <form htmlFor="login" onSubmit={handleLogin}>
         <input type="text" placeholder="Matricule" required />
         <input

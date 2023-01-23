@@ -20,6 +20,7 @@ function Signup() {
 
   return (
     <div className="signup">
+      <h1>S'inscire</h1>
       <form htmlFor="signup" onSubmit={handleRegister}>
         <input
           type="email"

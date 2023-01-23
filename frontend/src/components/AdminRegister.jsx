@@ -1,7 +1,8 @@
 import { useState } from "react";
 import instance from "../helpers/axios";
+import "./AdminRegister.css";
 
-export default function AccueilAdmin() {
+export default function AdminRegister({ showModal, setShowModal }) {
   const [registerUser, setRegisterUser] = useState("");
 
   const handleChangeRegister = (e) => {
@@ -16,8 +17,17 @@ export default function AccueilAdmin() {
       .then((res) => console.warn(res.data))
       .catch((err) => console.error(err));
   };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
   return (
-    <div className="signup">
+    <div className="signup" style={{ position: "absolute" }}>
+      <h1>Ajouter les informations d'un nouvel utilisateur</h1>
+      <button type="button" onClick={handleCloseModal}>
+        {" "}
+        Fermer
+      </button>
       <form htmlFor="signup" onSubmit={handleRegister}>
         <input
           type="text"
@@ -55,7 +65,7 @@ export default function AccueilAdmin() {
           onChange={handleChangeRegister}
           required
         />
-        <button type="submit">Inscription</button>
+        <button type="submit">Ajouter</button>
       </form>
     </div>
   );

@@ -124,6 +124,25 @@ export default function AccueilSalarie() {
       <Header />
       <div className="BgDecision">
         <div className="Decisions">
+          <h1>Mes Décisions</h1>
+          {decisionsEnCours.map((decision) => (
+            <div key={decision.id} className="DecisionsCard">
+              <div className="DecisionContainer">
+                <div className="card">
+                  Card 1<h1>{decision.title}</h1>
+                  <p>{decision.desc_final}</p>
+                  <p>{decision.details}</p>
+                  <p>{decision.status}</p>
+                  <p>{decision.user_id}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <hr className="ligne" />
+      <div className="BgDecision">
+        <div className="Decisions">
           <h1>Décisions en cours</h1>
           {decisionsEnCours.map((decision) => (
             <div key={decision.id} className="DecisionsCard">
