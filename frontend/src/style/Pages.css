@@ -1,0 +1,13 @@
+.App{
+    background-color: var(--color-default);
+}
+.App h1{
+    color:var(--background-color-base);
+    padding: 2rem;
+}
+
+.Home {
+    display: flex;
+    flex-direction: column-reverse;
+   flex-wrap: wrap;
+}

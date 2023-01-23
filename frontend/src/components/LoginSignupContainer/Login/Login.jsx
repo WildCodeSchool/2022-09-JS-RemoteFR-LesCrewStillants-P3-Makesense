@@ -3,6 +3,7 @@ import { useState } from "react";
 import jwtDecode from "jwt-decode";
 import instance from "../../../helpers/axios";
 import "./Login.css";
+import "../../../style/Style.css";
 
 function Login() {
   const [loginUser, setLoginUser] = useState("");
@@ -49,21 +50,35 @@ function Login() {
     <div className="login">
       <h1>Se connecter</h1>
       <form htmlFor="login" onSubmit={handleLogin}>
-        <input type="text" placeholder="Matricule" required />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          onChange={handleChangeLogin}
-          required
-        />
-        <input
-          type="password"
-          name="pw"
-          placeholder="Mot de passe"
-          onChange={handleChangeLogin}
-        />
-        <button type="submit">Connexion</button>
+        <label>
+          {" "}
+          Matricule
+          <input type="text" placeholder="Matricule" required />
+        </label>
+        <label>
+          {" "}
+          Email
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            onChange={handleChangeLogin}
+            required
+          />
+        </label>
+        <label>
+          {" "}
+          Mot de passe
+          <input
+            type="password"
+            name="pw"
+            placeholder="Mot de passe"
+            onChange={handleChangeLogin}
+          />
+        </label>
+        <button type="submit" className="greenHover">
+          Connexion
+        </button>
       </form>
     </div>
   );
