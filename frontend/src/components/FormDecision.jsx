@@ -37,10 +37,9 @@ function Form() {
   const handleSubmit = (e) => {
     e.preventDefault();
     instance
-      .post("/decision", data)
+      .post("/decision", { title, data })
       .then((res) => console.warn(res.data))
       .catch((err) => console.warn(err));
-    console.warn({ title });
   };
 
   console.warn(date);
@@ -99,11 +98,14 @@ function Form() {
             <p className="contenu Decision">
               <form onSubmit={handleSubmit}>
                 <label className="Label">
-                  <p className="labelF">Insérez un titre pour votre décision</p>
+                  <p className="labelF">
+                    {" "}
+                    Insérez un titre pour votre décision{" "}
+                  </p>
                   <input
                     className="TitleD"
                     type="text"
-                    placeholder="Titre décision"
+                    placeholder="Titre décision "
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                   />

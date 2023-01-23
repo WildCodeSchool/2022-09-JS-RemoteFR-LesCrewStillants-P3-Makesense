@@ -1,17 +1,17 @@
 const models = require("../models");
 
 const decisionPost = (req, res) => {
+  const { title } = req.body;
   const decision = {
-    title: req.body.title,
-    desc_start: req.body[0].data,
-    details: req.body[1].data,
-    impact: req.body[2].data,
-    benefits: req.body[3].data,
-    risk: req.body[4].data,
+    desc_start: req.body.data[0].data,
+    details: req.body.data[1].data,
+    impact: req.body.data[2].data,
+    benefits: req.body.data[3].data,
+    risk: req.body.data[4].data,
   };
 
   models.decision
-    .insert(decision)
+    .insert({ title, decision })
     .then(() => {
       res.status(201).json({ success: "Decision saved" });
     })
@@ -26,7 +26,7 @@ const timelinePost = (req, res) => {
   models.timeline
     .insert(timeline)
     .then(() => {
-      res.status(201).json({ success: "date saved" });
+      res.status(201).json({ success: "Date saved" });
     })
     .catch((err) => {
       console.error(err);
