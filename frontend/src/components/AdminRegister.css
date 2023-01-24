@@ -1,2 +1,12 @@
-.containerRegister {
+.adminRegisterForm {
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+    height: 100%;
+   align-self: center;
+}
+.adminRegisterTitle{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 3rem;
 }

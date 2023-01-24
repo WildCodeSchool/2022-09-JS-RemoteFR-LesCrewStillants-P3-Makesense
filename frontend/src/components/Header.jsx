@@ -19,8 +19,8 @@ function Header() {
   const adminLink =
     userRole === "admin" ? (
       <Link to="/accueil-admin">
+        <span className="smallDarkBean"> </span>
         Espace Admin
-        <span className="menu-item-bean" aria-hidden="true" />
       </Link>
     ) : null;
 
@@ -54,6 +54,7 @@ function Header() {
                   id="menu-item-2736"
                   className="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2736 menu-item-depth-0"
                 >
+                  <span className="smallDarkBean"> </span>
                   <Link to="/accueil-salarie">
                     Décisions
                     <span className="menu-item-bean" aria-hidden="true" />
@@ -69,6 +70,7 @@ function Header() {
                   id="menu-item-2736"
                   className="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-5574 menu-item-depth-0"
                 >
+                  <span className="smallDarkBean"> </span>
                   <Link to="/profil">
                     Mon Profil
                     <span className="menu-item-bean" aria-hidden="true" />
@@ -78,6 +80,7 @@ function Header() {
                   id="menu-item-2736"
                   className="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2736 menu-item-depth-0"
                 >
+                  <span className="smallDarkBean"> </span>
                   <Link to="/" onClick={handleLogOut}>
                     Déconnexion
                     <span className="menu-item-bean" aria-hidden="true" />

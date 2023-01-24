@@ -14,6 +14,7 @@ router.delete("/items/:id", itemControllers.destroy);
 const formDecisionControllers = require("./controllers/formDecisionControllers");
 
 router.post("/decision", formDecisionControllers.decisionPost);
+router.get("/decision", formDecisionControllers.decisionGet);
 
 // Date Timeline
 const formDateDecisionControllers = require("./controllers/formDecisionControllers");

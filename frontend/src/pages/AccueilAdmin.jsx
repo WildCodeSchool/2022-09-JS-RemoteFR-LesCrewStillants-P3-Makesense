@@ -66,114 +66,124 @@ function AccueilAdmin() {
   };
 
   return (
-    <div>
+    <>
       <Header />
-      <div className="ContainerAdmin">
-        <h1>Décisions Prises</h1>
-        <p>Le mois dernier</p>
-        <p>Ce mois-ci</p>
-        <p>12</p>
-        <p>5</p>
-        <button type="button" onClick={handleOpenModal} className="green">
-          <h3> Ajouter un utilisateur </h3>
-        </button>
-        {showModal && (
-          <AdminRegister showModal={showModal} setShowModal={setShowModal} />
-        )}
-        <input
-          type="text"
-          placeholder="Rechercher un utilisateur"
-          onChange={handleSearch}
-        />
-        {searchResults.length > 0
-          ? searchResults
-              .slice(
-                (currentPage - 1) * itemsPerPage,
-                currentPage * itemsPerPage
-              )
-              .map((user) => (
-                <div className="Users" key={user.id}>
-                  <h3>
-                    {user.name}
-                    <button type="button" className="greenHover">
-                      Modifier
-                    </button>
-                    <button type="button" className="pinkHover">
-                      Supprimer
-                    </button>
-                  </h3>
-                </div>
-              ))
-          : users
-              .slice(
-                (currentPage - 1) * itemsPerPage,
-                currentPage * itemsPerPage
-              )
-              .map((user) => (
-                <div className="Users" key={user.id}>
-                  <h3>
-                    {user.name}
-                    <button type="button" className="greenHover">
-                      Modifier
-                    </button>
-                    <button type="button" className="pinkHover">
-                      Supprimer
-                    </button>
-                  </h3>
-                </div>
-              ))}
-        <div className="Pagination">
-          <button
-            type="button"
-            className="square"
-            onClick={() => setCurrentPage(currentPage - 1)}
-            disabled={currentPage === 1}
-          >
-            <FontAwesomeIcon
-              className="ArrowLeft"
-              style={{
-                color: "grey",
-                marginInline: "1rem",
-                paddingBlock: "1rem",
-              }}
-              icon={faArrowLeft}
-            />
+      <div className="AccueilAdmin">
+        <div className="StatsAdmin">
+          <h1>Décisions Prises</h1>
+          <p>
+            Ce mois-ci
+            <span> Le mois dernier </span>
+          </p>
+          <p>
+            <span className="chiffreDecision">12</span>
+            <span className="chiffreDecision">5</span>
+          </p>
+        </div>
+        <div className="ContainerAdmin">
+          <button type="button" onClick={handleOpenModal} className="green">
+            <h3> Ajouter un utilisateur </h3>
           </button>
-          {Array.from({ length: numberOfPages }, (_, i) => (
-            <span
-              key={i}
-              className={`PageNumber ${currentPage === i + 1 ? "active" : ""}`}
-              onClick={() => setCurrentPage(i + 1)}
-              role="button"
-              tabIndex={0}
-              aria-hidden="true"
+          {showModal && (
+            <AdminRegister showModal={showModal} setShowModal={setShowModal} />
+          )}
+          <input
+            type="text"
+            placeholder="Rechercher un utilisateur"
+            onChange={handleSearch}
+          />
+          {searchResults.length > 0
+            ? searchResults
+                .slice(
+                  (currentPage - 1) * itemsPerPage,
+                  currentPage * itemsPerPage
+                )
+                .map((user) => (
+                  <div key={user.id}>
+                    <h3>
+                      {user.name}
+                      <button type="button" className="greenHover">
+                        Modifier
+                      </button>
+                      <button type="button" className="pinkHover">
+                        Supprimer
+                      </button>
+                    </h3>
+                  </div>
+                ))
+            : users
+                .slice(
+                  (currentPage - 1) * itemsPerPage,
+                  currentPage * itemsPerPage
+                )
+                .map((user) => (
+                  <div className="Users" key={user.id}>
+                    <h3>
+                      {user.name}
+                      <button type="button" className="greenHover">
+                        Modifier
+                      </button>
+                      <button type="button" className="pinkHover">
+                        Supprimer
+                      </button>
+                    </h3>
+                  </div>
+                ))}
+          <div className="Pagination">
+            <button
+              type="button"
+              className="square"
+              onClick={() => setCurrentPage(currentPage - 1)}
+              disabled={currentPage === 1}
             >
-              <button type="button" className="square">
-                {" "}
-                {i + 1}{" "}
-              </button>
-            </span>
-          ))}
-          <button
-            type="button"
-            className="square"
-            onClick={() => setCurrentPage(currentPage + 1)}
-            disabled={currentPage === numberOfPages}
-          >
-            <FontAwesomeIcon
-              className="fab fa-react fa-1x"
-              style={{
-                color: "grey",
-                marginInline: "1rem",
-                paddingBlock: "1rem",
-              }}
-              icon={faArrowRight}
-            />
-          </button>
+              <FontAwesomeIcon
+                className="ArrowLeft"
+                style={{
+                  color: "grey",
+                  marginInline: "1rem",
+                  paddingBlock: "1rem",
+                }}
+                icon={faArrowLeft}
+              />
+            </button>
+            {Array.from({ length: numberOfPages }, (_, i) => (
+              <span
+                key={i}
+                className={`PageNumber ${
+                  currentPage === i + 1 ? "active" : ""
+                }`}
+                onClick={() => setCurrentPage(i + 1)}
+                role="button"
+                tabIndex={0}
+                aria-hidden="true"
+              >
+                <button type="button" className="square">
+                  {" "}
+                  {i + 1}{" "}
+                </button>
+              </span>
+            ))}
+            <button
+              type="button"
+              className="square"
+              onClick={() => setCurrentPage(currentPage + 1)}
+              disabled={currentPage === numberOfPages}
+            >
+              <FontAwesomeIcon
+                className="fab fa-react fa-1x"
+                style={{
+                  color: "grey",
+                  marginInline: "1rem",
+                  paddingBlock: "1rem",
+                }}
+                icon={faArrowRight}
+              />
+            </button>
+          </div>
         </div>
       </div>
       <Footer />
-    </div>
+    </>
   );
 }
 
