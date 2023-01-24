@@ -23,12 +23,12 @@ export default function AdminRegister({ setShowModal }) {
     setShowModal(false);
   };
   return (
-    <div className="signup" style={{ position: "absolute" }}>
-      <h1>Ajouter les informations d'un nouvel utilisateur</h1>
-      <button type="button" onClick={handleCloseModal}>
+    <div className="modal" style={{ position: "absolute" }}>
+      <button type="button" className="square" onClick={handleCloseModal}>
         {" "}
-        Fermer
+        X
       </button>
+      <h1>Ajouter les informations d'un nouvel utilisateur</h1>
       <form htmlFor="signup" onSubmit={handleRegister}>
         <input
           type="text"

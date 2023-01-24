@@ -74,8 +74,8 @@ function AccueilAdmin() {
         <p>Ce mois-ci</p>
         <p>12</p>
         <p>5</p>
-        <button type="button" onClick={handleOpenModal}>
-          Ajouter un utilisateur
+        <button type="button" onClick={handleOpenModal} className="green">
+          <h3> Ajouter un utilisateur </h3>
         </button>
         {showModal && (
           <AdminRegister showModal={showModal} setShowModal={setShowModal} />
@@ -95,10 +95,10 @@ function AccueilAdmin() {
                 <div className="Users" key={user.id}>
                   <h3>
                     {user.name}
-                    <button type="button" className="ModifButton">
+                    <button type="button" className="greenHover">
                       Modifier
                     </button>
-                    <button type="button" className="DeleteButton">
+                    <button type="button" className="pinkHover">
                       Supprimer
                     </button>
                   </h3>
@@ -113,10 +113,10 @@ function AccueilAdmin() {
                 <div className="Users" key={user.id}>
                   <h3>
                     {user.name}
-                    <button type="button" className="ModifButton">
+                    <button type="button" className="greenHover">
                       Modifier
                     </button>
-                    <button type="button" className="DeleteButton">
+                    <button type="button" className="pinkHover">
                       Supprimer
                     </button>
                   </h3>
@@ -125,7 +125,7 @@ function AccueilAdmin() {
         <div className="Pagination">
           <button
             type="button"
-            className="ArrowLeft"
+            className="square"
             onClick={() => setCurrentPage(currentPage - 1)}
             disabled={currentPage === 1}
           >
@@ -148,12 +148,15 @@ function AccueilAdmin() {
               tabIndex={0}
               aria-hidden="true"
             >
-              {i + 1}
+              <button type="button" className="square">
+                {" "}
+                {i + 1}{" "}
+              </button>
             </span>
           ))}
           <button
             type="button"
-            className="ArrowRight"
+            className="square"
             onClick={() => setCurrentPage(currentPage + 1)}
             disabled={currentPage === numberOfPages}
           >
