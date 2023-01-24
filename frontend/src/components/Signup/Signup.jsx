@@ -20,30 +20,54 @@ function Signup() {
 
   return (
     <div className="signup">
+      <h1>S'inscrire</h1>
       <form htmlFor="signup" onSubmit={handleRegister}>
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          onChange={handleChangeRegister}
-          required
-        />
-        <input
-          type="password"
-          name="pw"
-          placeholder="Mot de passe"
-          onChange={handleChangeRegister}
-          required
-        />
-        <input type="password" placeholder="Confirmer mot de passe" required />
-        <input
-          type="text"
-          name="matricule"
-          placeholder="Matricule"
-          onChange={handleChangeRegister}
-          required
-        />
-        <button type="submit">Inscription</button>
+        <label>
+          {" "}
+          Email
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            onChange={handleChangeRegister}
+            required
+          />
+        </label>
+        <label>
+          {" "}
+          Mot de passe
+          <input
+            type="password"
+            name="pw"
+            placeholder="Mot de passe"
+            onChange={handleChangeRegister}
+            required
+          />
+        </label>
+        <label>
+          {" "}
+          Confirmer mot de passe
+          <input
+            type="password"
+            placeholder="Confirmer mot de passe"
+            required
+          />
+        </label>
+        <label>
+          {" "}
+          Matricule
+          <input
+            type="text"
+            name="matricule"
+            placeholder="Matricule"
+            onChange={handleChangeRegister}
+            required
+          />
+        </label>
+
+        <button type="submit" className="greenHover">
+          Inscription
+        </button>
       </form>
     </div>
   );

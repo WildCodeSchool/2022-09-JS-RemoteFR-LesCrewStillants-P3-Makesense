@@ -7,7 +7,7 @@
 *Formulaire décision
 *le h2 s'applique également sur les dates */
 
-form {
+form.formDecision {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -45,7 +45,7 @@ form {
   margin-top: 8%;
 }
 
-h2 {
+h2.formDecision {
   display: flex;
   flex-direction: row;
   justify-content: center;
