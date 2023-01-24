@@ -148,7 +148,7 @@ export default function AccueilSalarie() {
             <div key={decision.id} className="DecisionsCard">
               <div className="DecisionContainer">
                 <div className="card">
-                 <h1>{decision.title}</h1>
+                  <h1>{decision.title}</h1>
                   <p>{decision.desc_final}</p>
                   <p>{decision.details}</p>
                   <p>{decision.status}</p>
