@@ -7,7 +7,7 @@
 *Formulaire décision
 *le h2 s'applique également sur les dates */
 
-form.formDecision {
+.containerForm {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -17,6 +17,7 @@ form.formDecision {
 .Label {
   display: flex;
   flex-direction: column;
+  align-items: center;
   padding-top: 2%;
   margin-bottom: -3%;
 }
@@ -67,7 +68,7 @@ h2.formDecision {
   -o-border-radius: 1.5rem;
 }
 
-.container {
+.containerDate {
   display: flex;
   flex-direction: column;
   justify-content: center;
