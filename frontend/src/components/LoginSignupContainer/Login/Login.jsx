@@ -3,11 +3,11 @@ import { useState } from "react";
 import jwtDecode from "jwt-decode";
 import instance from "../../../helpers/axios";
 import "./Login.css";
+import "../../../style/Style.css";
 
 function Login() {
   const [loginUser, setLoginUser] = useState("");
   const navigate = useNavigate();
-
   const handleChangeLogin = (e) => {
     const { name, value } = e.target;
     setLoginUser({ ...loginUser, [name]: value });
@@ -20,6 +20,9 @@ function Login() {
       .then((res) => {
         const { token } = res.data;
         const user = jwtDecode(token);
+        localStorage.setItem("token", token);
+        localStorage.setItem("user", JSON.stringify(user));
+
         if (user.user_role === "admin") {
           navigate("/accueil-admin");
         } else {
@@ -28,6 +31,7 @@ function Login() {
       })
       .catch((err) => console.error(err));
   };
+
   // save user dans le context pour que tout le monde (app)
   // puisse y accéder.
 
@@ -44,22 +48,37 @@ function Login() {
    */
   return (
     <div className="login">
+      <h1>Se connecter</h1>
       <form htmlFor="login" onSubmit={handleLogin}>
-        <input type="text" placeholder="Matricule" required />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          onChange={handleChangeLogin}
-          required
-        />
-        <input
-          type="password"
-          name="pw"
-          placeholder="Mot de passe"
-          onChange={handleChangeLogin}
-        />
-        <button type="submit">Connexion</button>
+        <label>
+          {" "}
+          Matricule
+          <input type="text" placeholder="Matricule" required />
+        </label>
+        <label>
+          {" "}
+          Email
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            onChange={handleChangeLogin}
+            required
+          />
+        </label>
+        <label>
+          {" "}
+          Mot de passe
+          <input
+            type="password"
+            name="pw"
+            placeholder="Mot de passe"
+            onChange={handleChangeLogin}
+          />
+        </label>
+        <button type="submit" className="greenHover">
+          Connexion
+        </button>
       </form>
     </div>
   );

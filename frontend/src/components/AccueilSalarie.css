@@ -34,15 +34,6 @@
   margin: 1rem;
 }
 
-h1 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 1rem;
-  width: 70%;
-  color: #0c3944;
-}
-
 p {
   display: flex;
   margin-bottom: 1rem;

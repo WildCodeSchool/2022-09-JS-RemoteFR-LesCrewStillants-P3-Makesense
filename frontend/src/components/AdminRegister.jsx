@@ -1,7 +1,9 @@
 import { useState } from "react";
 import instance from "../helpers/axios";
+import "./AdminRegister.css";
 
-export default function AccueilAdmin() {
+// eslint-disable-next-line react/prop-types
+export default function AdminRegister({ setShowModal }) {
   const [registerUser, setRegisterUser] = useState("");
 
   const handleChangeRegister = (e) => {
@@ -16,8 +18,17 @@ export default function AccueilAdmin() {
       .then((res) => console.warn(res.data))
       .catch((err) => console.error(err));
   };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
   return (
-    <div className="signup">
+    <div className="modal" style={{ position: "absolute" }}>
+      <button type="button" className="square" onClick={handleCloseModal}>
+        {" "}
+        X
+      </button>
+      <h1>Ajouter les informations d'un nouvel utilisateur</h1>
       <form htmlFor="signup" onSubmit={handleRegister}>
         <input
           type="text"
@@ -55,7 +66,7 @@ export default function AccueilAdmin() {
           onChange={handleChangeRegister}
           required
         />
-        <button type="submit">Inscription</button>
+        <button type="submit">Ajouter</button>
       </form>
     </div>
   );

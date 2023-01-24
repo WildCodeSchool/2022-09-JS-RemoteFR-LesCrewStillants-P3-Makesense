@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import AdminRegister from "@components/AdminRegister";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 // import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import "../components/Admin.css";
 
-function Admin() {
+function AccueilAdmin() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -58,13 +59,27 @@ function Admin() {
       ? Math.ceil(searchResults.length / itemsPerPage)
       : Math.ceil(users.length / itemsPerPage);
 
+  const [showModal, setShowModal] = useState(false);
+
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
+
   return (
     <div>
       <Header />
-      <h1>Décisions Prises</h1>
-      <p>Le mois dernier</p>
-      <p>Ce mois-ci</p>
       <div className="ContainerAdmin">
+        <h1>Décisions Prises</h1>
+        <p>Le mois dernier</p>
+        <p>Ce mois-ci</p>
+        <p>12</p>
+        <p>5</p>
+        <button type="button" onClick={handleOpenModal} className="green">
+          <h3> Ajouter un utilisateur </h3>
+        </button>
+        {showModal && (
+          <AdminRegister showModal={showModal} setShowModal={setShowModal} />
+        )}
         <input
           type="text"
           placeholder="Rechercher un utilisateur"
@@ -80,10 +95,10 @@ function Admin() {
                 <div className="Users" key={user.id}>
                   <h3>
                     {user.name}
-                    <button type="button" className="ModifButton">
+                    <button type="button" className="greenHover">
                       Modifier
                     </button>
-                    <button type="button" className="DeleteButton">
+                    <button type="button" className="pinkHover">
                       Supprimer
                     </button>
                   </h3>
@@ -98,10 +113,10 @@ function Admin() {
                 <div className="Users" key={user.id}>
                   <h3>
                     {user.name}
-                    <button type="button" className="ModifButton">
+                    <button type="button" className="greenHover">
                       Modifier
                     </button>
-                    <button type="button" className="DeleteButton">
+                    <button type="button" className="pinkHover">
                       Supprimer
                     </button>
                   </h3>
@@ -110,7 +125,7 @@ function Admin() {
         <div className="Pagination">
           <button
             type="button"
-            className="ArrowLeft"
+            className="square"
             onClick={() => setCurrentPage(currentPage - 1)}
             disabled={currentPage === 1}
           >
@@ -133,12 +148,15 @@ function Admin() {
               tabIndex={0}
               aria-hidden="true"
             >
-              {i + 1}
+              <button type="button" className="square">
+                {" "}
+                {i + 1}{" "}
+              </button>
             </span>
           ))}
           <button
             type="button"
-            className="ArrowRight"
+            className="square"
             onClick={() => setCurrentPage(currentPage + 1)}
             disabled={currentPage === numberOfPages}
           >
@@ -159,4 +177,4 @@ function Admin() {
   );
 }
 
-export default Admin;
+export default AccueilAdmin;
