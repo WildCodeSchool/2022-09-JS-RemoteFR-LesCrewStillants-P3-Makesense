@@ -14,17 +14,31 @@ function AccueilAdmin() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
   const [users, setUsers] = useState([]);
+  const [userDeleted, setUserDeleted] = useState(false);
+  const [userAdded, setUserAdded] = useState(false);
 
   useEffect(() => {
     instance
       .get("/users")
       .then((result) => {
         setUsers(result.data);
+        setUserDeleted(false);
+        setUserAdded(false);
       })
       .catch((err) => {
         console.error(err);
       });
-  }, []);
+  }, [userDeleted, userAdded]);
+
+  const handleDelete = (id) => {
+    // eslint-disable-next-line no-alert, no-restricted-globals
+    const isDelete = confirm("supprimer l'utilisateur'?");
+
+    if (isDelete) {
+      instance.delete(`/users/${id}`);
+      setUserDeleted(true);
+    }
+  };
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
@@ -68,7 +82,12 @@ function AccueilAdmin() {
             <h3> Ajouter un utilisateur </h3>
           </button>
           {showModal && (
-            <AdminRegister showModal={showModal} setShowModal={setShowModal} />
+            <AdminRegister
+              userAdded={userAdded}
+              setUserAdded={setUserAdded}
+              showModal={showModal}
+              setShowModal={setShowModal}
+            />
           )}
           <input
             type="text"
@@ -102,13 +121,17 @@ function AccueilAdmin() {
                 .map((user) => (
                   <div className="Users" key={user.id}>
                     <h3>
-                      {user.firstname} {user.lastname}
+                      {user.lastname} {user.firstname}
                     </h3>
                     <h3>{user.matricule} </h3>
                     <button type="button" className="greenHover">
                       Modifier
                     </button>
-                    <button type="button" className="pinkHover">
+                    <button
+                      type="button"
+                      className="pinkHover"
+                      onClick={() => handleDelete(user.id)}
+                    >
                       Supprimer
                     </button>
                   </div>

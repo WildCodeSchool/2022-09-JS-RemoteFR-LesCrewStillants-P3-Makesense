@@ -28,6 +28,7 @@ const userControllers = require("./controllers/userControllers");
 // USERS PUBLIQUES
 router.post("/signup", userControllers.signUpUser);
 router.post("/login", userControllers.login);
+router.delete("/users/:id", userControllers.deleteUser);
 
 // USERS PRIVEES
 const { auth } = require("./middleware/auth");
@@ -36,6 +37,7 @@ router.post("/register", auth, validateUser, userControllers.register);
 
 router.put("/users/:id", userControllers.adminUpdateUser);
 router.get("/users", userControllers.getUsers);
+router.get("/users/:id", userControllers.getUsersByID);
 
 // const decisionControllers = require("./controllers/FormDecisionControllers");
 

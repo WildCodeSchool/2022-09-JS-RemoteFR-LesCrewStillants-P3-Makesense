@@ -10,7 +10,7 @@
 }
 
 .Users {
-  display : flex;
+  display: flex;
   justify-content: space-between;
   border-width: 2px;
   border-style: inset;

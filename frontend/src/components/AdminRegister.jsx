@@ -1,27 +1,42 @@
 import { useState } from "react";
+import { Switch } from "@mui/material";
 import instance from "../helpers/axios";
 import "./AdminRegister.css";
 
 // eslint-disable-next-line react/prop-types
-export default function AdminRegister({ setShowModal }) {
-  const [registerUser, setRegisterUser] = useState("");
+export default function AdminRegister({ setShowModal, setUserAdded }) {
+  // Pour le checkbox du role de mon user, je mets laveleur par défaut à "salarié"
+  const [role, setRole] = useState("salarié");
+  // Je mets à jour la valeur de mon role en fonction de ma checkbox
+  const handleChangeRole = (e) => {
+    setRole(e.target.checked ? "admin" : "salarié");
+  };
 
+  // Je crée un state pour récupérer les infos de mon user
+  const [registerUser, setRegisterUser] = useState("");
+  // Je gère l'actualisation des données de mon user dans le form en récupérant les valeurs des inputs
   const handleChangeRegister = (e) => {
     const { name, value } = e.target;
     setRegisterUser({ ...registerUser, [name]: value });
   };
 
+  // Enfin On Submit j'envoie les données récupérées en front vers mon back pour save mon user
   const handleRegister = (e) => {
     e.preventDefault();
     instance
       .post("/register", registerUser)
-      .then((res) => console.warn(res.data))
+      .then((res) => {
+        console.warn(res);
+        // ici j'enregistre qu'un user a bien été ajouté pour gérer le refresh de l'affichage de mes users dans AccueilAdmin (le state aprent est dans AccueilAdmin)
+        setUserAdded(true);
+      })
       .catch((err) => console.error(err));
   };
-
+  // modal dont le state parent se trouve dans AccueilAdmin
   const handleCloseModal = () => {
     setShowModal(false);
   };
+
   return (
     <div className="modal" style={{ position: "absolute" }}>
       <button type="button" className="square" onClick={handleCloseModal}>
@@ -63,8 +78,17 @@ export default function AdminRegister({ setShowModal }) {
           name="user_role"
           placeholder="role"
           onChange={handleChangeRegister}
-          required
         />
+        <label>
+          <Switch
+            name="user_role"
+            onClick={handleChangeRegister}
+            onChange={handleChangeRole}
+            checked={role === "admin"}
+            value={role}
+          />
+          {role === "admin" ? "Admin" : "Salarié"}
+        </label>
         <input
           type="text"
           name="matricule"
