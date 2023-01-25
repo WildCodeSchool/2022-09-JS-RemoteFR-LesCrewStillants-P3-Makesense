@@ -2,12 +2,37 @@ const { verify, hash, argon2id } = require("argon2");
 const { generateToken } = require("../services/jwt");
 const models = require("../models");
 
+const getUsers = (req, res) => {
+  models.user
+    .findAll()
+    .then(([rows]) => {
+      res.send(rows);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const register = (req, res) => {
   const user = req.body;
   models.user
     .insert(user)
     .then(() => {
       res.status(201).json({ success: "User saved" });
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
+const adminUpdateUser = (req, res) => {
+  const user = req.body;
+  models.user
+    .adminUpdate(user)
+    .then(() => {
+      res.status(201).json({ success: "User modified" });
     })
     .catch((err) => {
       console.error(err);
@@ -87,4 +112,6 @@ module.exports = {
   register,
   login,
   signUpUser,
+  adminUpdateUser,
+  getUsers,
 };

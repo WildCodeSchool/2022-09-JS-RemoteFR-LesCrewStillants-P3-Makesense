@@ -150,9 +150,9 @@ body {
   --font-space-xs: 0.3em;
   --font-space-xxs: 0.2em;
   --font-space-xxxs: 0.1em;
-  --font-heading: 'Raleway', Helvetica, Arial, sans-serif;
-  --font-text: 'Raleway', Helvetica, Arial, sans-serif;
-  --font-code: 'inconsolata', monospace;
+  --font-heading: "Raleway", Helvetica, Arial, sans-serif;
+  --font-text: "Raleway", Helvetica, Arial, sans-serif;
+  --font-code: "inconsolata", monospace;
   --font-weight-extrablack: 900;
   --font-weight-black: 800;
   --font-weight-extrabold: 700;

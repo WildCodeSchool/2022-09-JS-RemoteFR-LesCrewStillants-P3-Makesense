@@ -27,14 +27,12 @@
   margin-top: 8%;
 }
 
-
 .containerDate {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-
 
 /*Bouton Onglet*/
 
@@ -57,4 +55,3 @@
   cursor: pointer;
   border-radius: 1rem;
 }
-

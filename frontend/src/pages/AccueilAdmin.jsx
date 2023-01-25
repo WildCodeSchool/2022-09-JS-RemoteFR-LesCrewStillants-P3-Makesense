@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import AdminRegister from "@components/AdminRegister";
+import instance from "../helpers/axios";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 // import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
@@ -12,36 +13,18 @@ function AccueilAdmin() {
   const [searchResults, setSearchResults] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
-  const users = [
-    {
-      id: 1,
-      name: "Alex",
-    },
-    {
-      id: 2,
-      name: "Sophie",
-    },
-    {
-      id: 3,
-      name: "quentin",
-    },
-    {
-      id: 4,
-      name: "seb",
-    },
-    {
-      id: 5,
-      name: "malik",
-    },
-    {
-      id: 6,
-      name: "vivien",
-    },
-    {
-      id: 7,
-      name: "lana",
-    },
-  ];
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    instance
+      .get("/users")
+      .then((result) => {
+        setUsers(result.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
@@ -119,14 +102,15 @@ function AccueilAdmin() {
                 .map((user) => (
                   <div className="Users" key={user.id}>
                     <h3>
-                      {user.name}
-                      <button type="button" className="greenHover">
-                        Modifier
-                      </button>
-                      <button type="button" className="pinkHover">
-                        Supprimer
-                      </button>
+                      {user.firstname} {user.lastname}
                     </h3>
+                    <h3>{user.matricule} </h3>
+                    <button type="button" className="greenHover">
+                      Modifier
+                    </button>
+                    <button type="button" className="pinkHover">
+                      Supprimer
+                    </button>
                   </div>
                 ))}
           <div className="Pagination">

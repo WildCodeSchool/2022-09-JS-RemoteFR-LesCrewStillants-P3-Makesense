@@ -48,10 +48,8 @@ header {
 }
 
 .header a {
-
- color: var(--background-color-secondary-inverse);
- text-decoration: none;
-
+  color: var(--background-color-secondary-inverse);
+  text-decoration: none;
 }
 
 img {
