@@ -22,7 +22,6 @@ function Login() {
         const user = jwtDecode(token);
         localStorage.setItem("token", token);
         localStorage.setItem("user", JSON.stringify(user));
-
         if (user.user_role === "admin") {
           navigate("/accueil-admin");
         } else {

@@ -33,6 +33,7 @@ router.post("/login", userControllers.login);
 const { auth } = require("./middleware/auth");
 
 router.post("/register", auth, validateUser, userControllers.register);
+
 router.put("/users/:id", userControllers.adminUpdateUser);
 router.get("/users", userControllers.getUsers);
 

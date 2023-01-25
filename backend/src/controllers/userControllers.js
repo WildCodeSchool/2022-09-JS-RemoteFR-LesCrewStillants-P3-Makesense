@@ -4,7 +4,7 @@ const models = require("../models");
 
 const getUsers = (req, res) => {
   models.user
-    .findAll()
+    .findAllUsers()
     .then(([rows]) => {
       res.send(rows);
     })
@@ -67,7 +67,7 @@ const login = async (req, res) => {
               user_role: user.user_role,
             });
             return res
-              .cookie("user_auth", token, { httpOnly: true, secure: false })
+              .cookie("token", token, { httpOnly: true, secure: false })
               .status(200)
               .json({ token, sucess: "User logged" });
           }

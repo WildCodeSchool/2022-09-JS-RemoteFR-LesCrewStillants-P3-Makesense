@@ -6,8 +6,6 @@ import { AuthContext } from "../Context/AuthContext";
 function Header() {
   const { userID, userRole, handleUserAuth } = useContext(AuthContext);
   handleUserAuth();
-  console.warn({ userID });
-  console.warn({ userRole });
 
   const navigate = useNavigate();
 

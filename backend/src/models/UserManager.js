@@ -5,6 +5,12 @@ class UserManager extends AbstractManager {
     super({ table: "user" });
   }
 
+  findAllUsers() {
+    return this.connection.query(
+      `select * from  ${this.table} order by lastname ASC`
+    );
+  }
+
   findByEmail(email) {
     return this.connection.query(
       `select * from ${this.table} where email = ?`,
