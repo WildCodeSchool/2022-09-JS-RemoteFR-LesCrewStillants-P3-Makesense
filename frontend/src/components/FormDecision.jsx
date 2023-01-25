@@ -1,4 +1,6 @@
 import { useState, useContext } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Footer from "./Footer";
 import Editor from "./RTE";
 import Timeline from "./Timeline";
@@ -39,22 +41,33 @@ function Form() {
     console.warn(data);
     console.warn(title);
     if (!title) {
-      console.warn("Attention vous devez insérer un titre");
+      toast.dark("Attention vous devez insérer un titre ❌");
     } else if (!data[0]?.data) {
-      console.warn("Attention le champ 'Description de la décision' est vide ");
+      toast.dark("Attention le champ 'Description de la décision' est vide ❌");
     } else if (!data[1]?.data) {
-      console.warn("Attention le champ 'detail' est vide");
+      toast.dark("Attention le champ 'Detail' est vide ❌");
     } else if (!data[2]?.data) {
-      console.warn("Attention le champ 'impact' est vide");
+      toast.dark("Attention le champ 'Impact' est vide ❌");
     } else if (!data[3]?.data) {
-      console.warn("Attention le champ 'benefice' est vide");
+      toast.dark("Attention le champ 'Bénéfice' est vide ❌");
     } else if (!data[4]?.data) {
-      console.warn("Attention le champ 'risque' est vide");
+      toast.warn("Attention le champ 'Risque' est vide ❌");
     } else {
       instance
         .post("/decision", { title, data })
         .then((res) => console.warn(res.data))
         .catch((err) => console.warn(err));
+      toast("Décision envoyer avec succés!", {
+        position: "bottom-right",
+        type: "success",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     }
   };
 
@@ -90,6 +103,14 @@ function Form() {
     <>
       <div className="Timeline">
         <Timeline />
+        <ToastContainer
+          theme="colored"
+          type="warning"
+          autoClose={2000}
+          position="bottom-right"
+          className="toast-container"
+          toastClassName="dark-toast"
+        />
       </div>
       <div>
         <div className="contBtn">
