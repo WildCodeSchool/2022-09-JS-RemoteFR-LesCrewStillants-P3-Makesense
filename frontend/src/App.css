@@ -22,7 +22,7 @@ body {
   --color-primary-inverse: rgb(255, 255, 255);
   --color-secondary: rgb(255, 243, 13);
   --color-secondary-active: rgb(244, 232, 4);
-  --color-secondary-inverse: rgb(12, 57, 68);
+  --color-secondary-inverse: #0c3944;
   --color-tertiary: rgb(155, 8, 79);
   --color-tertiary-active: rgb(193, 11, 99);
   --color-tertiary-inverse: rgb(255, 255, 255);
