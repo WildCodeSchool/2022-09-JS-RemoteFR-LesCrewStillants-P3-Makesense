@@ -4,13 +4,13 @@
 #homeh1 {
   color: var(--background-color-base);
   padding: 2rem;
-  font-size:var( --font-size-xxxxxl);
+  font-size: var(--font-size-xxxxxl);
   font-weight: var(--font-weight-extrablack);
   margin-left: 1em;
 }
 
 .Home {
   display: flex;
-  flex-direction:column-reverse;
+  flex-direction: column-reverse;
   flex-wrap: wrap;
 }

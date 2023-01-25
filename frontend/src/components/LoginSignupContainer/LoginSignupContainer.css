@@ -6,8 +6,8 @@
   overflow: hidden;
   transition: 0.3s linear;
   box-shadow: 0px 0px 10px rgb(140, 136, 136);
-  margin-right:3em;
- align-self: flex-end;
+  margin-right: 3em;
+  align-self: flex-end;
 }
 
 .login-signup-container.active {
@@ -35,7 +35,6 @@
   position: absolute;
   margin-top: 13%;
   margin-left: 3em;
-
 }
 
 .decologo {
@@ -66,7 +65,6 @@
   margin-left: 2%;
   margin-top: 40%;
   width: 15vh;
- 
 }
 .decovoidebleu2 {
   position: absolute;
@@ -75,6 +73,6 @@
   width: 5vh;
 }
 
-.DecoSignIn{
+.DecoSignIn {
   margin-left: 1rem;
 }

@@ -36,13 +36,28 @@ function Form() {
   // const [decision, setDecision] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
-    instance
-      .post("/decision", { title, data })
-      .then((res) => console.warn(res.data))
-      .catch((err) => console.warn(err));
+    console.warn(data);
+    console.warn(title);
+    if (!title) {
+      console.warn("Attention vous devez insérer un titre");
+    } else if (!data[0]?.data) {
+      console.warn("Attention le champ 'Description de la décision' est vide ");
+    } else if (!data[1]?.data) {
+      console.warn("Attention le champ 'detail' est vide");
+    } else if (!data[2]?.data) {
+      console.warn("Attention le champ 'impact' est vide");
+    } else if (!data[3]?.data) {
+      console.warn("Attention le champ 'benefice' est vide");
+    } else if (!data[4]?.data) {
+      console.warn("Attention le champ 'risque' est vide");
+    } else {
+      instance
+        .post("/decision", { title, data })
+        .then((res) => console.warn(res.data))
+        .catch((err) => console.warn(err));
+    }
   };
 
-  console.warn(date);
   // création d'un state pour l'affichage des onglets
   const [stateOnglets, setStateOnglets] = useState(1);
   // Affiche l'onglet décision
@@ -57,11 +72,11 @@ function Form() {
   // faire une instance post
 
   const titles = [
-    "#1 Les détails de la décision",
-    "#2 Impact sur l'organisation",
-    "#3 Bénéfices",
-    "#4 Risques",
-    "#5 Première Décision",
+    "#1 Description de la Décision",
+    "#2 Les détails de la décision",
+    "#3 Impact sur l'organisation",
+    "#4 Bénéfices",
+    "#5 Risques",
   ];
   const stepDeadlines = [
     "#1 Prise de décision commencée",

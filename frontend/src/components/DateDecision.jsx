@@ -8,7 +8,7 @@ function DateStep({ id, title }) {
   // permet de récupérer la date courante et de ne pas sélectionner une date antérieur
   const currentDate = new Date().toISOString().split("T")[0];
   const { nativeDate, handleDateChange } = useContext(DateContext);
-  // console.warn(nativeDate);
+  console.warn(nativeDate[id]);
   return (
     <div className="ContainerDate">
       <h2 className="deadline">{title}</h2>
@@ -18,7 +18,7 @@ function DateStep({ id, title }) {
         name={title}
         id={id}
         min={currentDate}
-        value={nativeDate.stepDeadLine}
+        value={nativeDate[id]}
         onChange={handleDateChange}
       />
       <hr className="ligne" />
