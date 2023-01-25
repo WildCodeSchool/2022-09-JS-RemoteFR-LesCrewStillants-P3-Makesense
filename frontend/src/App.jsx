@@ -3,6 +3,7 @@ import AccueilAdmin from "./pages/AccueilAdmin";
 import Home from "./pages/Home";
 import Decision from "./pages/PriseDecision";
 import AccueilSalarie from "./pages/AccueilSalarie";
+import NotFound from "./pages/NotFound";
 import { AuthContextProvider } from "./Context/AuthContext";
 import "./App.css";
 
@@ -15,6 +16,7 @@ function App() {
           <Route path="/decision" element={<Decision />} />
           <Route path="/accueil-salarie" element={<AccueilSalarie />} />
           <Route path="/accueil-admin" element={<AccueilAdmin />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </AuthContextProvider>
