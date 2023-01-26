@@ -1,0 +1,57 @@
+.accordions {
+  border: 1px solid #eee;
+}
+
+.accordion__title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #eee;
+  padding: 1rem;
+  font-weight: bold;
+}
+
+.accordion__title:hover,
+.active .accordion__title {
+  cursor: pointer;
+  background: #ddd;
+}
+
+.accordion__icon {
+  position: relative;
+  width: 10px;
+  height: 1px;
+  background: #333;
+}
+
+.accordion__icon::before {
+  position: absolute;
+  content: "";
+  width: 10px;
+  height: 1px;
+  background: #333;
+  transform: rotate(90deg);
+  transition: all 0.2s;
+}
+
+.active .accordion__icon::before {
+  transform: rotate(0deg);
+  opacity: 0;
+}
+
+.accordion__content {
+  visibility: hidden;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0 1rem;
+  transition: all 0.2s ease-in;
+}
+
+.active .accordion__content {
+  visibility: visible;
+  height: auto;
+  overflow: visible;
+  padding: 1rem;
+  opacity: 1;
+}
