@@ -5,3 +5,11 @@
   background-color: var(--background-color-base);
   padding-left: 1rem;
 }
+
+.login h1 {
+  padding-top: 1rem;
+}
+
+.login .loginForm {
+  padding: 3rem;
+}

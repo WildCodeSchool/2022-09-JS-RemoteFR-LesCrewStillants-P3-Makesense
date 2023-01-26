@@ -55,6 +55,11 @@ export default function AccueilSalarie() {
                   <h2>{decision.title}</h2>
                   {ReactHtmlParser(decision.desc_start)}
                   {ReactHtmlParser(decision.details)}
+                <div className="card">
+                  <h1>{decision.title}</h1>
+                  <p>{decision.desc_final}</p>
+                  <p>{decision.details}</p>
+
                   <p>{decision.status}</p>
                   <p>{decision.user_id}</p>
                 </div>

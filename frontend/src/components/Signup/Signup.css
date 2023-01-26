@@ -5,3 +5,11 @@
   align-self: center;
   padding-left: 1rem;
 }
+
+.signup h1 {
+  padding-top: 1rem;
+}
+
+.signup .signupForm {
+  padding: 3rem;
+}

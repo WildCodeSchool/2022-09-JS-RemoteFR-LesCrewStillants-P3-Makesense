@@ -200,12 +200,8 @@ p {
 }
 
 .modal {
-  backdrop-filter: blur(2px);
-  height: 100%;
-  width: 100%;
   display: flex;
   flex-direction: column;
-  flex-grow: 2;
   margin: 0;
   padding: 0;
   padding-top: var(--space-s);
@@ -221,6 +217,7 @@ p {
   padding-left: var(--space-m);
   padding-right: var(--space-m);
   background: var(--background-color-soft);
+
 }
 
 header {

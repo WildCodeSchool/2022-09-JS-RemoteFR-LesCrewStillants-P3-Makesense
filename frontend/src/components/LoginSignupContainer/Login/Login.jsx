@@ -48,7 +48,7 @@ function Login() {
   return (
     <div className="login">
       <h1>Se connecter</h1>
-      <form htmlFor="login" onSubmit={handleLogin}>
+      <form className="loginForm" htmlFor="login" onSubmit={handleLogin}>
         <label>
           {" "}
           Matricule
