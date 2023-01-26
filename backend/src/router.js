@@ -10,22 +10,36 @@ router.put("/items/:id", itemControllers.edit);
 router.post("/items", itemControllers.add);
 router.delete("/items/:id", itemControllers.destroy);
 
+// DECISIONS
+const formDecisionControllers = require("./controllers/formDecisionControllers");
+
+router.post("/decision", formDecisionControllers.decisionPost);
+router.get("/decision", formDecisionControllers.decisionGet);
+
+// Date Timeline
+const formDateDecisionControllers = require("./controllers/formDecisionControllers");
+
+router.post("/date", formDateDecisionControllers.timelinePost);
+
+// USERS
 const { validateUser } = require("./services/validateUser");
 const userControllers = require("./controllers/userControllers");
-const { auth } = require("./middleware/auth");
-// PUBLIQUES
+
+// USERS PUBLIQUES
 router.post("/signup", userControllers.signUpUser);
-router.post("/login", userControllers.login, auth);
-
-// PRIVEES
-// add verify token + verif role sur cette route
-router.post("/register", validateUser, userControllers.register);
 router.post("/login", userControllers.login);
+router.delete("/users/:id", userControllers.deleteUser);
 
-// const decisionControllers = require("./controllers/decisionControllers");
+// USERS PRIVEES
+const { auth } = require("./middleware/auth");
 
-// on veut récupérer nos prise de décisions
-// router.post("/form/add", formDecisionControllers.addform);
+router.post("/register", auth, validateUser, userControllers.register);
+
+router.put("/users/:id", userControllers.adminUpdateUser);
+router.get("/users", userControllers.getUsers);
+router.get("/users/:id", userControllers.getUsersByID);
+
+// const decisionControllers = require("./controllers/FormDecisionControllers");
 
 // const commentControllers = require("./controllers/commentControllers");
 

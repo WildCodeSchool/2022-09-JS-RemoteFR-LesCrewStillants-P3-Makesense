@@ -3,7 +3,6 @@ import "./Deco.css";
 function Deco() {
   return (
     <div>
-      <h2 className="decoration">Viens on change de monde!</h2>
       <img
         className="decoimg"
         src="./src/components/Decoration/mkimg.jpg"

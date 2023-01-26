@@ -15,15 +15,52 @@ function LoginSignupContainer() {
   };
 
   return (
-    <div className="login-signup-container" ref={loginSignupContainerRef}>
-      <Login />
-      <div className="side-div">
-        <button type="button" onClick={handleClick}>
-          {" "}
-          {login ? "Inscription" : "Connexion"}{" "}
-        </button>
+    <div className="DecoSignIn">
+      <div className="Home">
+        <div className="login-signup-container" ref={loginSignupContainerRef}>
+          <Login />
+          <div className="side-div">
+            <button type="button" className="pink" onClick={handleClick}>
+              {" "}
+              {login ? "S'inscrire →" : "← Se connecter"}{" "}
+            </button>
+          </div>
+          <Signup />
+        </div>
+
+        <div>
+          <img
+            className="decovoiderose"
+            src="./src/components/Decoration/ovoideRose.png"
+            alt="deco"
+          />
+          <img
+            className="decovoidebleu"
+            src="./src/components/Decoration/ovoide_bleu.png"
+            alt="deco"
+          />
+          <img
+            className="decoimg"
+            src="./src/components/Decoration/mkimg.jpg"
+            alt="équipe"
+          />
+          <img
+            className="decologo"
+            src="./src/components/Decoration/logomk.png"
+            alt="logo"
+          />
+          <img
+            className="decovoiderose2"
+            src="./src/components/Decoration/ovoideRose.png"
+            alt="deco"
+          />
+          <img
+            className="decovoidebleu2"
+            src="./src/components/Decoration/ovoide_bleu.png"
+            alt="deco"
+          />
+        </div>
       </div>
-      <Signup />
     </div>
   );
 }

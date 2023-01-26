@@ -1,36 +1,105 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Footer from "./Footer";
-import "./FormDecision.css";
 import Editor from "./RTE";
 import Timeline from "./Timeline";
 import DateStep from "./DateDecision";
-// import { DataContextProvider } from "../Context/DataContext";
+import { DataContext } from "../Context/DataContext";
+import { DateContext } from "../Context/DateContext";
+import "./FormDecision.css";
+// importer axios
+import instance from "../helpers/axios";
+
+/**
+ * import data du context
+ * {
+"0": {
+  "data": "<p>coucou coucou2</p>"
+},
+"1": {
+  "data": "<p>coucoucoucou2</p>"
+}
+}
+* afficher les datas pour récupérer la data selon l'id ci dessus 
+*/
 
 /* Créer usestate pour afficher/masquer onglet rte */
 
 function Form() {
+  const { data } = useContext(DataContext);
+  // const { date } = useContext(DateContext);
+  const { nativeDate } = useContext(DateContext);
+
   const [title, setTitle] = useState("");
+  // eslint-disable-next-line no-unused-vars
   const [date, setDate] = useState();
-  // const [titleDeadline, setTitleDeadLine] = useState("");
+
+  // const [decision, setDecision] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.warn("ok");
+    console.warn(nativeDate[1]);
+    if (!title) {
+      toast.warn("Attention vous devez insérer un titre ❌");
+    } else if (!data[0]?.data) {
+      toast.warn("Attention le champ 'Description de la décision' est vide ❌");
+    } else if (!data[1]?.data) {
+      toast.warn("Attention le champ 'Detail' est vide ❌");
+    } else if (!data[2]?.data) {
+      toast.warn("Attention le champ 'Impact' est vide ❌");
+    } else if (!data[3]?.data) {
+      toast.warn("Attention le champ 'Bénéfice' est vide ❌");
+    } else if (!data[4]?.data) {
+      toast.warn("Attention le champ 'Risque' est vide ❌");
+    } else {
+      instance
+        .post("/decision", { title, data })
+        .then((res) => console.warn(res.data))
+        .catch((err) => console.warn(err));
+      toast("Décision envoyer avec succés!", {
+        position: "bottom-right",
+        type: "success",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    }
   };
-  const [stateOnglets, setStateOnglets] = useState(1);
 
+  /*
+   * récuperer les dates par id
+   * poster les dates
+   * faire en sorte que le toastify fonctionne aussi avec les dates (else if toussa toussa)
+   * faire le chemin dans formdecisioncontrollers
+   *
+   *
+   *
+   *
+   */
+
+  // création d'un state pour l'affichage des onglets
+  const [stateOnglets, setStateOnglets] = useState(1);
+  // Affiche l'onglet décision
   const goDecision = () => {
     setStateOnglets(1);
   };
+  // Affiche l'onglet date
   const goDate = () => {
     setStateOnglets(2);
   };
 
+  // faire une instance post
+
   const titles = [
-    "#1 Les détails de la décision",
-    "#2 Impact sur l'organisation",
-    "#3 Bénéfices",
-    "#4 Risques",
-    "#5 Première Décision",
+    "#1 Description de la Décision",
+    "#2 Les détails de la décision",
+    "#3 Impact sur l'organisation",
+    "#4 Bénéfices",
+    "#5 Risques",
   ];
   const stepDeadlines = [
     "#1 Prise de décision commencée",
@@ -39,39 +108,43 @@ function Form() {
     "#4 Deadline pour entrer en conflit",
     "#5 Décision définitive",
   ];
-  console.warn(date);
 
   return (
     <>
       <div className="Timeline">
         <Timeline />
+        <ToastContainer
+          theme="colored"
+          type="warning"
+          autoClose={2000}
+          position="bottom-right"
+          className="toast-container"
+          toastClassName="dark-toast"
+        />
       </div>
       <div>
         <div className="contBtn">
           <button
             type="button"
             onClick={goDecision}
-            className={`onglets ${stateOnglets === 1 ? "active" : ""}`}
+            className={`onglets ${stateOnglets === 1 ? "green" : ""}`}
           >
             Décision
           </button>
           <button
             type="button"
             onClick={goDate}
-            className={`onglets ${stateOnglets === 2 ? "active" : ""}`}
+            className={`onglets ${stateOnglets === 2 ? "green" : ""}`}
           >
             Date
           </button>
         </div>
-        <div className="container">
+        <div className="containerForm">
           {stateOnglets === 1 ? (
-            <p className="contenu Decision">
+            <div className="contenu Decision">
               <form onSubmit={handleSubmit}>
-                <label className="Label">
-                  <p className="labelF">
-                    {" "}
-                    Insérez un titre pour votre décision{" "}
-                  </p>
+                <label>
+                  <h1> Insérez un titre pour votre décision </h1>
                   <input
                     className="TitleD"
                     type="text"
@@ -80,25 +153,31 @@ function Form() {
                     onChange={(e) => setTitle(e.target.value)}
                   />
                 </label>
-                {titles.map((titleH2, id) => (
-                  <Editor key={titleH2} id={id} title={titleH2} />
-                ))}
+                {titles.map((titleH2, id) => {
+                  return (
+                    <Editor
+                      key={titleH2}
+                      id={id}
+                      title={titleH2}
+                      data={data[id]?.data}
+                    />
+                  );
+                })}
                 <br />
               </form>
-            </p>
+            </div>
           ) : (
-            <p className="contenu Date">
+            <div className="containerDate">
               {stepDeadlines.map((stepDeadlineH2, id) => (
                 <DateStep
                   key={stepDeadlineH2}
-                  setDate={setDate}
                   id={id}
                   title={stepDeadlineH2}
+                  dateValue={nativeDate[id]?.title}
                 />
               ))}
-            </p>
+            </div>
           )}
-
           <button
             className="ButtonDecision"
             type="submit"
