@@ -53,15 +53,12 @@ export default function AccueilSalarie() {
               <div className="DecisionContainer">
                 <div className="cardDecision">
                   <h2>{decision.title}</h2>
-                  {ReactHtmlParser(decision.desc_start)}
-                  {ReactHtmlParser(decision.details)}
-                <div className="card">
-                  <h1>{decision.title}</h1>
-                  <p>{decision.desc_final}</p>
-                  <p>{decision.details}</p>
-
-                  <p>{decision.status}</p>
-                  <p>{decision.user_id}</p>
+                  <p>
+                    {" "}
+                    postée par <br />
+                    {decision.user_id} user.firstname user.lastname <br />
+                    le {decision.date} date ?
+                  </p>
                 </div>
               </div>
             </div>
@@ -77,10 +74,12 @@ export default function AccueilSalarie() {
               <div className="DecisionContainer">
                 <div className="cardDecision">
                   <h2>{decision.title}</h2>
-                  <p>{decision.desc_final}</p>
-                  <p>{decision.details}</p>
-                  <p>{decision.status}</p>
-                  <p>{decision.user_id}</p>
+                  <p>
+                    {" "}
+                    postée par <br />
+                    {decision.user_id} user.firstname user.lastname <br />
+                    le {decision.date} date ?
+                  </p>
                 </div>
               </div>
             </div>

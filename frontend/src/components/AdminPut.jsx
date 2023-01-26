@@ -1,102 +1,123 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Switch } from "@mui/material";
+import { Link, useParams } from "react-router-dom";
 import instance from "../helpers/axios";
 import "./AdminRegister.css";
 
 // eslint-disable-next-line react/prop-types
-export default function AdminRegister({ setShowModal, setUserAdded }) {
-  // Pour le checkbox du role de mon user, je mets laveleur par défaut à "salarié"
+export default function AdminPut({ setUserPut }) {
+  const [initialUser, setInitialUser] = useState("");
+  const { id } = useParams();
+  useEffect(() => {
+    instance
+      .get(`/users/${id}`)
+      .then((result) => {
+        setInitialUser(result.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, [id]);
+
+  const handleAdminChanges = (e) => {
+    const { name, value } = e.target;
+    setInitialUser({ ...initialUser, [name]: value });
+  };
+
   const [role, setRole] = useState("salarié");
   // Je mets à jour la valeur de mon role en fonction de ma checkbox
   const handleChangeRole = (e) => {
     setRole(e.target.checked ? "admin" : "salarié");
   };
 
-  // Je crée un state pour récupérer les infos de mon user
-  const [registerUser, setRegisterUser] = useState("");
-  // Je gère l'actualisation des données de mon user dans le form en récupérant les valeurs des inputs
-  const handleChangeRegister = (e) => {
-    const { name, value } = e.target;
-    setRegisterUser({ ...registerUser, [name]: value });
-  };
-
   // Enfin On Submit j'envoie les données récupérées en front vers mon back pour save mon user
-  const handleRegister = (e) => {
+  const handlePutRegister = (e) => {
     e.preventDefault();
     instance
-      .post("/register", registerUser)
+
+      .put(`/users/${id}`, initialUser)
       .then((res) => {
         console.warn(res);
         // ici j'enregistre qu'un user a bien été ajouté pour gérer le refresh de l'affichage de mes users dans AccueilAdmin (le state aprent est dans AccueilAdmin)
-        setUserAdded(true);
+        setUserPut(true);
+        setInitialUser("");
       })
       .catch((err) => console.error(err));
-  };
-  // modal dont le state parent se trouve dans AccueilAdmin
-  const handleCloseModal = () => {
-    setShowModal(false);
   };
 
   return (
     <div className="modal" style={{ position: "absolute" }}>
-      <button type="button" className="square" onClick={handleCloseModal}>
-        {" "}
-        X
-      </button>
+      <Link to="/accueil-admin">
+        <button type="button" className="square">
+          {" "}
+          X
+        </button>
+      </Link>
       <h1 className="adminRegisterTitle">
-        Ajouter les informations d'un nouvel utilisateur
+        Modifier les informations de l'utilisateur
       </h1>
       <form
         htmlFor="signup"
         className="adminRegisterForm"
-        onSubmit={handleRegister}
+        onSubmit={handlePutRegister}
       >
         <input
           type="text"
           name="firstname"
+          value={initialUser.firstname || ""}
           placeholder="Prénom"
-          onChange={handleChangeRegister}
+          onChange={handleAdminChanges}
           required
         />
         <input
           type="text"
           name="lastname"
+          value={initialUser.lastname || ""}
           placeholder="Nom"
-          onChange={handleChangeRegister}
+          onChange={handleAdminChanges}
           required
         />
         <input
           type="date"
-          data-date-format="YYY MM JJ"
-          name="birthday"
-          placeholder="AAAA/MM/JJ"
-          onChange={handleChangeRegister}
+          name="date"
+          value={initialUser.date || ""}
+          placeholder={new Date(initialUser.birthday).toLocaleDateString(
+            "fr-FR"
+          )}
+          onChange={handleAdminChanges}
           required
         />
         <input
           type="text"
           name="user_role"
           placeholder="role"
-          onChange={handleChangeRegister}
+          value={initialUser.user_role || ""}
+          onChange={handleAdminChanges}
         />
+
         <label>
           <Switch
             name="user_role"
-            onClick={handleChangeRegister}
+            onClick={handleAdminChanges}
             onChange={handleChangeRole}
             checked={role === "admin"}
             value={role}
           />
           {role === "admin" ? "Salarié" : "Admin"}
         </label>
+
         <input
           type="text"
           name="matricule"
           placeholder="Matricule"
-          onChange={handleChangeRegister}
+          onChange={handleAdminChanges}
+          value={initialUser.matricule || ""}
           required
         />
-        <button type="submit">Ajouter</button>
+        <button type="submit" value="submit">
+          {" "}
+          Modifier{" "}
+        </button>
       </form>
     </div>
   );

@@ -13,6 +13,35 @@ const getUsers = (req, res) => {
       res.sendStatus(500);
     });
 };
+const getUsersByID = (req, res) => {
+  models.user
+    .userFindByID(req.params.id)
+    .then(([rows]) => {
+      if (rows[0] == null) {
+        res.sendStatus(404);
+      } else {
+        res.send(rows[0]);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
+const deleteUser = (req, res) => {
+  models.user
+    .delete(req.params.id)
+    .then(() => {
+      res.status(201).json({ success: "User deleted successfully" });
+    })
+    .catch((err) => {
+      console.error(err);
+      res
+        .sendStatus(500)
+        .json({ message: "An error occurred while deleting the user" });
+    });
+};
 
 const register = (req, res) => {
   const user = req.body;
@@ -101,9 +130,9 @@ const signUpUser = (req, res) => {
     };
     models.user.findByMatricule(user).then(([rows]) => {
       if (rows.affectedRows === 1) {
-        return res.status(201).json({ success: "User saved" });
+        return res.status(200).json({ success: "User saved" });
       }
-      return res.status(403).json({ error: "une erreur s'est produite" });
+      return res.status(500).json({ error: "une erreur s'est produite" });
     });
   });
 };
@@ -114,4 +143,6 @@ module.exports = {
   signUpUser,
   adminUpdateUser,
   getUsers,
+  deleteUser,
+  getUsersByID,
 };

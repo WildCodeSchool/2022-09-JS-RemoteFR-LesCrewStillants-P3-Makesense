@@ -1,11 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Header.css";
 import { AuthContext } from "../Context/AuthContext";
 
 function Header() {
-  const { userID, userRole, handleUserAuth } = useContext(AuthContext);
-  handleUserAuth();
+  const { userRole, handleUserAuth } = useContext(AuthContext);
+  useEffect(() => {
+    handleUserAuth();
+  }, [userRole]);
 
   const navigate = useNavigate();
 

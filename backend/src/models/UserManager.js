@@ -25,6 +25,13 @@ class UserManager extends AbstractManager {
     );
   }
 
+  userFindByID(id) {
+    return this.connection.query(
+      `select firstname, lastname, DATE_FORMAT(birthday, "%Y-%m-%d") date, user_role, matricule from  ${this.table} where id = ?`,
+      [id]
+    );
+  }
+
   insert(user) {
     return this.connection.query(
       `insert into ${this.table} (firstname, lastname, birthday, user_role, matricule) values (?, ?, ?, ?, ?)`,

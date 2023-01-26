@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import AdminRegister from "@components/AdminRegister";
+import AdminPut from "@components/AdminPut";
 import instance from "../helpers/axios";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -14,17 +16,34 @@ function AccueilAdmin() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
   const [users, setUsers] = useState([]);
+  const [userDeleted, setUserDeleted] = useState(false);
+  const [userAdded, setUserAdded] = useState(false);
+  const [userPut, setUserPut] = useState(false);
 
   useEffect(() => {
     instance
       .get("/users")
       .then((result) => {
         setUsers(result.data);
+        setUserDeleted(false);
+        setUserAdded(false);
+        setUserPut(false);
       })
       .catch((err) => {
         console.error(err);
       });
-  }, []);
+  }, [userDeleted, userAdded, userPut]);
+
+  const handleDelete = (id) => {
+    // eslint-disable-next-line no-alert, no-restricted-globals
+    const isDelete = confirm("supprimer l'utilisateur'?");
+
+    if (isDelete) {
+      instance.delete(`/users/${id}`);
+      setUserDeleted(true);
+    }
+  };
+  // Put User with admin
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
@@ -47,6 +66,11 @@ function AccueilAdmin() {
   const handleOpenModal = () => {
     setShowModal(true);
   };
+  const [showModalPut, setShowModalPut] = useState(false);
+
+  const handleOpenModalPut = () => {
+    setShowModalPut(true);
+  };
 
   return (
     <>
@@ -68,7 +92,12 @@ function AccueilAdmin() {
             <h3> Ajouter un utilisateur </h3>
           </button>
           {showModal && (
-            <AdminRegister showModal={showModal} setShowModal={setShowModal} />
+            <AdminRegister
+              userAdded={userAdded}
+              setUserAdded={setUserAdded}
+              showModal={showModal}
+              setShowModal={setShowModal}
+            />
           )}
           <input
             type="text"
@@ -102,13 +131,24 @@ function AccueilAdmin() {
                 .map((user) => (
                   <div className="Users" key={user.id}>
                     <h3>
-                      {user.firstname} {user.lastname}
+                      {user.lastname} {user.firstname}
                     </h3>
                     <h3>{user.matricule} </h3>
-                    <button type="button" className="greenHover">
-                      Modifier
-                    </button>
-                    <button type="button" className="pinkHover">
+                    <Link to={`/users/${user.id}`}>
+                      {" "}
+                      <button
+                        type="button"
+                        onClick={handleOpenModalPut}
+                        className="green"
+                      >
+                        Modifier
+                      </button>
+                    </Link>
+                    <button
+                      type="button"
+                      className="pinkHover"
+                      onClick={() => handleDelete(user.id)}
+                    >
                       Supprimer
                     </button>
                   </div>

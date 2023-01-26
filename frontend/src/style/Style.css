@@ -92,7 +92,6 @@ button.square {
 }
 
 label {
-  flex-grow: 2;
   color: var(--color-calypso);
   font-size: var(--font-size-s);
   line-height: var(--line-height-m);
