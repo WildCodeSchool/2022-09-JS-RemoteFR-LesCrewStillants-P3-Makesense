@@ -1,8 +1,6 @@
 import Signup from "@components/Signup/Signup";
 import Login from "@components/LoginSignupContainer/Login/Login";
 import { useRef, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 import "./LoginSignupContainer.css";
 
 function LoginSignupContainer() {
@@ -24,14 +22,7 @@ function LoginSignupContainer() {
           <div className="side-div">
             <button type="button" className="pink" onClick={handleClick}>
               {" "}
-              {login ? "S'inscrire" : "Se connecter"}{" "}
-              <FontAwesomeIcon
-                className="ArrowLeft"
-                style={{
-                  color: "white",
-                }}
-                icon={faArrowRightLong}
-              />
+              {login ? "S'inscrire →" : "← Se connecter"}{" "}
             </button>
           </div>
           <Signup />

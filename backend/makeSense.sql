@@ -38,7 +38,7 @@ CREATE TABLE
         details LONGTEXT,
         impact LONGTEXT,
         benefits LONGTEXT,
-        risk LONGTEXT,
+        risk LONGTEXT,    
         date DATETIME DEFAULT NULL,
         statut TINYINT(1),
         user_id INT DEFAULT NULL,
