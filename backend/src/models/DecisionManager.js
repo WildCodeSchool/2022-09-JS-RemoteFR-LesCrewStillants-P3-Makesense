@@ -18,5 +18,9 @@ class DecisionManager extends AbstractManager {
       ]
     );
   }
+
+  getAll() {
+    return this.connection.query(`select * from  ${this.table}`);
+  }
 }
 module.exports = DecisionManager;

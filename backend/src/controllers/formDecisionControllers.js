@@ -40,4 +40,16 @@ const timelinePost = (req, res) => {
     });
 };
 
-module.exports = { decisionPost, timelinePost };
+const decisionGet = (req, res) => {
+  models.decision
+    .findAll()
+    .then(([rows]) => {
+      res.send(rows);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
+module.exports = { decisionPost, timelinePost, decisionGet };

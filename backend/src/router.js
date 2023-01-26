@@ -14,6 +14,7 @@ router.delete("/items/:id", itemControllers.destroy);
 const formDecisionControllers = require("./controllers/formDecisionControllers");
 
 router.post("/decision", formDecisionControllers.decisionPost);
+router.get("/decision", formDecisionControllers.decisionGet);
 
 // Date Timeline
 const formDateDecisionControllers = require("./controllers/formDecisionControllers");
@@ -32,6 +33,9 @@ router.post("/login", userControllers.login);
 const { auth } = require("./middleware/auth");
 
 router.post("/register", auth, validateUser, userControllers.register);
+
+router.put("/users/:id", userControllers.adminUpdateUser);
+router.get("/users", userControllers.getUsers);
 
 // const decisionControllers = require("./controllers/FormDecisionControllers");
 

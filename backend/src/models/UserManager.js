@@ -5,6 +5,12 @@ class UserManager extends AbstractManager {
     super({ table: "user" });
   }
 
+  findAllUsers() {
+    return this.connection.query(
+      `select * from  ${this.table} order by lastname ASC`
+    );
+  }
+
   findByEmail(email) {
     return this.connection.query(
       `select * from ${this.table} where email = ?`,
@@ -42,6 +48,21 @@ class UserManager extends AbstractManager {
         user.user_role,
         user.email,
         user.pw,
+        user.matricule,
+        user.id,
+      ]
+    );
+  }
+
+  adminUpdate(user) {
+    return this.connection.query(
+      `update ${this.table} set firstname = ?, lastname= ?, birthday = ?, user_role = ?, email = ?, matricule = ? where id = ?`,
+      [
+        user.firstname,
+        user.lastname,
+        user.birthday,
+        user.user_role,
+        user.email,
         user.matricule,
         user.id,
       ]

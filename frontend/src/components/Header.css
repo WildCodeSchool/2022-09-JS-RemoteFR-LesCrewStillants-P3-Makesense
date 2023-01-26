@@ -47,10 +47,9 @@ header {
   height: 2.6875rem;
 }
 
-a {
-  color: inherit;
-  text-decoration: inherit;
-  background-color: transparent;
+.header a {
+  color: var(--background-color-secondary-inverse);
+  text-decoration: none;
 }
 
 img {

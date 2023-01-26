@@ -1,13 +1,12 @@
-const { verifyToken } = require("../services/jwt");
+const { decodeToken } = require("../services/jwt");
 
 const auth = (req, res, next) => {
-  const { token } = req.cookies.token;
-
+  const token = req.cookies.token;
   if (!token) {
     return res.status(401).json({ error: "Pas de token" });
   }
   try {
-    const decoded = verifyToken(token);
+    const decoded = decodeToken(token);
     req.user = decoded;
     next();
   } catch (err) {

@@ -29,7 +29,7 @@ svg {
   fill: #fff;
 }
 
-a {
+.footer a {
   color: var(--background-color-base);
   text-decoration: inherit;
   background-color: transparent;

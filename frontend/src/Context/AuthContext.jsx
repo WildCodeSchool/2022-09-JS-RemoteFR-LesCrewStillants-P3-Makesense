@@ -10,9 +10,14 @@ function AuthContextProvider({ children }) {
 
   const handleUserAuth = () => {
     const getDataAuth = localStorage.getItem("token");
-    const decodeToken = jwtDecode(getDataAuth);
-    setUserId(decodeToken.id);
-    setUserRole(decodeToken.user_role);
+
+    if (getDataAuth) {
+      const decodeToken = jwtDecode(getDataAuth);
+      setUserId(decodeToken.id);
+      setUserRole(decodeToken.user_role);
+    } else {
+      console.warn("Not logged");
+    }
   };
   return (
     // eslint-disable-next-line react/jsx-no-constructed-context-values

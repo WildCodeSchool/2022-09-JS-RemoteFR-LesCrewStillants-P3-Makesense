@@ -28,8 +28,14 @@ export default function AdminRegister({ setShowModal }) {
         {" "}
         X
       </button>
-      <h1>Ajouter les informations d'un nouvel utilisateur</h1>
-      <form htmlFor="signup" onSubmit={handleRegister}>
+      <h1 className="adminRegisterTitle">
+        Ajouter les informations d'un nouvel utilisateur
+      </h1>
+      <form
+        htmlFor="signup"
+        className="adminRegisterForm"
+        onSubmit={handleRegister}
+      >
         <input
           type="text"
           name="firstname"

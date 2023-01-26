@@ -127,14 +127,14 @@ function Form() {
           <button
             type="button"
             onClick={goDecision}
-            className={`onglets ${stateOnglets === 1 ? "active" : ""}`}
+            className={`onglets ${stateOnglets === 1 ? "green" : ""}`}
           >
             Décision
           </button>
           <button
             type="button"
             onClick={goDate}
-            className={`onglets ${stateOnglets === 2 ? "active" : ""}`}
+            className={`onglets ${stateOnglets === 2 ? "green" : ""}`}
           >
             Date
           </button>
@@ -143,11 +143,8 @@ function Form() {
           {stateOnglets === 1 ? (
             <div className="contenu Decision">
               <form onSubmit={handleSubmit}>
-                <label className="Label">
-                  <p className="labelF">
-                    {" "}
-                    Insérez un titre pour votre décision{" "}
-                  </p>
+                <label>
+                  <h1> Insérez un titre pour votre décision </h1>
                   <input
                     className="TitleD"
                     type="text"
