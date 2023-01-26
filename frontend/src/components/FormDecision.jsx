@@ -38,18 +38,17 @@ function Form() {
   // const [decision, setDecision] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.warn(data);
-    console.warn(title);
+    console.warn(nativeDate[1]);
     if (!title) {
-      toast.dark("Attention vous devez insérer un titre ❌");
+      toast.warn("Attention vous devez insérer un titre ❌");
     } else if (!data[0]?.data) {
-      toast.dark("Attention le champ 'Description de la décision' est vide ❌");
+      toast.warn("Attention le champ 'Description de la décision' est vide ❌");
     } else if (!data[1]?.data) {
-      toast.dark("Attention le champ 'Detail' est vide ❌");
+      toast.warn("Attention le champ 'Detail' est vide ❌");
     } else if (!data[2]?.data) {
-      toast.dark("Attention le champ 'Impact' est vide ❌");
+      toast.warn("Attention le champ 'Impact' est vide ❌");
     } else if (!data[3]?.data) {
-      toast.dark("Attention le champ 'Bénéfice' est vide ❌");
+      toast.warn("Attention le champ 'Bénéfice' est vide ❌");
     } else if (!data[4]?.data) {
       toast.warn("Attention le champ 'Risque' est vide ❌");
     } else {
@@ -70,6 +69,17 @@ function Form() {
       });
     }
   };
+
+  /*
+   * récuperer les dates par id
+   * poster les dates
+   * faire en sorte que le toastify fonctionne aussi avec les dates (else if toussa toussa)
+   * faire le chemin dans formdecisioncontrollers
+   *
+   *
+   *
+   *
+   */
 
   // création d'un state pour l'affichage des onglets
   const [stateOnglets, setStateOnglets] = useState(1);
@@ -131,7 +141,7 @@ function Form() {
         </div>
         <div className="containerForm">
           {stateOnglets === 1 ? (
-            <p className="contenu Decision">
+            <div className="contenu Decision">
               <form onSubmit={handleSubmit}>
                 <label className="Label">
                   <p className="labelF">
@@ -158,19 +168,18 @@ function Form() {
                 })}
                 <br />
               </form>
-            </p>
+            </div>
           ) : (
-            <p className="containerDate">
+            <div className="containerDate">
               {stepDeadlines.map((stepDeadlineH2, id) => (
                 <DateStep
                   key={stepDeadlineH2}
                   id={id}
                   title={stepDeadlineH2}
-                  value={nativeDate[id]?.date}
-                  // date={date[id]?.setDate}
+                  dateValue={nativeDate[id]?.title}
                 />
               ))}
-            </p>
+            </div>
           )}
           <button
             className="ButtonDecision"
