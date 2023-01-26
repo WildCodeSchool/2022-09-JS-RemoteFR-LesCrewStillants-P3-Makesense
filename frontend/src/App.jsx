@@ -11,15 +11,6 @@ import "./App.css";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/decision" element={<Decision />} />
-        <Route path="/accueilsalarie" element={<AccueilSalarie />} />
-        <Route path="/accueiladmin" element={<AccueilAdmin />} />
-        <Route path="/decisionfinale" element={<DecisionFinale />} />
-      </Routes>
-    </BrowserRouter>
     <AuthContextProvider>
       <BrowserRouter>
         <Routes>
@@ -29,6 +20,7 @@ function App() {
           <Route path="/accueil-admin" element={<AccueilAdmin />} />
           <Route path="/users/:id" element={<AdminPut />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/decisionfinale" element={<DecisionFinale />} />
         </Routes>
       </BrowserRouter>
     </AuthContextProvider>
