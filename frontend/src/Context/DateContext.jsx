@@ -16,7 +16,7 @@ function DateContextProvider({ children }) {
   }, [isUpdated]);
 
   const handleDateChange = (e) => {
-    const idForm = e.target.id.split("-")[1];
+    const idForm = e.target.id;
     decisionDate[idForm] = {
       title: new Date(e.target.value).toLocaleDateString("fr-FR"),
       cardTitle: e.target.name,

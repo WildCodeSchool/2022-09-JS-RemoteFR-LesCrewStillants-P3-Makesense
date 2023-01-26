@@ -22,7 +22,13 @@ const decisionPost = (req, res) => {
 };
 
 const timelinePost = (req, res) => {
-  const timeline = req.body;
+  const timeline = {
+    start: req.body.nativeDate[0].date,
+    dl_1: req.body.nativeDate[1].date,
+    first_decision: req.body.nativeDate[2].date,
+    dl_2: req.body.nativeDate[3].date,
+    final_decision: req.body.nativeDate[4].date,
+  };
   models.timeline
     .insert(timeline)
     .then(() => {
