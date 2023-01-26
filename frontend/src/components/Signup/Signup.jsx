@@ -21,7 +21,7 @@ function Signup() {
   return (
     <div className="signup">
       <h1>S'inscrire</h1>
-      <form htmlFor="signup" onSubmit={handleRegister}>
+      <form className="signupForm" htmlFor="signup" onSubmit={handleRegister}>
         <label>
           {" "}
           Email
