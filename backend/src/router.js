@@ -14,7 +14,8 @@ router.delete("/items/:id", itemControllers.destroy);
 const formDecisionControllers = require("./controllers/formDecisionControllers");
 
 router.post("/decision", formDecisionControllers.decisionPost);
-router.get("/decision", formDecisionControllers.decisionGet);
+router.get("/decisions", formDecisionControllers.decisionGet);
+router.get("/decisions/:id", formDecisionControllers.decisionGetByID);
 
 // Date Timeline
 const formDateDecisionControllers = require("./controllers/formDecisionControllers");
@@ -28,16 +29,15 @@ const userControllers = require("./controllers/userControllers");
 // USERS PUBLIQUES
 router.post("/signup", userControllers.signUpUser);
 router.post("/login", userControllers.login);
-router.delete("/users/:id", userControllers.deleteUser);
 
 // USERS PRIVEES
 const { auth } = require("./middleware/auth");
 
 router.post("/register", auth, validateUser, userControllers.register);
-
-router.put("/users/:id", userControllers.adminUpdateUser);
-router.get("/users", userControllers.getUsers);
-router.get("/users/:id", userControllers.getUsersByID);
+router.get("/users", auth, userControllers.getUsers);
+router.get("/users/:id", auth, userControllers.getUsersByID);
+router.put("/users/:id", auth, userControllers.adminUpdateUser);
+router.delete("/users/:id", userControllers.deleteUser);
 
 // const decisionControllers = require("./controllers/FormDecisionControllers");
 

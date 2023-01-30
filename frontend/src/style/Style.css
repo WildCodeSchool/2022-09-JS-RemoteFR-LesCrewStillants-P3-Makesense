@@ -190,6 +190,7 @@ a {
   color: var(--text-color-link);
   font-family: var(--font-text);
   font-size: var(--font-space-xl);
+  text-decoration: none;
 }
 p {
   text-align: left;
@@ -216,7 +217,6 @@ p {
   padding-left: var(--space-m);
   padding-right: var(--space-m);
   background: var(--background-color-soft);
-
 }
 
 header {

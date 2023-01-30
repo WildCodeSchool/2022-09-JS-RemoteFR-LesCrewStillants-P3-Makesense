@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import AdminRegister from "@components/AdminRegister";
-import AdminPut from "@components/AdminPut";
 import instance from "../helpers/axios";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -65,11 +64,6 @@ function AccueilAdmin() {
 
   const handleOpenModal = () => {
     setShowModal(true);
-  };
-  const [showModalPut, setShowModalPut] = useState(false);
-
-  const handleOpenModalPut = () => {
-    setShowModalPut(true);
   };
 
   return (
@@ -136,11 +130,7 @@ function AccueilAdmin() {
                     <h3>{user.matricule} </h3>
                     <Link to={`/users/${user.id}`}>
                       {" "}
-                      <button
-                        type="button"
-                        onClick={handleOpenModalPut}
-                        className="green"
-                      >
+                      <button type="button" className="green">
                         Modifier
                       </button>
                     </Link>
