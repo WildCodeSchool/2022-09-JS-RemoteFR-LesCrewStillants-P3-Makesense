@@ -52,7 +52,7 @@ header {
   text-decoration: none;
 }
 
-img {
+img.header {
   max-width: 100%;
   height: auto;
   display: block;

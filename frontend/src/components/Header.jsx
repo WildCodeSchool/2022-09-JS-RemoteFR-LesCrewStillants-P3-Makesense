@@ -34,6 +34,7 @@ function Header() {
             title="Go back to homepage"
           >
             <img
+              className="header"
               src="https://france.makesense.org/wp-content/uploads/sites/6/2020/09/logo-makesense-dark.png"
               alt="makesense"
             />

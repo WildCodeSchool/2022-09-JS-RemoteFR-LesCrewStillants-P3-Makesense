@@ -1,6 +1,8 @@
+/* eslint-disable camelcase */
 import { useState, useContext } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { AuthContext } from "../Context/AuthContext";
 import Footer from "./Footer";
 import Editor from "./RTE";
 import Timeline from "./Timeline";
@@ -31,6 +33,9 @@ function Form() {
   // const { date } = useContext(DateContext);
   const { nativeDate } = useContext(DateContext);
 
+  const { userID } = useContext(AuthContext);
+  const user_id = parseInt(userID, 10);
+
   const [title, setTitle] = useState("");
   // eslint-disable-next-line no-unused-vars
   const [date, setDate] = useState();
@@ -53,10 +58,10 @@ function Form() {
       toast.warn("Attention le champ 'Risque' est vide ❌");
     } else {
       instance
-        .post("/decision", { title, data })
+        .post("/decision", { title, data, user_id })
         .then((res) => console.warn(res.data))
         .catch((err) => console.warn(err));
-      toast("Décision envoyer avec succés!", {
+      toast("Décision envoyée avec succès!", {
         position: "bottom-right",
         type: "success",
         autoClose: 5000,

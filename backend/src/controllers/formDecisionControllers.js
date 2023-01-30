@@ -1,7 +1,8 @@
 const models = require("../models");
 
 const decisionPost = (req, res) => {
-  const { title } = req.body;
+  // eslint-disable-next-line camelcase
+  const { title, user_id } = req.body;
   const decision = {
     desc_start: req.body.data[0].data,
     details: req.body.data[1].data,
@@ -11,7 +12,8 @@ const decisionPost = (req, res) => {
   };
 
   models.decision
-    .insert({ title, decision })
+    // eslint-disable-next-line camelcase
+    .insert({ title, decision, user_id })
     .then(() => {
       res.status(201).json({ success: "Decision saved" });
     })
@@ -51,5 +53,20 @@ const decisionGet = (req, res) => {
       res.sendStatus(500);
     });
 };
+const decisionGetByID = (req, res) => {
+  models.decision
+    .find(req.params.id)
+    .then(([rows]) => {
+      if (rows[0] == null) {
+        res.sendStatus(404);
+      } else {
+        res.send(rows[0]);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
 
-module.exports = { decisionPost, timelinePost, decisionGet };
+module.exports = { decisionPost, timelinePost, decisionGet, decisionGetByID };

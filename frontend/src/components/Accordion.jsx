@@ -1,37 +1,111 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable react/prop-types */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import ReactHtmlParser from "html-react-parser";
+import instance from "../helpers/axios";
 
-function Accordion({ title }) {
-  const decisions = [
-    {
-      id: "4",
-      title: "Titre",
-      desc_final: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      details: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-      status: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      user_id: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    },
-  ];
+function Accordion() {
+  const { id } = useParams();
+  const [decision, setDecision] = useState("");
 
-  const [active, setActive] = useState(false);
-  const handleToggle = () => {
-    setActive(!active);
+  useEffect(() => {
+    instance
+      .get(`/decisions/${id}`)
+      .then((result) => {
+        setDecision(result.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, [id]);
+
+  const [active, setActive] = useState([]);
+
+  const handleToggle = (index) => {
+    const newActive = [...active];
+    newActive[index] = !newActive[index];
+    setActive(newActive);
   };
 
   return (
-    <div className="accordions">
-      {decisions.map((decision) => (
-        <div key={decision.id}>
-          <div className={`accordion ${active && "active"}`}>
-            <div className="accordion__title" onClick={handleToggle}>
-              {title} <div className="accordion__icon" />
-            </div>
-            <div className="accordion__content">{decision.desc_final}</div>
-          </div>
+    <div className="accordion">
+      <h1> Décision : {decision.title}</h1>
+      <div className={`accordion ${active[0] && "active"}`}>
+        <div
+          className="accordion__title"
+          aria-hidden="true"
+          onClick={() => handleToggle(0)}
+        >
+          <h2> Description </h2> <span className="accordion__icon" />
         </div>
-      ))}
+        <div className="accordion__content">
+          {ReactHtmlParser(decision.desc_start ? decision.desc_start : "")}
+        </div>
+      </div>
+
+      <div className={`accordion ${active[1] && "active"}`}>
+        <div
+          className="accordion__title"
+          aria-hidden="true"
+          onClick={() => handleToggle(1)}
+        >
+          <h2> Détails</h2> <span className="accordion__icon" />
+        </div>
+        <div className="accordion__content">
+          {ReactHtmlParser(decision.details ? decision.details : "")}
+        </div>
+      </div>
+
+      <div className={`accordion ${active[2] && "active"}`}>
+        <div
+          className="accordion__title"
+          aria-hidden="true"
+          onClick={() => handleToggle(2)}
+        >
+          <h2> Impact sur l'organisation </h2>{" "}
+          <span className="accordion__icon" />
+        </div>
+        <div className="accordion__content">
+          {ReactHtmlParser(decision.impact ? decision.impact : "")}
+        </div>
+      </div>
+      <div className={`accordion ${active[3] && "active"}`}>
+        <div
+          className="accordion__title"
+          aria-hidden="true"
+          onClick={() => handleToggle(3)}
+        >
+          <h2> Bénéfices </h2> <span className="accordion__icon" />
+        </div>
+        <div className="accordion__content">
+          {ReactHtmlParser(decision.benefits ? decision.benefits : "")}
+        </div>
+      </div>
+
+      <div className={`accordion ${active[4] && "active"}`}>
+        <div
+          className="accordion__title"
+          aria-hidden="true"
+          onClick={() => handleToggle(4)}
+        >
+          <h2> Risques </h2> <span className="accordion__icon" />
+        </div>
+        <div className="accordion__content">
+          {ReactHtmlParser(decision.risk ? decision.risk : "")}
+        </div>
+      </div>
+
+      <div className={`accordion ${active[5] && "active"}`}>
+        <div
+          className="accordion__title"
+          aria-hidden="true"
+          onClick={() => handleToggle(5)}
+        >
+          <h2> Commentaires </h2> <span className="accordion__icon" />
+        </div>
+        <div className="accordion__content">
+          {/* Ici il faut afficher le resultat de getAll comments */}
+        </div>
+      </div>
     </div>
   );
 }
