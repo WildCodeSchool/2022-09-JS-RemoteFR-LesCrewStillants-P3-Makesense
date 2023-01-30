@@ -1,5 +1,5 @@
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import AdminPut from "@components/AdminPut";
+import AdminPut from "./components/AdminPut";
 import AccueilAdmin from "./pages/AccueilAdmin";
 import Home from "./pages/Home";
 import Decision from "./pages/PriseDecision";
@@ -17,8 +17,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/accueil-salarie" element={<AccueilSalarie />} />
           <Route path="/accueil-admin" element={<AccueilAdmin />} />
-          <Route path="/decisions" element={<Decision />} />
-          <Route path="/decisions/:id" element={<DecisionDetails />} />
+          <Route path="/decision" element={<Decision />} />
+          <Route path="/decision/:id" element={<DecisionDetails />} />
           <Route path="/users/:id" element={<AdminPut />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

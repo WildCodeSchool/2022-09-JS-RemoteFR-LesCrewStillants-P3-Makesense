@@ -1,7 +1,7 @@
 import { Player } from "@lottiefiles/react-lottie-player";
-import AccueilHeader from "@components/AccueilHeader";
-import Footer from "@components/Footer";
 import { useNavigate } from "react-router-dom";
+import AccueilHeader from "@components/AccueilHeader";
+import Footer from "../components/Footer";
 import notFound from "../style/lottie/notFound.json";
 import "../style/NotFound.css";
 

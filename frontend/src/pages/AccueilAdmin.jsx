@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import AdminRegister from "@components/AdminRegister";
+import AdminRegister from "../components/AdminRegister";
 import instance from "../helpers/axios";
 import Header from "../components/Header";
 import Footer from "../components/Footer";

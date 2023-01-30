@@ -17,6 +17,31 @@ function Accordion() {
         console.error(err);
       });
   }, [id]);
+  const [commentaire, setCommentaire] = useState();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    useEffect(() => {
+      instance
+        .post(`/commentaire`)
+        .then((result) => {
+          setCommentaire(result.data);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }, [commentaire]);
+    useEffect(() => {
+      instance
+        .get(`/commentaire`)
+        .then((result) => {
+          setCommentaire(result.data);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }, [commentaire]);
+  };
+  console.warn(commentaire);
 
   const [active, setActive] = useState([]);
 
@@ -106,6 +131,19 @@ function Accordion() {
           {/* Ici il faut afficher le resultat de getAll comments */}
         </div>
       </div>
+      <h2>Ajouter un commentaire</h2>
+      <textarea
+        name="commentaire"
+        placeholder="Ecrivez votre commentaire ici"
+        value={commentaire}
+        onChange={(e) => setCommentaire(e.target.value)}
+        cols="30"
+        rows="10"
+      />
+      <br />
+      <button type="button" value="Publier" onClick={handleSubmit}>
+        Publier
+      </button>
     </div>
   );
 }

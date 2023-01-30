@@ -14,8 +14,15 @@ router.delete("/items/:id", itemControllers.destroy);
 const formDecisionControllers = require("./controllers/formDecisionControllers");
 
 router.post("/decision", formDecisionControllers.decisionPost);
-router.get("/decisions", formDecisionControllers.decisionGet);
-router.get("/decisions/:id", formDecisionControllers.decisionGetByID);
+router.get("/decision", formDecisionControllers.decisionGet);
+router.get("/decision/:id", formDecisionControllers.decisionGetByID);
+
+// Commentaire
+
+const commentaireControllers = require("./controllers/commentaireControllers");
+
+router.post("/commentaire", commentaireControllers.commentairePost);
+router.get("/commentaire", commentaireControllers.commentaireGet);
 
 // Date Timeline
 const formDateDecisionControllers = require("./controllers/formDecisionControllers");
