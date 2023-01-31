@@ -68,6 +68,19 @@ const adminUpdateUser = (req, res) => {
       res.sendStatus(500);
     });
 };
+const userUpdateUser = (req, res) => {
+  const user = req.body;
+  const { id } = req.params;
+  models.user
+    .userUpdateUser(user, { id })
+    .then(() => {
+      res.status(201).json({ success: "User modified" });
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
 
 const login = async (req, res) => {
   // Ici, je récupère les infos transmisent par le frontend.
@@ -145,4 +158,5 @@ module.exports = {
   getUsers,
   deleteUser,
   getUsersByID,
+  userUpdateUser,
 };

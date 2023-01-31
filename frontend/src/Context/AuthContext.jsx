@@ -1,5 +1,5 @@
 import jwtDecode from "jwt-decode";
-import { createContext, useState } from "react";
+import { createContext, useState, useMemo } from "react";
 
 const AuthContext = createContext();
 
@@ -19,11 +19,19 @@ function AuthContextProvider({ children }) {
       console.warn("Not logged");
     }
   };
+
+  const value = useMemo(
+    () => ({
+      userID,
+      userRole,
+      handleUserAuth,
+    }),
+    [userID, userRole, handleUserAuth]
+  );
+
   return (
     // eslint-disable-next-line react/jsx-no-constructed-context-values
-    <AuthContext.Provider value={{ userID, userRole, handleUserAuth }}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
   );
 }
 
