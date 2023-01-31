@@ -40,7 +40,7 @@ CREATE TABLE
         benefits LONGTEXT,
         risk LONGTEXT,    
         date DATETIME DEFAULT NULL,
-        statut TINYINT(1),
+        statut VARCHAR(255),
         user_id INT DEFAULT NULL,
         timeline_id INT,
         CONSTRAINT fk_decision_user FOREIGN KEY (user_id) REFERENCES user(id),

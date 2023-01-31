@@ -87,14 +87,6 @@ export default function AdminPut({ setUserPut }) {
           onChange={handleAdminChanges}
           required
         />
-        <input
-          type="text"
-          name="user_role"
-          placeholder="role"
-          value={initialUser.user_role || ""}
-          onChange={handleAdminChanges}
-        />
-
         <label>
           <Switch
             name="user_role"
@@ -103,7 +95,7 @@ export default function AdminPut({ setUserPut }) {
             checked={role === "admin"}
             value={role}
           />
-          {role === "admin" ? "Salarié" : "Admin"}
+          {role === "admin" ? "Admin" : "Salarié"}
         </label>
 
         <input

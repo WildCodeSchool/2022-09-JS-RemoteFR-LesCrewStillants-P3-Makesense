@@ -2,7 +2,7 @@ const models = require("../models");
 
 const decisionPost = (req, res) => {
   // eslint-disable-next-line camelcase
-  const { title, user_id } = req.body;
+  const { title, user_id, statut } = req.body;
   const decision = {
     desc_start: req.body.data[0].data,
     details: req.body.data[1].data,
@@ -13,7 +13,7 @@ const decisionPost = (req, res) => {
 
   models.decision
     // eslint-disable-next-line camelcase
-    .insert({ title, decision, user_id })
+    .insert({ title, decision, user_id, statut })
     .then(() => {
       res.status(201).json({ success: "Decision saved" });
     })
@@ -53,6 +53,17 @@ const decisionGet = (req, res) => {
       res.sendStatus(500);
     });
 };
+const decisionAndUserGet = (req, res) => {
+  models.decision
+    .getAllDecisionAndUser()
+    .then(([rows]) => {
+      res.send(rows);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
 const decisionGetByID = (req, res) => {
   models.decision
     .find(req.params.id)
@@ -69,4 +80,78 @@ const decisionGetByID = (req, res) => {
     });
 };
 
-module.exports = { decisionPost, timelinePost, decisionGet, decisionGetByID };
+const decisionGetByUserID = (req, res) => {
+  const { id } = req.params;
+
+  models.decision
+    .getDecisionByUser(id)
+    .then(([rows]) => {
+      res.send(rows);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+const deleteDecisionByID = (req, res) => {
+  models.decision
+    .delete(req.params.id)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.sendStatus(404);
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+const putDecisionByID = (req, res) => {
+  models.decision
+    .putDecisionStatut(req.params.id)
+    .then(() => {
+      res.status(201).json({ success: "Decision archived" });
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
+const decisionsEnCours = (req, res) => {
+  models.decision
+    .countDecisionEnCours()
+    .then(([rows]) => {
+      res.send(rows);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+const decisionsPrises = (req, res) => {
+  models.decision
+    .countDecisionPrises()
+    .then(([rows]) => {
+      res.send(rows);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
+module.exports = {
+  decisionPost,
+  timelinePost,
+  decisionGet,
+  decisionGetByID,
+  decisionGetByUserID,
+  decisionAndUserGet,
+  deleteDecisionByID,
+  putDecisionByID,
+  decisionsEnCours,
+  decisionsPrises,
+};
