@@ -1,22 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import ReactHtmlParser from "html-react-parser";
+import { AuthContext } from "../Context/AuthContext";
 import instance from "../helpers/axios";
 
 function Accordion() {
   const { id } = useParams();
   const [decision, setDecision] = useState("");
+  const [commentPosted, setCommentPosted] = useState(false);
 
   useEffect(() => {
     instance
       .get(`/decisions/${id}`)
       .then((result) => {
         setDecision(result.data);
+        setCommentPosted(false);
       })
       .catch((err) => {
         console.error(err);
       });
-  }, [id]);
+  }, [id, commentPosted]);
 
   const [active, setActive] = useState([]);
 
@@ -26,6 +29,43 @@ function Accordion() {
     setActive(newActive);
   };
 
+  // eslint-disable-next-line camelcase
+  const decision_id = +id;
+
+  const { userID } = useContext(AuthContext);
+  // eslint-disable-next-line camelcase
+  const user_id = +userID;
+
+  const date = new Date().toISOString().slice(0, 10);
+
+  const [comment, setComment] = useState([]);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.warn(comment);
+    instance
+      // eslint-disable-next-line camelcase
+      .post(`/comment`, { comment, date, user_id, decision_id })
+      .then((result) => {
+        setComment(result.data);
+        setCommentPosted(true);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  const [allComments, setAllComments] = useState([]);
+
+  useEffect(() => {
+    instance
+      .get(`/comments/${id}`)
+      .then((result) => {
+        setAllComments(result.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
   return (
     <div className="accordion">
       <h1> Décision : {decision.title}</h1>
@@ -103,7 +143,27 @@ function Accordion() {
           <h2> Commentaires </h2> <span className="accordion__icon" />
         </div>
         <div className="accordion__content">
-          {/* Ici il faut afficher le resultat de getAll comments */}
+          {allComments.map((comments) => (
+            <div key={comments.id}>
+              <h3>
+                {comments.firstname} {comments.lastname}, le {comments.date} :
+              </h3>
+              <p>{comments.comment}</p>
+            </div>
+          ))}
+          <h2>Ajouter un commentaire</h2>
+          <textarea
+            name="comment"
+            placeholder="Ecrivez votre comment ici"
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+            cols="30"
+            rows="10"
+          />{" "}
+          <br />
+          <button type="button" value="Publier" onClick={handleSubmit}>
+            Publier
+          </button>
         </div>
       </div>
     </div>
