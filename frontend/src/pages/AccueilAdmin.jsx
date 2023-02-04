@@ -32,7 +32,6 @@ function AccueilAdmin() {
         console.error(err);
       });
   }, [userDeleted, userAdded, userPut]);
-
   const handleDelete = (id) => {
     // eslint-disable-next-line no-alert, no-restricted-globals
     const isDelete = confirm("supprimer l'utilisateur'?");
@@ -73,12 +72,12 @@ function AccueilAdmin() {
         <div className="StatsAdmin">
           <h1>Décisions Prises</h1>
           <p>
-            Ce mois-ci
-            <span> Le mois dernier </span>
+            En cours
+            <span>Prises </span>
           </p>
           <p>
-            <span className="chiffreDecision">12</span>
-            <span className="chiffreDecision">5</span>
+            <span className="chiffreDecision">1</span>
+            <span className="chiffreDecision">?</span>
           </p>
         </div>
         <div className="ContainerAdmin">

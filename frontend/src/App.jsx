@@ -1,6 +1,7 @@
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import AdminPut from "./components/AdminPut";
 import AccueilAdmin from "./pages/AccueilAdmin";
+import Profil from "./pages/Profil";
 import Home from "./pages/Home";
 import Decision from "./pages/PriseDecision";
 import AccueilSalarie from "./pages/AccueilSalarie";
@@ -20,6 +21,7 @@ function App() {
           <Route path="/decision" element={<Decision />} />
           <Route path="/decision/:id" element={<DecisionDetails />} />
           <Route path="/users/:id" element={<AdminPut />} />
+          <Route path="/profil" element={<Profil />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

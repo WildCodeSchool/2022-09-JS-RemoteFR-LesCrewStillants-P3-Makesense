@@ -27,7 +27,7 @@ class UserManager extends AbstractManager {
 
   userFindByID(id) {
     return this.connection.query(
-      `select firstname, lastname, DATE_FORMAT(birthday, "%Y-%m-%d") date, user_role, matricule from  ${this.table} where id = ?`,
+      `select firstname, lastname, DATE_FORMAT(birthday, "%Y-%m-%d") date, user_role, matricule, email from  ${this.table} where id = ?`,
       [id]
     );
   }
@@ -73,6 +73,13 @@ class UserManager extends AbstractManager {
         user.matricule,
         user.id,
       ]
+    );
+  }
+
+  userUpdateUser(user, { id }) {
+    return this.connection.query(
+      `update ${this.table} set firstname = ?, lastname= ?, birthday= ?, email = ? where id = ?`,
+      [user.firstname, user.lastname, user.date, user.email, id]
     );
   }
 }

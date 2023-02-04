@@ -51,35 +51,42 @@ export default function AdminRegister({ setShowModal, setUserAdded }) {
         className="adminRegisterForm"
         onSubmit={handleRegister}
       >
-        <input
-          type="text"
-          name="firstname"
-          placeholder="Prénom"
-          onChange={handleChangeRegister}
-          required
-        />
-        <input
-          type="text"
-          name="lastname"
-          placeholder="Nom"
-          onChange={handleChangeRegister}
-          required
-        />
-        <input
-          type="date"
-          data-date-format="YYY MM JJ"
-          name="birthday"
-          placeholder="AAAA/MM/JJ"
-          onChange={handleChangeRegister}
-          required
-        />
-        <input
-          type="text"
-          name="user_role"
-          placeholder="role"
-          onChange={handleChangeRegister}
-        />
         <label>
+          Prénom
+          <input
+            type="text"
+            name="firstname"
+            placeholder="Prénom"
+            onChange={handleChangeRegister}
+            required
+          />
+        </label>
+        <label>
+          {" "}
+          Nom
+          <input
+            type="text"
+            name="lastname"
+            placeholder="Nom"
+            onChange={handleChangeRegister}
+            required
+          />
+        </label>
+        <label>
+          {" "}
+          Date de naissance
+          <input
+            type="date"
+            data-date-format="YYY MM JJ"
+            name="birthday"
+            placeholder="AAAA/MM/JJ"
+            onChange={handleChangeRegister}
+            required
+          />{" "}
+        </label>
+        <label>
+          {" "}
+          Role
           <Switch
             name="user_role"
             onClick={handleChangeRegister}
@@ -87,15 +94,19 @@ export default function AdminRegister({ setShowModal, setUserAdded }) {
             checked={role === "admin"}
             value={role}
           />
-          {role === "admin" ? "Salarié" : "Admin"}
+          {role === "admin" ? "Admin" : "Salarié"}
         </label>
-        <input
-          type="text"
-          name="matricule"
-          placeholder="Matricule"
-          onChange={handleChangeRegister}
-          required
-        />
+        <label>
+          {" "}
+          Matricule
+          <input
+            type="text"
+            name="matricule"
+            placeholder="Matricule"
+            onChange={handleChangeRegister}
+            required
+          />
+        </label>
         <button type="submit">Ajouter</button>
       </form>
     </div>

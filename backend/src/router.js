@@ -16,6 +16,12 @@ const formDecisionControllers = require("./controllers/formDecisionControllers")
 router.post("/decision", formDecisionControllers.decisionPost);
 router.get("/decision", formDecisionControllers.decisionGet);
 router.get("/decision/:id", formDecisionControllers.decisionGetByID);
+router.get("/mes-decisions/:id", formDecisionControllers.decisionGetByUserID);
+router.get("/decisions-users", formDecisionControllers.decisionAndUserGet);
+router.get("/decisions-en-cours", formDecisionControllers.decisionsEnCours);
+router.get("/decisions-prises", formDecisionControllers.decisionsPrises);
+router.delete("/decision/:id", formDecisionControllers.deleteDecisionByID);
+router.put("/decision/:id", formDecisionControllers.putDecisionByID);
 
 // Commentaire
 
@@ -40,14 +46,11 @@ router.post("/login", userControllers.login);
 // USERS PRIVEES
 const { auth } = require("./middleware/auth");
 
-router.post("/register", auth, validateUser, userControllers.register);
+router.post("/register", validateUser, userControllers.register);
 router.get("/users", auth, userControllers.getUsers);
 router.get("/users/:id", auth, userControllers.getUsersByID);
-router.put("/users/:id", auth, userControllers.adminUpdateUser);
+router.put("/users/:id", userControllers.adminUpdateUser);
+router.put("/user/:id", userControllers.userUpdateUser);
 router.delete("/users/:id", userControllers.deleteUser);
-
-// const decisionControllers = require("./controllers/FormDecisionControllers");
-
-// const commentControllers = require("./controllers/commentControllers");
 
 module.exports = router;

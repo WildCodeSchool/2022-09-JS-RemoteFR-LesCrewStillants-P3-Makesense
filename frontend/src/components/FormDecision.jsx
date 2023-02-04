@@ -2,6 +2,7 @@
 import { useState, useContext } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Switch } from "@mui/material";
 import { AuthContext } from "../Context/AuthContext";
 import Footer from "./Footer";
 import Editor from "./RTE";
@@ -40,6 +41,13 @@ function Form() {
   // eslint-disable-next-line no-unused-vars
   const [date, setDate] = useState();
 
+  // state du switch pour le statut de la décision
+  const [statut, setStatut] = useState("En cours");
+
+  const handleChangeStatut = (e) => {
+    setStatut(e.target.checked ? "Terminée" : "En cours");
+  };
+
   // const [decision, setDecision] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -58,7 +66,7 @@ function Form() {
       toast.warn("Attention le champ 'Risque' est vide ❌");
     } else {
       instance
-        .post("/decision", { title, data, user_id })
+        .post("/decision", { title, data, user_id, statut })
         .then((res) => console.warn(res.data))
         .catch((err) => console.warn(err));
       toast("Décision envoyée avec succès!", {
@@ -183,6 +191,15 @@ function Form() {
               ))}
             </div>
           )}
+          <label>
+            <Switch
+              name="statut"
+              onChange={handleChangeStatut}
+              onClick={(e) => setStatut(e.target.value)}
+              checked={statut === "Terminée"}
+            />
+            {statut === "Terminée" ? "Terminée" : "En Cours"}
+          </label>
           <button
             className="ButtonDecision"
             type="submit"

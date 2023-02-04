@@ -46,7 +46,7 @@ function Header() {
                   id="menu-item-1560"
                   className="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1560 menu-item-depth-0"
                 >
-                  <Link to="/decision">
+                  <Link to="/decisions">
                     Nouvelle décision
                     <span className="menu-item-bean" aria-hidden="true" />
                   </Link>
