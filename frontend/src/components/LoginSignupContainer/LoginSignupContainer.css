@@ -2,12 +2,12 @@
   display: grid;
   grid-template-columns: 70% 30% 70%;
   border-radius: 20px;
-  margin-top: 7.5rem;
   overflow: hidden;
   transition: 0.3s linear;
   box-shadow: 0px 0px 10px rgb(140, 136, 136);
   margin-right: 3em;
   align-self: flex-end;
+  z-index: 1;
 }
 
 .login-signup-container.active {
@@ -29,12 +29,13 @@
 }
 
 .decoimg {
-  width: 45%;
+  top: 35%;
+  right: 60%;
+  width: 35%;
   border-radius: 95px;
   justify-content: flex-end;
   position: absolute;
-  margin-top: 13%;
-  margin-left: 3em;
+  z-index: 0;
 }
 
 .decologo {
@@ -44,35 +45,14 @@
   margin-left: 4em;
 }
 
-.decovoiderose {
-  display: flex;
-  width: 10vh;
-  left: 20%;
-  margin-top: 5.2rem;
-  position: absolute;
-}
-.decovoiderose2 {
-  display: flex;
-  width: 10vh;
-  margin-top: 25rem;
-  margin-left: 40%;
-  position: absolute;
-}
-
-.decovoidebleu {
-  position: absolute;
-  display: flex;
-  margin-left: 2%;
-  margin-top: 40%;
-  width: 15vh;
-}
-.decovoidebleu2 {
-  position: absolute;
-  display: flex;
-  margin-left: 32rem;
-  width: 5vh;
-}
-
 .DecoSignIn {
   margin-left: 1rem;
+}
+
+.blueSmallBean {
+  margin-left: -10%;
+}
+
+.orangeSmallBean {
+  margin-left: -10%;
 }

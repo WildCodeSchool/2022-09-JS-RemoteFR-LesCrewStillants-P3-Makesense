@@ -12,8 +12,8 @@
 .Home {
   display: flex;
   flex-direction: column-reverse;
-  flex-wrap: wrap;
 }
+
 .AccueilAdmin {
   background-color: var(--color-neutral-95);
 }

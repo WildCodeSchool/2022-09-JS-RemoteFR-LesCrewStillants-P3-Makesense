@@ -95,7 +95,7 @@ export default function AdminPut({ setUserPut }) {
             checked={role === "admin"}
             value={role}
           />
-          {role === "admin" ? "Admin" : "Salarié"}
+          {role === "admin" ? "Salarié" : "Admin"}
         </label>
 
         <input

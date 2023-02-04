@@ -10,6 +10,12 @@ router.put("/items/:id", itemControllers.edit);
 router.post("/items", itemControllers.add);
 router.delete("/items/:id", itemControllers.destroy);
 
+// COMMENT
+const commentControllers = require("./controllers/commentControllers");
+
+router.post("/comment", commentControllers.commentPost);
+router.get("/comments/:id", commentControllers.getAllCommentsByDecisionID);
+
 // DECISIONS
 const formDecisionControllers = require("./controllers/formDecisionControllers");
 
