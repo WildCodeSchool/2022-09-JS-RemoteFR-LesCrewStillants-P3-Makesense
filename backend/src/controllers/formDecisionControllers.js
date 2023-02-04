@@ -65,6 +65,7 @@ const decisionAndUserGet = (req, res) => {
     });
 };
 const decisionGetByID = (req, res) => {
+  console.warn(req.params.id);
   models.decision
     .find(req.params.id)
     .then(([rows]) => {

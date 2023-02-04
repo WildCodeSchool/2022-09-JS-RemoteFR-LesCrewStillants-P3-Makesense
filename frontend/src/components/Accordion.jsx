@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import ReactHtmlParser from "html-react-parser";
+import { AuthContext } from "../Context/AuthContext";
 import instance from "../helpers/axios";
 
 function Accordion() {
   const { id } = useParams();
   const [decision, setDecision] = useState("");
-
   useEffect(() => {
     instance
       .get(`/decisions/${id}`)
@@ -17,31 +17,6 @@ function Accordion() {
         console.error(err);
       });
   }, [id]);
-  const [commentaire, setCommentaire] = useState();
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    useEffect(() => {
-      instance
-        .post(`/commentaire`)
-        .then((result) => {
-          setCommentaire(result.data);
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    }, [commentaire]);
-    useEffect(() => {
-      instance
-        .get(`/commentaire`)
-        .then((result) => {
-          setCommentaire(result.data);
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    }, [commentaire]);
-  };
-  console.warn(commentaire);
 
   const [active, setActive] = useState([]);
 
@@ -49,6 +24,31 @@ function Accordion() {
     const newActive = [...active];
     newActive[index] = !newActive[index];
     setActive(newActive);
+  };
+
+  // eslint-disable-next-line camelcase
+  const decision_id = +id;
+
+  const { userID } = useContext(AuthContext);
+  // eslint-disable-next-line camelcase
+  const user_id = +userID;
+
+  console.warn(user_id);
+  console.warn(decision_id);
+
+  const [comment, setComment] = useState();
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.warn(comment);
+    instance
+      // eslint-disable-next-line camelcase
+      .post(`/comment`, { comment, user_id, decision_id })
+      .then((result) => {
+        setComment(result.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   return (
@@ -125,7 +125,7 @@ function Accordion() {
           aria-hidden="true"
           onClick={() => handleToggle(5)}
         >
-          <h2> Commentaires </h2> <span className="accordion__icon" />
+          <h2> Comments </h2> <span className="accordion__icon" />
         </div>
         <div className="accordion__content">
           {/* Ici il faut afficher le resultat de getAll comments */}
@@ -133,10 +133,10 @@ function Accordion() {
       </div>
       <h2>Ajouter un commentaire</h2>
       <textarea
-        name="commentaire"
-        placeholder="Ecrivez votre commentaire ici"
-        value={commentaire}
-        onChange={(e) => setCommentaire(e.target.value)}
+        name="comment"
+        placeholder="Ecrivez votre comment ici"
+        value={comment}
+        onChange={(e) => setComment(e.target.value)}
         cols="30"
         rows="10"
       />

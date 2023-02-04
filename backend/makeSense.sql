@@ -52,11 +52,11 @@ DROP TABLE IF EXISTS comment;
 CREATE TABLE
     comment(
         id INT PRIMARY KEY AUTO_INCREMENT,
-        date DATETIME NOT NULL,
+        date DATE DEFAULT NULL,
         comment VARCHAR(150) NOT NULL,
         type TINYINT(1),
-        user_id INT NOT NULL,
-        decision_id INT NOT NULL,
+        user_id INT DEFAULT NULL,
+        decision_id INT DEFAULT NULL,
         CONSTRAINT fk_user_comment FOREIGN KEY (user_id) REFERENCES user(id),
         CONSTRAINT fk_user_decision FOREIGN KEY (decision_id) REFERENCES decision(id)
     );

@@ -18,8 +18,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/accueil-salarie" element={<AccueilSalarie />} />
           <Route path="/accueil-admin" element={<AccueilAdmin />} />
-          <Route path="/decision" element={<Decision />} />
-          <Route path="/decision/:id" element={<DecisionDetails />} />
+          <Route path="/decisions" element={<Decision />} />
+          <Route path="/decisions/:id" element={<DecisionDetails />} />
           <Route path="/users/:id" element={<AdminPut />} />
           <Route path="/profil" element={<Profil />} />
           <Route path="*" element={<NotFound />} />

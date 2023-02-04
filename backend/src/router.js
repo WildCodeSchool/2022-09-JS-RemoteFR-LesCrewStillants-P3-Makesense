@@ -25,10 +25,10 @@ router.put("/decision/:id", formDecisionControllers.putDecisionByID);
 
 // Commentaire
 
-const commentaireControllers = require("./controllers/commentaireControllers");
+const commentControllers = require("./controllers/commentControllers");
 
-router.post("/commentaire", commentaireControllers.commentairePost);
-router.get("/commentaire", commentaireControllers.commentaireGet);
+router.post("/comment", commentControllers.commentPost);
+router.get("/comment", commentControllers.commentGet);
 
 // Date Timeline
 const formDateDecisionControllers = require("./controllers/formDecisionControllers");
