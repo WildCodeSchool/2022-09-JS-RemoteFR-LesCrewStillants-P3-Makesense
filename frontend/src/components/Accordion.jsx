@@ -38,22 +38,21 @@ function Accordion() {
 
   const date = new Date().toISOString().slice(0, 10);
 
-  const [comment, setComment] = useState([]);
+  const [comment, setComment] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault();
     console.warn(comment);
     instance
       // eslint-disable-next-line camelcase
       .post(`/comment`, { comment, date, user_id, decision_id })
-      .then((result) => {
-        setComment(result.data);
+      .then(() => {
+        setComment("");
         setCommentPosted(true);
       })
       .catch((err) => {
         console.error(err);
       });
   };
-
   const [allComments, setAllComments] = useState([]);
 
   useEffect(() => {
@@ -61,11 +60,12 @@ function Accordion() {
       .get(`/comments/${id}`)
       .then((result) => {
         setAllComments(result.data);
+        setCommentPosted(false);
       })
       .catch((err) => {
         console.error(err);
       });
-  }, []);
+  }, [commentPosted]);
   return (
     <div className="accordion">
       <h1> Décision : {decision.title}</h1>
