@@ -15,15 +15,36 @@ function LoginSignupContainer() {
   };
 
   return (
-    <div className="login-signup-container" ref={loginSignupContainerRef}>
-      <Login />
-      <div className="side-div">
-        <button type="button" onClick={handleClick}>
-          {" "}
-          {login ? "Inscription" : "Connexion"}{" "}
-        </button>
+    <div className="DecoSignIn">
+      <div className="Home">
+        <div className="login-signup-container" ref={loginSignupContainerRef}>
+          <Login />
+          <div className="side-div">
+            <button type="button" className="pink" onClick={handleClick}>
+              {" "}
+              {login ? "S'inscrire →" : "← Se connecter"}{" "}
+            </button>
+          </div>
+          <Signup />
+        </div>
+
+        <div>
+          <div className="orangeFatBean" />
+          <div className="orangeSmallBean" />
+          <img
+            className="decoimg"
+            src="https://makesense.org/wp-content/uploads/sites/4/2020/09/2015-10-24-sensecamp-washington-dc-picture-by-mariia-berezina-photography-8-1.jpg"
+            alt="équipe"
+          />
+          <img
+            className="decologo"
+            src="https://makesense.org/wp-content/uploads/sites/4/2020/09/logo-makesense-dark.png"
+            alt="logo"
+          />
+          <div className="blueFatBean" />
+          <div className="blueSmallBean" />
+        </div>
       </div>
-      <Signup />
     </div>
   );
 }
