@@ -41,7 +41,6 @@ function Accordion() {
   const [comment, setComment] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.warn(comment);
     instance
       // eslint-disable-next-line camelcase
       .post(`/comment`, { comment, date, user_id, decision_id })
@@ -68,7 +67,7 @@ function Accordion() {
   }, [commentPosted]);
   return (
     <div className="accordion">
-      <h1> Décision : {decision.title}</h1>
+      <h1> {decision.title}</h1>
       <div className={`accordion ${active[0] && "active"}`}>
         <div
           className="accordion__title"
@@ -146,12 +145,17 @@ function Accordion() {
           {allComments.map((comments) => (
             <div key={comments.id}>
               <h3>
-                {comments.firstname} {comments.lastname}, le {comments.date} :
+                <i>
+                  {comments.firstname} {comments.lastname}{" "}
+                </i>
+                , le {comments.date} :
               </h3>
-              <p>{comments.comment}</p>
+              <p style={{ margin: "1rem" }}>{comments.comment}</p>
             </div>
           ))}
-          <h2>Ajouter un commentaire</h2>
+          <h3 style={{ marginTop: "1rem", marginBottom: "1rem" }}>
+            <b>Ajouter un commentaire :</b>
+          </h3>
           <textarea
             name="comment"
             placeholder="Ecrivez votre comment ici"
@@ -161,7 +165,12 @@ function Accordion() {
             rows="10"
           />{" "}
           <br />
-          <button type="button" value="Publier" onClick={handleSubmit}>
+          <button
+            type="button"
+            value="Publier"
+            className="green"
+            onClick={handleSubmit}
+          >
             Publier
           </button>
         </div>
