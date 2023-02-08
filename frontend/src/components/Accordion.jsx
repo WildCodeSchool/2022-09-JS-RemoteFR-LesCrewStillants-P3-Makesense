@@ -139,7 +139,7 @@ function Accordion() {
           aria-hidden="true"
           onClick={() => handleToggle(5)}
         >
-          <h2> Commentaires </h2> <span className="accordion__icon" />
+          <h2> Comments </h2> <span className="accordion__icon" />
         </div>
         <div className="accordion__content">
           {allComments.map((comments) => (
@@ -175,6 +175,19 @@ function Accordion() {
           </button>
         </div>
       </div>
+      <h2>Ajouter un commentaire</h2>
+      <textarea
+        name="comment"
+        placeholder="Ecrivez votre comment ici"
+        value={comment}
+        onChange={(e) => setComment(e.target.value)}
+        cols="30"
+        rows="10"
+      />
+      <br />
+      <button type="button" value="Publier" onClick={handleSubmit}>
+        Publier
+      </button>
     </div>
   );
 }
