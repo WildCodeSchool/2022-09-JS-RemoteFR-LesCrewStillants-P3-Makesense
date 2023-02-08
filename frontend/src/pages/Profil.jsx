@@ -1,5 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import Header from "@components/Header";
+import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 import instance from "../helpers/axios";
 import { AuthContext } from "../Context/AuthContext";
 import "../components/AdminRegister.css";
@@ -9,17 +11,20 @@ export default function Profil() {
   const [initialUser, setInitialUser] = useState("");
   const { userID } = useContext(AuthContext);
   const id = +userID;
+  const [userPut, setUserPut] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     instance
       .get(`/users/${id}`)
       .then((result) => {
         setInitialUser(result.data);
+        setUserPut(false);
       })
       .catch((err) => {
         console.error(err);
       });
-  }, [id]);
+  }, [id, userPut]);
 
   const handleAdminChanges = (e) => {
     const { name, value } = e.target;
@@ -34,15 +39,44 @@ export default function Profil() {
       .put(`/user/${id}`, initialUser)
       .then((res) => {
         console.warn(res);
+        setUserPut(true);
         // ici j'enregistre qu'un user a bien été ajouté pour gérer le refresh de l'affichage de mes users dans AccueilAdmin (le state aprent est dans AccueilAdmin)
+        toast("Profil modifié !", {
+          position: "bottom-right",
+          type: "success",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
       })
       .catch((err) => console.error(err));
   };
   return (
     <>
       <Header />
+      <button
+        onClick={() => navigate(-1)}
+        type="button"
+        className="pink"
+        style={{ alignSelf: "center", margin: "1rem" }}
+      >
+        {" "}
+        Retour{" "}
+      </button>
       <div className="modal">
         <h1 className="adminRegisterTitle"> Mettre à jour mes informations</h1>
+
+        <ToastContainer
+          theme="colored"
+          autoClose={2000}
+          position="bottom-right"
+          className="toast-container"
+          toastClassName="dark-toast"
+        />
         <form
           htmlFor="signup"
           className="adminRegisterForm"
@@ -97,7 +131,12 @@ export default function Profil() {
               required
             />
           </label>
-          <button type="submit" value="submit">
+          <button
+            style={{ alignSelf: "center", margin: "1rem" }}
+            type="submit"
+            value="submit"
+            className="green"
+          >
             {" "}
             Modifier{" "}
           </button>

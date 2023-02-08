@@ -32,18 +32,9 @@ export default function AccueilSalarie() {
     }
   }, [hasFetchedData, deletedDecision, archivedDecision]);
 
-  const handleDeleteDecision = (decisionID) => {
-    // eslint-disable-next-line no-alert, no-restricted-globals
-    const isDelete = confirm("supprimer l'utilisateur'?");
-    if (isDelete) {
-      instance.delete(`/decision/${decisionID}`);
-      setDeletedDecicion(true);
-    }
-  };
-
   const handleArchivedDecision = (decisionID) => {
     // eslint-disable-next-line no-alert, no-restricted-globals
-    const isArchived = confirm("archiver la décision'?");
+    const isArchived = confirm("Archiver la décision ?");
     if (isArchived) {
       instance.put(`/decision/${decisionID}`);
       setArchivedDecicion(true);
@@ -61,6 +52,14 @@ export default function AccueilSalarie() {
   const mesDecisionsByID = decisions.filter(
     (decision) => decision.user_id === id
   );
+  const handleDeleteDecision = (decisionID) => {
+    // eslint-disable-next-line no-alert, no-restricted-globals
+    const isDelete = confirm("Supprimer la décision ?");
+    if (isDelete) {
+      instance.delete(`/decision/${decisionID}`);
+      setDeletedDecicion(true);
+    }
+  };
 
   return (
     <>
@@ -87,6 +86,7 @@ export default function AccueilSalarie() {
                   {maDecision.user_id === id || userRole === "admin" ? (
                     <div>
                       <button
+                        style={{ marginLeft: "2rem" }}
                         type="button"
                         className="greenHover"
                         onClick={() => handleArchivedDecision(maDecision.id)}
@@ -127,6 +127,7 @@ export default function AccueilSalarie() {
                   (userRole === "admin" && decisionEnCours.statut) ? (
                     <div>
                       <button
+                        style={{ marginLeft: "2rem" }}
                         type="button"
                         className="greenHover"
                         onClick={() =>
@@ -173,6 +174,7 @@ export default function AccueilSalarie() {
                 {decisionPrise.user_id === id || userRole === "admin" ? (
                   <div>
                     <button
+                      style={{ marginLeft: "2rem" }}
                       type="button"
                       className="pink"
                       onClick={() => handleDeleteDecision(decisionPrise.id)}

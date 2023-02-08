@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Switch } from "@mui/material";
+import { ToastContainer, toast } from "react-toastify";
 import { Link, useParams } from "react-router-dom";
 import instance from "../helpers/axios";
 import "./AdminRegister.css";
@@ -15,7 +16,7 @@ export default function AdminPut({ setUserPut }) {
         setInitialUser(result.data);
       })
       .catch((err) => {
-        console.error(err);
+        console.warn(err);
       });
   }, [id]);
 
@@ -34,25 +35,44 @@ export default function AdminPut({ setUserPut }) {
   const handlePutRegister = (e) => {
     e.preventDefault();
     instance
-
       .put(`/users/${id}`, initialUser)
       .then((res) => {
         console.warn(res);
         // ici j'enregistre qu'un user a bien été ajouté pour gérer le refresh de l'affichage de mes users dans AccueilAdmin (le state aprent est dans AccueilAdmin)
+
+        toast("Utilisateur modifié !", {
+          position: "bottom-right",
+          type: "success",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
         setUserPut(true);
         setInitialUser("");
       })
-      .catch((err) => console.error(err));
+      .catch((err) => console.warn(err));
   };
 
   return (
     <div className="modal" style={{ position: "absolute" }}>
+      <ToastContainer
+        theme="colored"
+        autoClose={2000}
+        position="bottom-right"
+        className="toast-container"
+        toastClassName="dark-toast"
+      />
       <Link to="/accueil-admin">
         <button type="button" className="square">
           {" "}
           X
         </button>
       </Link>
+
       <h1 className="adminRegisterTitle">
         Modifier les informations de l'utilisateur
       </h1>
@@ -95,7 +115,7 @@ export default function AdminPut({ setUserPut }) {
             checked={role === "admin"}
             value={role}
           />
-          {role === "admin" ? "Salarié" : "Admin"}
+          Role : {role === "admin" ? "Salarié" : "Admin"}
         </label>
 
         <input

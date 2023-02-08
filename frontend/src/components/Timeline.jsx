@@ -17,9 +17,20 @@ function Timeline() {
   }, [reload]);
 
   return (
-    <div style={{ width: "40%", height: "100%" }}>
+    <div style={{ width: "40%", height: "100%", background: "none" }}>
       {!reload ? (
-        <Chrono items={timeline} mode="HORIZONTAL" cardHeight={30} />
+        <Chrono
+          items={timeline}
+          mode="HORIZONTAL"
+          theme={{
+            primary: "#196c84",
+            secondary: "#196c84",
+            cardBgColor: "none",
+            titleColor: "black",
+            titleColorActive: "white",
+          }}
+          cardHeight={30}
+        />
       ) : (
         "attend"
       )}
