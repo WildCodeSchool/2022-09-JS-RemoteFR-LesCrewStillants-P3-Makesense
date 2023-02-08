@@ -52,7 +52,7 @@ DROP TABLE IF EXISTS comment;
 CREATE TABLE
     comment(
         id INT PRIMARY KEY AUTO_INCREMENT,
-        date DATE DEFAULT NULL,
+        date DATE  DEFAULT NULL,
         comment VARCHAR(150) NOT NULL,
         type TINYINT(1),
         user_id INT DEFAULT NULL,

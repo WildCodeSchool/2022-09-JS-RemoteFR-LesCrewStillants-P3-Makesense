@@ -9,15 +9,15 @@ class CommentaireManager extends AbstractManager {
   // eslint-disable-next-line camelcase, no-unused-vars
   insert(comment) {
     return this.connection.query(
-      `insert into ${this.table} (comment, user_id, decision_id) values (?, ?, ?)`,
-      [comment.comment, comment.user_id, comment.decision_id]
+      `insert into ${this.table} (date, comment, user_id, decision_id) values (?, ?, ?, ?)`,
+      [comment.date, comment.comment, comment.user_id, comment.decision_id]
     );
   }
 
-  getCommentByDecision(decision_id) {
+  getAllCommentsByDecision(id) {
     return this.connection.query(
-      `select * from comment where decision_id = ?`,
-      [decision_id]
+      `select comment.id, DATE_FORMAT(comment.date, "%d-%m-%Y") date, comment.comment, comment.user_id, user.firstname, user.lastname from comment inner join user on user.id = user_id where comment.decision_id= ?`,
+      [id]
     );
   }
 }

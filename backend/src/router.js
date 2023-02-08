@@ -10,6 +10,12 @@ router.put("/items/:id", itemControllers.edit);
 router.post("/items", itemControllers.add);
 router.delete("/items/:id", itemControllers.destroy);
 
+// COMMENT
+const commentControllers = require("./controllers/commentControllers");
+
+router.post("/comment", commentControllers.commentPost);
+router.get("/comments/:id", commentControllers.getAllCommentsByDecisionID);
+
 // DECISIONS
 const formDecisionControllers = require("./controllers/formDecisionControllers");
 
@@ -22,13 +28,6 @@ router.get("/decisions-en-cours", formDecisionControllers.decisionsEnCours);
 router.get("/decisions-prises", formDecisionControllers.decisionsPrises);
 router.delete("/decision/:id", formDecisionControllers.deleteDecisionByID);
 router.put("/decision/:id", formDecisionControllers.putDecisionByID);
-
-// Commentaire
-
-const commentControllers = require("./controllers/commentControllers");
-
-router.post("/comment", commentControllers.commentPost);
-router.get("/comment", commentControllers.commentGet);
 
 // Date Timeline
 const formDateDecisionControllers = require("./controllers/formDecisionControllers");

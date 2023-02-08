@@ -1,8 +1,7 @@
+/* eslint-disable camelcase */
 const models = require("../models");
 
 const commentPost = (req, res) => {
-  console.warn(req.body);
-
   models.comment
     .insert(req.body)
     .then(() => {
@@ -13,21 +12,21 @@ const commentPost = (req, res) => {
       res.sendStatus(500);
     });
 };
-// const commentGet = (req, res) => {
-//   const { comment } = req.body.comment;
 
-//   models.comment
-//     .insert({ comment })
-//     .then(() => {
-//       res.status(201).json({ success: "Success" });
-//     })
-//     .catch((err) => {
-//       console.error(err);
-//       res.sendStatus(500);
-//     });
-// };
+const getAllCommentsByDecisionID = (req, res) => {
+  const { id } = req.params;
+  models.comment
+    .getAllCommentsByDecision(id)
+    .then(([rows]) => {
+      res.send(rows);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
 
 module.exports = {
   commentPost,
-  // commentGet,
+  getAllCommentsByDecisionID,
 };

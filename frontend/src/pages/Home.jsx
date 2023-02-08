@@ -10,7 +10,8 @@ export default function Home() {
       <div className="App">
         <h1 id="homeh1"> Bienvenue, viens on change de monde ! </h1>
         <LoginSignupContainer />
-        {/* <Deco /> */}
+        <div className="blueFatBean" />
+        <div className="blueSmallBean" />
         <Footer />
       </div>
     </>

@@ -29,36 +29,20 @@ function LoginSignupContainer() {
         </div>
 
         <div>
-          <img
-            className="decovoiderose"
-            src="./src/components/Decoration/ovoideRose.png"
-            alt="deco"
-          />
-          <img
-            className="decovoidebleu"
-            src="./src/components/Decoration/ovoide_bleu.png"
-            alt="deco"
-          />
+          <div className="orangeFatBean" />
+          <div className="orangeSmallBean" />
           <img
             className="decoimg"
-            src="./src/components/Decoration/mkimg.jpg"
+            src="https://makesense.org/wp-content/uploads/sites/4/2020/09/2015-10-24-sensecamp-washington-dc-picture-by-mariia-berezina-photography-8-1.jpg"
             alt="équipe"
           />
           <img
             className="decologo"
-            src="./src/components/Decoration/logomk.png"
+            src="https://makesense.org/wp-content/uploads/sites/4/2020/09/logo-makesense-dark.png"
             alt="logo"
           />
-          <img
-            className="decovoiderose2"
-            src="./src/components/Decoration/ovoideRose.png"
-            alt="deco"
-          />
-          <img
-            className="decovoidebleu2"
-            src="./src/components/Decoration/ovoide_bleu.png"
-            alt="deco"
-          />
+          {/* <div className="blueFatBean" />
+          <div className="blueSmallBean" /> */}
         </div>
       </div>
     </div>

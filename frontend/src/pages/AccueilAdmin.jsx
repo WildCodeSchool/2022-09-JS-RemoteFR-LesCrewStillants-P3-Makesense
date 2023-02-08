@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
@@ -65,6 +65,36 @@ function AccueilAdmin() {
     setShowModal(true);
   };
 
+  const [decisionsEnCours, setDecisionsEnCours] = useState("");
+
+  useEffect(() => {
+    instance
+      .get("/decisions-en-cours")
+      .then((result) => {
+        setDecisionsEnCours(result.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
+
+  const decisionEnCoursMemo = useMemo(() => Array.from(decisionsEnCours));
+
+  const [decisionsPrises, setDecisionsPrises] = useState("");
+
+  useEffect(() => {
+    instance
+      .get("/decisions-prises")
+      .then((result) => {
+        setDecisionsPrises(result.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
+
+  const decisionsPrisesMemo = useMemo(() => Array.from(decisionsPrises));
+
   return (
     <>
       <Header />
@@ -76,8 +106,19 @@ function AccueilAdmin() {
             <span>Prises </span>
           </p>
           <p>
-            <span className="chiffreDecision">1</span>
-            <span className="chiffreDecision">?</span>
+            {decisionEnCoursMemo.map((decisionEnCours) => (
+              <span
+                key={decisionEnCours.toString()}
+                className="chiffreDecision"
+              >
+                {decisionEnCours.decisionEnCours}
+              </span>
+            ))}
+            {decisionsPrisesMemo.map((decisionPrise) => (
+              <span key={decisionPrise.toString()} className="chiffreDecision">
+                {decisionPrise.decisionPrise}
+              </span>
+            ))}
           </p>
         </div>
         <div className="ContainerAdmin">
