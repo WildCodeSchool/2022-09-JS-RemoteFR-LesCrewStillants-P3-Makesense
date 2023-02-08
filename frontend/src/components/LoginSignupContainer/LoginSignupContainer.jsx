@@ -41,8 +41,8 @@ function LoginSignupContainer() {
             src="https://makesense.org/wp-content/uploads/sites/4/2020/09/logo-makesense-dark.png"
             alt="logo"
           />
-          <div className="blueFatBean" />
-          <div className="blueSmallBean" />
+          {/* <div className="blueFatBean" />
+          <div className="blueSmallBean" /> */}
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import AdminPut from "@components/AdminPut";
+import AdminPut from "./components/AdminPut";
 import AccueilAdmin from "./pages/AccueilAdmin";
 import Profil from "./pages/Profil";
 import Home from "./pages/Home";

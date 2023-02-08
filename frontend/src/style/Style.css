@@ -250,6 +250,8 @@ header {
   display: inline-block;
   height: 5em;
   width: 15em;
+  margin-top: 0.9em;
+  margin-left: 6em;
   transform: rotate(150deg);
   border: 0.01em solid var(--color-flame-pea);
   border-color: var(--color-flame-pea);
@@ -280,6 +282,7 @@ header {
   display: inline-block;
   height: 7em;
   width: 20em;
+  margin-left: 30em;
   transform: rotate(150deg);
   border: 0.01em solid var(--text-color-link-active);
   border-color: var(--text-color-link-active);
