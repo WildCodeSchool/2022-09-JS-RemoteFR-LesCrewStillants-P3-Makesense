@@ -10,7 +10,7 @@
 .containerForm {
   display: flex;
   flex-direction: column;
-  align-items:center;
+  align-items: center;
 }
 
 .Label {
@@ -31,7 +31,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 }
 
 /*Bouton Onglet*/
