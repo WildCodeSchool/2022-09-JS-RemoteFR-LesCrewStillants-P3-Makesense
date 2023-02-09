@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 import instance from "../../helpers/axios";
 import "./Signup.css";
 
@@ -14,12 +15,44 @@ function Signup() {
     e.preventDefault();
     instance
       .post("/signup", registerUser)
-      .then((res) => console.warn(res.data))
-      .catch((err) => console.error(err));
+      .then(() => {
+        e.target.reset();
+        toast("Utilisateur enregistré !", {
+          position: "bottom-right",
+          type: "success",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+      })
+      .catch(() => {
+        toast("Vérifier vos informations !", {
+          position: "bottom-right",
+          type: "error",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+      });
   };
 
   return (
     <div className="signup">
+      <ToastContainer
+        theme="colored"
+        autoClose={2000}
+        position="bottom-right"
+        className="toast-container"
+        toastClassName="dark-toast"
+      />
       <h1>S'inscrire</h1>
       <form className="signupForm" htmlFor="signup" onSubmit={handleRegister}>
         <label>

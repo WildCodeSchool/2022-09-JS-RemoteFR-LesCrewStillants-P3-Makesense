@@ -10,7 +10,6 @@
 .containerForm {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 
@@ -54,4 +53,8 @@
   align-items: center;
   cursor: pointer;
   border-radius: 1rem;
+}
+
+.fMxotn {
+  background-color: transparent;
 }

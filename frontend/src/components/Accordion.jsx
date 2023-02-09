@@ -38,22 +38,20 @@ function Accordion() {
 
   const date = new Date().toISOString().slice(0, 10);
 
-  const [comment, setComment] = useState([]);
+  const [comment, setComment] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.warn(comment);
     instance
       // eslint-disable-next-line camelcase
       .post(`/comment`, { comment, date, user_id, decision_id })
-      .then((result) => {
-        setComment(result.data);
+      .then(() => {
+        setComment("");
         setCommentPosted(true);
       })
       .catch((err) => {
         console.error(err);
       });
   };
-
   const [allComments, setAllComments] = useState([]);
 
   useEffect(() => {
@@ -61,14 +59,15 @@ function Accordion() {
       .get(`/comments/${id}`)
       .then((result) => {
         setAllComments(result.data);
+        setCommentPosted(false);
       })
       .catch((err) => {
         console.error(err);
       });
-  }, []);
+  }, [commentPosted]);
   return (
     <div className="accordion">
-      <h1> Décision : {decision.title}</h1>
+      <h1> {decision.title}</h1>
       <div className={`accordion ${active[0] && "active"}`}>
         <div
           className="accordion__title"
@@ -140,18 +139,23 @@ function Accordion() {
           aria-hidden="true"
           onClick={() => handleToggle(5)}
         >
-          <h2> Commentaires </h2> <span className="accordion__icon" />
+          <h2> Comments </h2> <span className="accordion__icon" />
         </div>
         <div className="accordion__content">
           {allComments.map((comments) => (
             <div key={comments.id}>
               <h3>
-                {comments.firstname} {comments.lastname}, le {comments.date} :
+                <i>
+                  {comments.firstname} {comments.lastname}{" "}
+                </i>
+                , le {comments.date} :
               </h3>
-              <p>{comments.comment}</p>
+              <p style={{ margin: "1rem" }}>{comments.comment}</p>
             </div>
           ))}
-          <h2>Ajouter un commentaire</h2>
+          <h3 style={{ marginTop: "1rem", marginBottom: "1rem" }}>
+            <b>Ajouter un commentaire :</b>
+          </h3>
           <textarea
             name="comment"
             placeholder="Ecrivez votre comment ici"
@@ -161,11 +165,29 @@ function Accordion() {
             rows="10"
           />{" "}
           <br />
-          <button type="button" value="Publier" onClick={handleSubmit}>
+          <button
+            type="button"
+            value="Publier"
+            className="green"
+            onClick={handleSubmit}
+          >
             Publier
           </button>
         </div>
       </div>
+      <h2>Ajouter un commentaire</h2>
+      <textarea
+        name="comment"
+        placeholder="Ecrivez votre comment ici"
+        value={comment}
+        onChange={(e) => setComment(e.target.value)}
+        cols="30"
+        rows="10"
+      />
+      <br />
+      <button type="button" value="Publier" onClick={handleSubmit}>
+        Publier
+      </button>
     </div>
   );
 }

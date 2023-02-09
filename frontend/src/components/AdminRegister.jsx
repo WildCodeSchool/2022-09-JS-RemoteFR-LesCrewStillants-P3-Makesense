@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Switch } from "@mui/material";
+import { ToastContainer, toast } from "react-toastify";
 import instance from "../helpers/axios";
 import "./AdminRegister.css";
 
@@ -19,19 +20,42 @@ export default function AdminRegister({ setShowModal, setUserAdded }) {
     const { name, value } = e.target;
     setRegisterUser({ ...registerUser, [name]: value });
   };
-
   // Enfin On Submit j'envoie les données récupérées en front vers mon back pour save mon user
   const handleRegister = (e) => {
     e.preventDefault();
     instance
       .post("/register", registerUser)
-      .then((res) => {
-        console.warn(res);
+      .then(() => {
         // ici j'enregistre qu'un user a bien été ajouté pour gérer le refresh de l'affichage de mes users dans AccueilAdmin (le state aprent est dans AccueilAdmin)
         setUserAdded(true);
+        e.target.reset();
+        toast("Utilisateur enregistré !", {
+          position: "bottom-right",
+          type: "success",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
       })
-      .catch((err) => console.error(err));
+      .catch(() => {
+        toast("Vérifier vos informations !", {
+          position: "bottom-right",
+          type: "error",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+      });
   };
+
   // modal dont le state parent se trouve dans AccueilAdmin
   const handleCloseModal = () => {
     setShowModal(false);
@@ -43,6 +67,13 @@ export default function AdminRegister({ setShowModal, setUserAdded }) {
         {" "}
         X
       </button>
+      <ToastContainer
+        theme="colored"
+        autoClose={2000}
+        position="bottom-right"
+        className="toast-container"
+        toastClassName="dark-toast"
+      />
       <h1 className="adminRegisterTitle">
         Ajouter les informations d'un nouvel utilisateur
       </h1>
@@ -86,7 +117,7 @@ export default function AdminRegister({ setShowModal, setUserAdded }) {
         </label>
         <label>
           {" "}
-          Role
+          Role : {role === "admin" ? "Salarié" : "Admin"}
           <Switch
             name="user_role"
             onClick={handleChangeRegister}
@@ -94,7 +125,6 @@ export default function AdminRegister({ setShowModal, setUserAdded }) {
             checked={role === "admin"}
             value={role}
           />
-          {role === "admin" ? "Admin" : "Salarié"}
         </label>
         <label>
           {" "}

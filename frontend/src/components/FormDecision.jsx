@@ -15,17 +15,8 @@ import "./FormDecision.css";
 import instance from "../helpers/axios";
 
 /**
- * import data du context
- * {
-"0": {
-  "data": "<p>coucou coucou2</p>"
-},
-"1": {
-  "data": "<p>coucoucoucou2</p>"
-}
-}
-* afficher les datas pour récupérer la data selon l'id ci dessus 
-*/
+ * afficher les datas pour récupérer la data selon l'id ci dessus
+ */
 
 /* Créer usestate pour afficher/masquer onglet rte */
 
@@ -67,19 +58,32 @@ function Form() {
     } else {
       instance
         .post("/decision", { title, data, user_id, statut })
-        .then((res) => console.warn(res.data))
-        .catch((err) => console.warn(err));
-      toast("Décision envoyée avec succès!", {
-        position: "bottom-right",
-        type: "success",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      });
+        .then(() => {
+          toast("Décision envoyée avec succès!", {
+            position: "bottom-right",
+            type: "success",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+        })
+        .catch(() => {
+          toast("Vérifier vos informations !", {
+            position: "bottom-right",
+            type: "error",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+        });
     }
   };
 
@@ -191,7 +195,10 @@ function Form() {
               ))}
             </div>
           )}
-          <label>
+          <label
+            className="containerForm"
+            style={{ alignItems: "flex-start", marginLeft: "50%" }}
+          >
             <Switch
               name="statut"
               onChange={handleChangeStatut}
@@ -201,7 +208,7 @@ function Form() {
             {statut === "Terminée" ? "Terminée" : "En Cours"}
           </label>
           <button
-            className="ButtonDecision"
+            className="green"
             type="submit"
             value="Soumettre"
             onClick={handleSubmit}

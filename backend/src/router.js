@@ -20,8 +20,8 @@ router.get("/comments/:id", commentControllers.getAllCommentsByDecisionID);
 const formDecisionControllers = require("./controllers/formDecisionControllers");
 
 router.post("/decision", formDecisionControllers.decisionPost);
-router.get("/decisions", formDecisionControllers.decisionGet);
-router.get("/decisions/:id", formDecisionControllers.decisionGetByID);
+router.get("/decision", formDecisionControllers.decisionGet);
+router.get("/decision/:id", formDecisionControllers.decisionGetByID);
 router.get("/mes-decisions/:id", formDecisionControllers.decisionGetByUserID);
 router.get("/decisions-users", formDecisionControllers.decisionAndUserGet);
 router.get("/decisions-en-cours", formDecisionControllers.decisionsEnCours);
