@@ -11,7 +11,7 @@ function Accordion() {
 
   useEffect(() => {
     instance
-      .get(`/decisions/${id}`)
+      .get(`/decision/${id}`)
       .then((result) => {
         setDecision(result.data);
         setCommentPosted(false);
@@ -66,7 +66,7 @@ function Accordion() {
       });
   }, [commentPosted]);
   return (
-    <div className="accordion">
+    <div className="accordion" style={{ marginLeft: "2rem" }}>
       <h1> {decision.title}</h1>
       <div className={`accordion ${active[0] && "active"}`}>
         <div
