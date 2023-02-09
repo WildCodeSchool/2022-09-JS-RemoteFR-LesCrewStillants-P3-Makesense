@@ -175,19 +175,6 @@ function Accordion() {
           </button>
         </div>
       </div>
-      <h2>Ajouter un commentaire</h2>
-      <textarea
-        name="comment"
-        placeholder="Ecrivez votre comment ici"
-        value={comment}
-        onChange={(e) => setComment(e.target.value)}
-        cols="30"
-        rows="10"
-      />
-      <br />
-      <button type="button" value="Publier" onClick={handleSubmit}>
-        Publier
-      </button>
     </div>
   );
 }
